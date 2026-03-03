@@ -1,15 +1,22 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# Archivos de sistema de Mac
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.AppleDouble
+.LSOverride
+
+# Android Studio y Gradle
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
 local.properties
+
+# Archivos de configuración de la IDE
+.idea/workspace.xml
+.idea/libraries/
+.idea/modules.xml
+.idea/deploymentTargetDropDown.xml
+*.iml
+
+# Logs
+*.log
