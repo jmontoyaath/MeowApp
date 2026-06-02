@@ -21,3 +21,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "MeowApp"
 include(":app")
+include(":core:network")
+include(":core:designsystem")
+include(":core:data")
+include(":core:domain")
+include(":core:ui")
+include(":feature:search:api")
+include(":feature:search:impl")
+include(":feature:favorites:api")
+include(":feature:favorites:impl")

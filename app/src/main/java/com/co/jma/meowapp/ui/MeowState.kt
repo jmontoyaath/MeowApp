@@ -1,4 +1,10 @@
 package com.co.jma.meowapp.ui
 
-class MeowState {
+import androidx.compose.runtime.Stable
+
+@Stable
+class MeowState (
+
+) {
+
 }
