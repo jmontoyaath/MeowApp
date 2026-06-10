@@ -1,16 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.meowapp.android.library)
 }
 
 android {
     namespace = "com.es.jma.network"
-    compileSdk {
-        version = release(35)
-    }
 
     defaultConfig {
-        minSdk = 30
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -30,3 +31,4 @@ include(":feature:search:api")
 include(":feature:search:impl")
 include(":feature:favorites:api")
 include(":feature:favorites:impl")
+//include(":build-logic:convention")

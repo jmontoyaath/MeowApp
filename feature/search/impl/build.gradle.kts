@@ -1,19 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.android.built.in1.kotlin)
+    alias(libs.plugins.meowapp.android.library)
 }
 
 android {
     namespace = "com.es.jma.impl"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
 
     defaultConfig {
-        minSdk = 30
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
         externalNativeBuild {
