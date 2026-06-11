@@ -1,8 +1,11 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.gradle.kotlin.dsl.configure
+
 plugins {
     alias(libs.plugins.meowapp.android.library)
 }
 
-android {
+extensions.configure<LibraryExtension> {
     namespace = "com.es.jma.impl"
 
     defaultConfig {

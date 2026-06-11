@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.co.jma.meowapp.ui.icon.MeowIcons
+//import com.co.jma.meowapp.ui.icon.MeowIcons
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,18 +34,18 @@ fun AppBar(
             IconButton(onClick = onBackClick ?: {}, modifier = Modifier.modifyIf(onBackClick == null) {
                 alpha(0F)
             }) {
-                Icon(
-                    imageVector = MeowIcons.ArrowBack,
-                    contentDescription = null,
-                )
+//                Icon(
+//                    imageVector = MeowIcons.ArrowBack,
+//                    contentDescription = null,
+//                )
             }
         },
         actions = actions ?: {
             IconButton(onClick = {}, modifier = Modifier.alpha(0f)) {
-                Icon(
-                    imageVector = MeowIcons.Search,
-                    contentDescription = null,
-                )
+//                Icon(
+//                    imageVector = MeowIcons.Search,
+//                    contentDescription = null,
+//                )
             }
         }
     )
