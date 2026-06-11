@@ -1,5 +1,5 @@
 [versions]
-agp = "9.1.0"
+agp = "9.2.1"
 kotlin = "2.2.10"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -11,7 +11,7 @@ composeBom = "2024.09.00"
 jetbrainsKotlinJvm = "2.0.21"
 appcompat = "1.6.1"
 material = "1.10.0"
-androidBuiltInKotlin = "9.1.0"
+androidBuiltInKotlin = "9.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
