@@ -16,10 +16,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<com.android.build.api.dsl.LibraryExtension> {
-                compileSdk = 34
+                compileSdk = 37
 
                 defaultConfig {
-                    minSdk = 24
+                    minSdk = 26
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
@@ -35,8 +35,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 }
 
                 compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_11
-                    targetCompatibility = JavaVersion.VERSION_11
+                    sourceCompatibility = JavaVersion.VERSION_21
+                    targetCompatibility = JavaVersion.VERSION_21
                 }
             }
 
