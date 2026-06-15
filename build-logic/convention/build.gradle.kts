@@ -19,6 +19,11 @@ gradlePlugin {
             implementationClass = "com.es.jma.convention.AndroidLibraryConventionPlugin"
         }
 
+        register("androidApplication") {
+            id = libs.plugins.meowapp.android.application.get().pluginId
+            implementationClass = "com.es.jma.convention.AndroidApplicationConventionPlugin"
+        }
+
         register("hilt") {
             id = libs.plugins.meowapp.hilt.get().pluginId
             implementationClass = "com.es.jma.convention.HiltConventionPlugin"
