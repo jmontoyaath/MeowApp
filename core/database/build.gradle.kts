@@ -1,4 +1,5 @@
 import com.android.build.api.dsl.LibraryExtension
+import org.gradle.kotlin.dsl.configure
 
 plugins {
     alias(libs.plugins.meowapp.android.library)
@@ -6,10 +7,11 @@ plugins {
 }
 
 extensions.configure<LibraryExtension> {
-    namespace = "com.es.jma.data"
+    namespace = "com.es.jma.database"
 }
 
 dependencies {
-    implementation(project(":core:model"))
-    implementation(project(":core:network"))
+
+
+    api(project(":core:model"))
 }
