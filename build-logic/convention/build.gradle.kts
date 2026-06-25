@@ -19,9 +19,24 @@ gradlePlugin {
             implementationClass = "com.es.jma.convention.AndroidLibraryConventionPlugin"
         }
 
+        register("androidApplication") {
+            id = libs.plugins.meowapp.android.application.get().pluginId
+            implementationClass = "com.es.jma.convention.AndroidApplicationConventionPlugin"
+        }
+
         register("hilt") {
             id = libs.plugins.meowapp.hilt.get().pluginId
             implementationClass = "com.es.jma.convention.HiltConventionPlugin"
+        }
+
+        register("androidFeatureApi") {
+            id = libs.plugins.meowapp.android.feature.api.get().pluginId
+            implementationClass = "com.es.jma.convention.AndroidFeatureApiConventionPlugin"
+        }
+
+        register("androidFeatureImpl") {
+            id = libs.plugins.meowapp.android.feature.impl.get().pluginId
+            implementationClass = "com.es.jma.convention.AndroidFeatureImplConventionPlugin"
         }
     }
 }

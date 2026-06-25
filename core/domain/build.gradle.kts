@@ -1,13 +1,16 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.gradle.kotlin.dsl.configure
+
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.meowapp.android.library)
+    alias(libs.plugins.meowapp.hilt)
 }
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+
+extensions.configure<LibraryExtension> {
+    namespace = "com.es.jma.domain"
 }
-kotlin {
-    compilerOptions {
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
-    }
+
+dependencies {
+    implementation(project(":core:model"))
+    implementation(project(":core:data"))
 }

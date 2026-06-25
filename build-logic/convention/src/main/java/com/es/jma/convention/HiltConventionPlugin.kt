@@ -8,10 +8,14 @@ import org.gradle.kotlin.dsl.dependencies
 class HiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("com.google.devtools.ksp")
-            pluginManager.apply("com.google.dagger.hilt.android")
+
+            with(pluginManager) {
+                apply("com.google.devtools.ksp")
+                apply("com.google.dagger.hilt.android")
+            }
 
             dependencies {
+                add("ksp", libs.findLibrary("kotlin-metadata").get())
                 "implementation"(libs.findLibrary("hilt-android").get())
                 "ksp"(libs.findLibrary("hilt-compiler").get())
             }

@@ -10,6 +10,6 @@ extensions.configure<LibraryExtension> {
 }
 
 dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(project(":core:model"))
+    implementation(project(":core:network"))
 }
