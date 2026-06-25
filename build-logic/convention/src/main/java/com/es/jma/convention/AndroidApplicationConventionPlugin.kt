@@ -11,10 +11,8 @@ import org.gradle.kotlin.dsl.dependencies
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply(plugin = "com.android.application")
-                apply(plugin = "org.jetbrains.kotlin.android")
-            }
+            apply(plugin = "com.android.application")
+            apply(plugin = "org.jetbrains.kotlin.android")
 
             extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
                 compileSdk = 37

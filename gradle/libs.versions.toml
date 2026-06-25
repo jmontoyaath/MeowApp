@@ -64,4 +64,6 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 meowapp-android-application = { id = "meowapp.android.application" }
 meowapp-android-library = { id = "meowapp.android.library" }
 meowapp-hilt = { id = "meowapp.hilt" }
+meowapp-android-feature-api = { id = "meowapp.android.feature.api" }
+meowapp-android-feature-impl = { id = "meowapp.android.feature.impl" }
 
