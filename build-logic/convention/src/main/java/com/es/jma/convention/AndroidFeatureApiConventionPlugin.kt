@@ -1,5 +1,6 @@
 package com.es.jma.convention
 
+import com.es.jma.convention.utils.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -11,7 +12,8 @@ class AndroidFeatureApiConventionPlugin : Plugin<Project> {
             apply(plugin = "meowapp.android.library")
 
             dependencies {
-
+                "implementation"(libs.findLibrary("kotlinx-serialization-json").get())
+                "api"(project(":core:navigation"))
             }
         }
     }

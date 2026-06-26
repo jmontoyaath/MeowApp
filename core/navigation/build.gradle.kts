@@ -1,31 +1,16 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.gradle.kotlin.dsl.configure
+
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.android.built.in1.kotlin)
+    alias(libs.plugins.meowapp.android.library)
 }
 
-android {
-    namespace = "com.es.jma.navigation"
-    compileSdk {
-        version = release(37)
-    }
-
-    defaultConfig {
-        minSdk = 30
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
+extensions.configure<LibraryExtension> {
+    namespace = "com.es.jma.core.navigation"
 }
 
 dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
+    api(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.savedstate.compose)
+    implementation(libs.androidx.lifecycle.viewModel.navigation3)
 }

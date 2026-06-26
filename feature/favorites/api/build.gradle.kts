@@ -4,12 +4,10 @@ import org.gradle.kotlin.dsl.configure
 plugins {
     alias(libs.plugins.meowapp.android.feature.api)
 }
-
-extensions.configure<LibraryExtension> {
-    namespace = "com.es.jma.api"
+dependencies {
+    implementation(libs.androidx.navigation3.runtime)
 }
 
-dependencies {
-    implementation(":core:model")
-    implementation(":core:domain")
+extensions.configure<LibraryExtension> {
+    namespace = "com.es.jma.favorites.api"
 }
