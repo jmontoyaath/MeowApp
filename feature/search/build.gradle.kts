@@ -2,14 +2,13 @@ import com.android.build.api.dsl.LibraryExtension
 import org.gradle.kotlin.dsl.configure
 
 plugins {
-    alias(libs.plugins.meowapp.android.library)
-    alias(libs.plugins.meowapp.hilt)
+    alias(libs.plugins.meowapp.android.feature.impl)
 }
 
 extensions.configure<LibraryExtension> {
-    namespace = "com.es.jma.database"
+    namespace = "com.es.jma.search"
 }
 
 dependencies {
-    implementation(projects.core.model)
+    implementation(projects.core.domain)
 }

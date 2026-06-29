@@ -22,7 +22,7 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.kotlinx.serialization.json)
 
-    implementation(project(":core:model"))
+    implementation(projects.core.model)
 }
 
 val localPropertiesTextProvider = providers.fileContents(
