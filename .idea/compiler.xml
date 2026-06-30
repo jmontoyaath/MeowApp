@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11">
+    <bytecodeTargetLevel target="21">
       <module name="MeowApp.data" target="21" />
+      <module name="MeowApp.feature.favorites.api" target="21" />
+      <module name="MeowApp.feature.favorites.impl" target="21" />
+      <module name="MeowApp.feature.home.api" target="21" />
+      <module name="MeowApp.feature.home.impl" target="21" />
+      <module name="MeowApp.feature.search.api" target="21" />
+      <module name="MeowApp.feature.search.impl" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

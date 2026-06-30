@@ -10,6 +10,6 @@ extensions.configure<LibraryExtension> {
 }
 
 dependencies {
-    implementation(project(":core:model"))
-    implementation(project(":core:network"))
+    implementation(projects.core.model)
+    implementation(projects.core.network)
 }
