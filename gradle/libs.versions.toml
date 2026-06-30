@@ -72,3 +72,4 @@ meowapp-android-library = { id = "meowapp.android.library" }
 meowapp-jvm-library = { id = "meowapp.jvm.library" }
 meowapp-hilt = { id = "meowapp.hilt" }
 meowapp-android-feature-impl = { id = "meowapp.android.feature.impl" }
+meowapp-android-compose = { id = "meowapp.android.compose" }

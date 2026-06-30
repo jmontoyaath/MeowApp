@@ -38,5 +38,10 @@ gradlePlugin {
             id = libs.plugins.meowapp.android.feature.impl.get().pluginId
             implementationClass = "com.es.jma.convention.AndroidFeatureImplConventionPlugin"
         }
+
+        register("androidCompose") {
+            id = libs.plugins.meowapp.android.compose.get().pluginId
+            implementationClass = "com.es.jma.convention.AndroidComposeConventionPlugin"
+        }
     }
 }

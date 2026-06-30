@@ -3,6 +3,7 @@ import org.gradle.kotlin.dsl.configure
 
 plugins {
     alias(libs.plugins.meowapp.android.feature.impl)
+    alias(libs.plugins.meowapp.android.compose)
 }
 
 extensions.configure<LibraryExtension> {
@@ -10,5 +11,6 @@ extensions.configure<LibraryExtension> {
 }
 
 dependencies {
+    implementation(projects.core.model)
     implementation(projects.core.domain)
 }
