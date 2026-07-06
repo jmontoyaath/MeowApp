@@ -1,4 +1,4 @@
-package com.co.jma.meowapp.ui.theme
+package com.es.jma.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

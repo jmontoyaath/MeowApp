@@ -1,6 +1,5 @@
-package com.co.jma.meowapp.ui.theme
+package com.es.jma.designsystem.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

@@ -1,4 +1,4 @@
-package com.co.jma.meowapp.ui.components
+package com.es.jma.designsystem
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
