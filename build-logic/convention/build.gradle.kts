@@ -10,6 +10,8 @@ dependencies {
 
     implementation(libs.hilt.gradle.plugin)
     implementation(libs.ksp.gradle.plugin)
+
+    implementation(libs.kotlin.serialization.gradlePlugin)
 }
 
 gradlePlugin {
@@ -17,6 +19,11 @@ gradlePlugin {
         register("androidLibrary") {
             id = libs.plugins.meowapp.android.library.get().pluginId
             implementationClass = "com.es.jma.convention.AndroidLibraryConventionPlugin"
+        }
+
+        register("jvmLibrary") {
+            id = libs.plugins.meowapp.jvm.library.get().pluginId
+            implementationClass = "com.es.jma.convention.JvmLibraryConventionPlugin"
         }
 
         register("androidApplication") {
@@ -29,14 +36,14 @@ gradlePlugin {
             implementationClass = "com.es.jma.convention.HiltConventionPlugin"
         }
 
-        register("androidFeatureApi") {
-            id = libs.plugins.meowapp.android.feature.api.get().pluginId
-            implementationClass = "com.es.jma.convention.AndroidFeatureApiConventionPlugin"
-        }
-
         register("androidFeatureImpl") {
             id = libs.plugins.meowapp.android.feature.impl.get().pluginId
             implementationClass = "com.es.jma.convention.AndroidFeatureImplConventionPlugin"
+        }
+
+        register("androidCompose") {
+            id = libs.plugins.meowapp.android.compose.get().pluginId
+            implementationClass = "com.es.jma.convention.AndroidComposeConventionPlugin"
         }
     }
 }

@@ -2,6 +2,7 @@ import com.android.build.api.dsl.LibraryExtension
 
 plugins {
     alias(libs.plugins.meowapp.android.library)
+    alias(libs.plugins.meowapp.android.compose)
 }
 
 extensions.configure<LibraryExtension> {
@@ -9,6 +10,7 @@ extensions.configure<LibraryExtension> {
 }
 
 dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.browser)
+    implementation(libs.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewModel.navigation3)
 }

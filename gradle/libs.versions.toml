@@ -17,6 +17,14 @@ ksp = "2.3.9"
 retrofit = "3.0.0"
 okhttp = "5.4.0"
 kotlinxSerializationJson = "1.11.0"
+navigation3Runtime = "1.1.3"
+androidxSavedStateCompose = "1.3.1"
+androidxLifecycle = "2.10.0"
+browser = "1.10.0"
+runtime = "1.11.3"
+navigationCommonKtx = "2.9.8"
+navigation3RuntimeVersion = "1.1.4"
+navigation3Ui = "1.1.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +42,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
@@ -44,10 +53,18 @@ retrofit-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "con
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlin-metadata = { group = "org.jetbrains.kotlin", name = "kotlin-metadata-jvm", version.ref = "kotlin" }
-
-# Dependencies for build-logic
+androidx-savedstate-compose = { group = "androidx.savedstate", name = "savedstate-compose", version.ref = "androidxSavedStateCompose" }
+androidx-lifecycle-viewModel-navigation3 = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3", version.ref = "androidxLifecycle" }
+androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-serialization-gradlePlugin = { group = "org.jetbrains.kotlin.plugin.serialization", name = "org.jetbrains.kotlin.plugin.serialization.gradle.plugin", version.ref = "kotlin" }
+androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "navigation3Runtime" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
+androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCommonKtx" }
+navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "navigation3RuntimeVersion" }
+androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "navigation3Ui" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -63,7 +80,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 # Plugins for this proyect
 meowapp-android-application = { id = "meowapp.android.application" }
 meowapp-android-library = { id = "meowapp.android.library" }
+meowapp-jvm-library = { id = "meowapp.jvm.library" }
 meowapp-hilt = { id = "meowapp.hilt" }
-meowapp-android-feature-api = { id = "meowapp.android.feature.api" }
 meowapp-android-feature-impl = { id = "meowapp.android.feature.impl" }
-
+meowapp-android-compose = { id = "meowapp.android.compose" }

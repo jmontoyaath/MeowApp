@@ -1,0 +1,29 @@
+package com.es.jma.designsystem.icon
+
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Search
+
+object MeowIcons {
+    val Add = Icons.Rounded.Add
+    val ArrowBack = Icons.AutoMirrored.Rounded.ArrowBack
+    val Close = Icons.Rounded.Close
+    val MoreVert = Icons.Default.MoreVert
+
+    val Home = Icons.Rounded.Home
+    val HomeOutLine = Icons.Outlined.Home
+
+    val Search = Icons.Rounded.Search
+    val SearchOutLine = Icons.Outlined.Search
+
+    val Favorite = Icons.Rounded.Favorite
+    val FavoriteOutLine = Icons.Outlined.FavoriteBorder
+}

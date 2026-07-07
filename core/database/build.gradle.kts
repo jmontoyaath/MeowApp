@@ -11,7 +11,5 @@ extensions.configure<LibraryExtension> {
 }
 
 dependencies {
-
-
-    api(project(":core:model"))
+    implementation(projects.core.model)
 }
