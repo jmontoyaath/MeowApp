@@ -13,12 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.co.jma.meowapp.R
 import com.co.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
-import com.es.jma.designsystem.theme.MeowAppTheme
 import com.es.jma.designsystem.components.AppBar
 import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
