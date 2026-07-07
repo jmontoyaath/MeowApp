@@ -10,6 +10,8 @@ dependencies {
 
     implementation(libs.hilt.gradle.plugin)
     implementation(libs.ksp.gradle.plugin)
+
+    implementation(libs.kotlin.serialization.gradlePlugin)
 }
 
 gradlePlugin {

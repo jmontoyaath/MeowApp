@@ -25,11 +25,17 @@ configure<com.android.build.api.dsl.ApplicationExtension> {
 }
 
 dependencies {
+    implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity.compose)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.lifecycle.viewModel.navigation3)
+
+    implementation(projects.core.ui)
+    implementation(projects.core.designsystem)
 
     implementation(projects.feature.home)
     implementation(projects.feature.search)

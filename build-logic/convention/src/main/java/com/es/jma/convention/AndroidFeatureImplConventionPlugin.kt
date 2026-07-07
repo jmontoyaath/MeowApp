@@ -13,12 +13,17 @@ class AndroidFeatureImplConventionPlugin : Plugin<Project> {
         with(target) {
             apply(plugin = "meowapp.android.library")
             apply(plugin = "meowapp.hilt")
+            apply(plugin = libs.findPlugin("kotlin-serialization").get().get().pluginId)
 
             extensions.configure<LibraryExtension> {
                 testOptions.animationsDisabled = true
             }
 
             dependencies {
+                add("implementation", libs.findLibrary("androidx-navigation3-runtime").get())
+                add("implementation", libs.findLibrary("androidx-navigation-common-ktx").get())
+                add("implementation", libs.findLibrary("kotlinx-serialization-json").get())
+                "implementation"(libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
                 "implementation"(project(":core:ui"))
                 "implementation"(project(":core:designsystem"))
             }
