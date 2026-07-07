@@ -3,6 +3,7 @@ package com.co.jma.meowapp.navigation
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.es.jma.designsystem.icon.MeowIcons
+import com.es.jma.favorite.R as favoriteR
 import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.home.R as homeR
 import com.es.jma.home.navigation.HomeRoute
@@ -33,8 +34,8 @@ val SEARCH = NavigationItem(
 val FAVORITE = NavigationItem(
     selectedIcon = MeowIcons.Favorite,
     unselectedIcon = MeowIcons.FavoriteOutLine,
-    iconTextId = homeR.string.title,
-    titleTextId = homeR.string.title,
+    iconTextId = favoriteR.string.title,
+    titleTextId = favoriteR.string.title,
 )
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(

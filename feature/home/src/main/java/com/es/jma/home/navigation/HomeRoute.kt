@@ -6,8 +6,8 @@ import com.es.jma.home.HomeScreen
 import com.es.jma.ui.navigation.Navigator
 import kotlinx.serialization.Serializable
 
-@Serializable
-data object HomeRoute : NavKey
+@Serializable sealed interface HomeKey : NavKey
+@Serializable data object HomeRoute : HomeKey
 
 fun EntryProviderScope<NavKey>.homeEntry(navigator: Navigator) {
     entry<HomeRoute> {

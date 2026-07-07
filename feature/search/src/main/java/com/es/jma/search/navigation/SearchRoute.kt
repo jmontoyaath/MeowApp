@@ -6,8 +6,8 @@ import com.es.jma.search.SearchScreen
 import com.es.jma.ui.navigation.Navigator
 import kotlinx.serialization.Serializable
 
-@Serializable
-data object SearchRoute : NavKey
+@Serializable sealed interface SearchKey : NavKey
+@Serializable data object SearchRoute : SearchKey
 
 fun EntryProviderScope<NavKey>.searchEntry(navigator: Navigator) {
     entry<SearchRoute> {

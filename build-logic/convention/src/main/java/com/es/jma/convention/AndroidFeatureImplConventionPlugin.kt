@@ -7,13 +7,13 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import kotlin.text.get
 
 class AndroidFeatureImplConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "meowapp.android.library")
             apply(plugin = "meowapp.hilt")
+            apply(plugin = libs.findPlugin("kotlin-serialization").get().get().pluginId)
 
             extensions.configure<LibraryExtension> {
                 testOptions.animationsDisabled = true
@@ -22,6 +22,7 @@ class AndroidFeatureImplConventionPlugin : Plugin<Project> {
             dependencies {
                 add("implementation", libs.findLibrary("androidx-navigation3-runtime").get())
                 add("implementation", libs.findLibrary("androidx-navigation-common-ktx").get())
+                add("implementation", libs.findLibrary("kotlinx-serialization-json").get())
                 "implementation"(libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
                 "implementation"(project(":core:ui"))
                 "implementation"(project(":core:designsystem"))
