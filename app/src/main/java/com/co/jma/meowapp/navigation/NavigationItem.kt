@@ -20,22 +20,22 @@ data class NavigationItem (
 val HOME = NavigationItem(
     selectedIcon = MeowIcons.Home,
     unselectedIcon = MeowIcons.HomeOutLine,
-    iconTextId = homeR.string.title,
-    titleTextId = homeR.string.title
+    iconTextId = homeR.string.feature_home_title,
+    titleTextId = homeR.string.feature_home_title
 )
 
 val SEARCH = NavigationItem(
     selectedIcon = MeowIcons.Search,
     unselectedIcon = MeowIcons.SearchOutLine,
-    iconTextId = searchR.string.title,
-    titleTextId = searchR.string.title,
+    iconTextId = searchR.string.feature_search_title,
+    titleTextId = searchR.string.feature_search_title,
 )
 
 val FAVORITE = NavigationItem(
     selectedIcon = MeowIcons.Favorite,
     unselectedIcon = MeowIcons.FavoriteOutLine,
-    iconTextId = favoriteR.string.title,
-    titleTextId = favoriteR.string.title,
+    iconTextId = favoriteR.string.feature_favorite_title,
+    titleTextId = favoriteR.string.feature_favorite_title,
 )
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(

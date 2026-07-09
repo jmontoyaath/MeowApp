@@ -9,13 +9,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RandomCat(
     val id: String,
-    val url: String,
-    val breeds: List<CatBreed>
+    val url: String
 )
 
 fun RandomCat.asExternalModel(): CatInfo =
     CatInfo(
         id = id,
-        url = url,
-        breed = breeds[0].asExternalModel()
+        url = url
     )
