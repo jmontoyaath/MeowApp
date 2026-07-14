@@ -13,7 +13,7 @@ data class CatBreed (
     val temperament: String,
     val origin: String,
     val description: String,
-    val referenceImage: String
+    val referenceImage: String? = null
 )
 
 fun CatBreed.asExternalModel() : Breed = Breed(

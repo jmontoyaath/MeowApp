@@ -1,5 +1,9 @@
 package com.es.jma.home
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -7,7 +11,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
+import com.es.jma.designsystem.theme.marginDefault
 import com.es.jma.model.CatInfo
+import com.es.jma.ui.CatInformation
+import com.es.jma.ui.PagingAppendState
 
 @Composable
 fun HomeScreen(
@@ -15,33 +26,50 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    val catsPage = viewModel.catsPaged.collectAsLazyPagingItems()
 
     LaunchedEffect(viewModel) {
         viewModel.action.collect { action ->
-            when(action) {
+            when (action) {
                 else -> Unit
             }
         }
     }
 
-    when {
-        state.loading -> HomeScreenLoading()
-        state.showError -> HomeScreenError()
-        state.data != null -> {
-            HomeScreenContent(
-                catList = state.data?.catList ?: listOf()
-            )
-        }
-        else -> Unit
+    when(catsPage.loadState.refresh) {
+        is LoadState.Loading -> HomeScreenLoading()
+        is LoadState.Error -> HomeScreenError()
+        else -> HomeScreenContent(catsPage = catsPage, modifier = modifier)
     }
 }
 
 @Composable
 fun HomeScreenContent(
-    catList: List<CatInfo> = listOf()
+    catsPage: LazyPagingItems<CatInfo>,
+    modifier: Modifier = Modifier,
+    onCatClick: (CatInfo) -> Unit = {},
 ) {
-    if (catList.isNotEmpty()) {
-        Text(text = "Look! There is a cat!")
+    LazyColumn(
+        modifier = modifier
+            .padding(horizontal = marginDefault)
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(marginDefault)
+    ) {
+        items(
+            count = catsPage.itemCount,
+            key = catsPage.itemKey { it.id }
+        ) { index ->
+            catsPage[index]?.let { cat ->
+                CatInformation(cat = cat, onClick = { onCatClick(cat) })
+            }
+        }
+
+        item {
+            PagingAppendState(
+                loadState = catsPage.loadState.append,
+                onRetry = { catsPage.retry() }
+            )
+        }
     }
 }
 

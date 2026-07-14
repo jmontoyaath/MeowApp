@@ -35,6 +35,7 @@ internal object NetworkModule {
         apiKeyInterceptor: CatApiKeyInterceptor
     ): Call.Factory = trace("MeowOkHttpClient") {
         OkHttpClient.Builder()
+            .addInterceptor(apiKeyInterceptor)
             .addInterceptor(
                 HttpLoggingInterceptor()
                     .apply {
@@ -43,7 +44,6 @@ internal object NetworkModule {
                         }
                     },
             )
-            .addInterceptor(apiKeyInterceptor)
             .build()
     }
 }

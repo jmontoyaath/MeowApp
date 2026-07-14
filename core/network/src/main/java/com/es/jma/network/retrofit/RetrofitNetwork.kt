@@ -31,7 +31,10 @@ class CatApiKeyInterceptor : Interceptor {
 private interface RetrofitTheCatApi {
     @GET(value = GET_RANDOM_CATS)
     suspend fun getRandomCats(
-        @Query(value = "limit") limit: Int = 10,
+        @Query("limit") limit: Int,
+        @Query("page") page: Int,
+        @Query("has_breeds") hasBreeds: Int = 1,
+        @Query("order") order: String = "ASC"
     ): List<RandomCat>
 
     @GET(value = GET_CAT_BY_IMAGE)
@@ -68,8 +71,8 @@ class RetrofitNetwork @Inject constructor(
             .create(RetrofitTheCatApi::class.java)
     }
 
-    override suspend fun getRandomCats(limit: Int): Result<List<RandomCat>> =
-        kotlin.runCatching { networkApi.getRandomCats(limit = limit) }
+    override suspend fun getRandomCats(limit: Int, page: Int): Result<List<RandomCat>> =
+        kotlin.runCatching { networkApi.getRandomCats(limit = limit, page = page) }
 
     override suspend fun getCatByImage(idImage: String): Result<RandomCat> =
         kotlin.runCatching { networkApi.getCatByImage(idImage = idImage) }

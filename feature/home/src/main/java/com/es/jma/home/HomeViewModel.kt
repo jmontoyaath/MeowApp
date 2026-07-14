@@ -1,57 +1,30 @@
 package com.es.jma.home
 
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.es.jma.domain.usecase.GetCatImagesUseCase
+import com.es.jma.home.paging.CatPagingSource
 import com.es.jma.model.CatInfo
 import com.es.jma.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getCatImagesUseCase: GetCatImagesUseCase
+    private val getCatImagesUseCase: GetCatImagesUseCase,
 ) : BaseViewModel<HomeUiState, HomeAction>(HomeUiState()) {
 
-    init {
-        loading()
-        viewModelScope.launch {
-            val result = getCatImagesUseCase.invoke(LIMIT)
-            if (result.isSuccess) handleSuccess(result.getOrNull())
-            else handleError()
-        }
-    }
+    val catsPaged: Flow<PagingData<CatInfo>> = Pager(
+        config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
+        pagingSourceFactory = { CatPagingSource(getCatImagesUseCase, PAGE_SIZE) }
+    ).flow.cachedIn(viewModelScope)
 
-    private fun loading(isLoading: Boolean = true) {
-        _uiState.update {
-            HomeUiState(
-                loading = isLoading
-            )
-        }
-    }
-
-    private fun handleSuccess(catList: List<CatInfo>?) {
-        _uiState.update {
-            HomeUiState(
-                loading = false,
-                data = Cats(
-                    catList = catList
-                )
-            )
-        }
-    }
-
-    private fun handleError() {
-        _uiState.update {
-            HomeUiState(
-                loading = false,
-                showError = true
-            )
-        }
-    }
 
     companion object {
-        const val LIMIT = 10
+        const val PAGE_SIZE = 10
     }
 }

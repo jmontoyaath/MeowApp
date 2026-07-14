@@ -3,6 +3,7 @@ package com.co.jma.meowapp.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -18,6 +19,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.co.jma.meowapp.R
 import com.co.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
 import com.es.jma.designsystem.components.AppBar
+import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
 import com.es.jma.home.navigation.HomeRoute
@@ -44,7 +46,16 @@ fun MeowApp(
                 AppBar(
                     title = stringResource(id = R.string.app_name),
                     onBackClick = null,
-                    actions = null
+                    actions = {
+                        IconButton(
+                            onClick = { navigator.navigate(SearchRoute) },
+                        ) {
+                            Icon(
+                                imageVector = MeowIcons.Search,
+                                contentDescription = null,
+                            )
+                        }
+                    }
                 )
             },
             bottomBar = {

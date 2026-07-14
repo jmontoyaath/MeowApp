@@ -10,9 +10,14 @@ import javax.inject.Inject
 class GetCatImagesUseCase @Inject constructor(
     private val repository: CatRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher
-) : CatUseCase<Int, List<CatInfo>>(dispatcher) {
+) : CatUseCase<GetCatImagesParams, List<CatInfo>>(dispatcher) {
 
-    override suspend fun execute(parameters: Int): Result<List<CatInfo>> {
-        return repository.getCatImages(limit = parameters)
+    override suspend fun execute(parameters: GetCatImagesParams): Result<List<CatInfo>> {
+        return repository.getCatImages(limit = parameters.limit, page = parameters.page)
     }
 }
+
+data class GetCatImagesParams(
+    val limit: Int,
+    val page: Int
+)

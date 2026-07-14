@@ -10,8 +10,8 @@ class CatRepositoryImpl @Inject constructor(
     private val networkDataSource: CatApiDataSource,
     private val catMapper: CatMapper
 ) : CatRepository {
-    override suspend fun getCatImages(limit: Int): Result<List<CatInfo>> {
-        return networkDataSource.getRandomCats(limit = limit).map(catMapper::mapList)
+    override suspend fun getCatImages(limit: Int, page: Int): Result<List<CatInfo>> {
+        return networkDataSource.getRandomCats(limit = limit, page = page).map(catMapper::mapList)
     }
 
     override suspend fun getCatByImage(idImage: String): Result<CatInfo> {

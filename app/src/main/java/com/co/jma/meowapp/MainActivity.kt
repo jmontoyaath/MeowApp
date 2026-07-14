@@ -21,18 +21,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val appState = rememberMeowAppState()
-
             MeowAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MeowApp(
-                        appState = appState,
-                        modifier = Modifier.padding(innerPadding),
-                        onOpenWiki = { url ->
-                            this.openCustomTab(url = url)
-                        }
-                    )
-                }
+                val appState = rememberMeowAppState()
+                MeowApp(
+                    appState = appState,
+                    onOpenWiki = { url ->
+                        this.openCustomTab(url = url)
+                    }
+                )
             }
         }
     }
