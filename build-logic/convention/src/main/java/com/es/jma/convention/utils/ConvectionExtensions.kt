@@ -20,6 +20,8 @@ internal fun Project.configureComposeDependencies() {
         add("implementation", libs.findLibrary("androidx-material3").get())
         add("implementation", libs.findLibrary("androidx-compose-runtime").get())
         add("implementation", libs.findLibrary("androidx-material-icons-extended").get())
+        add("implementation", libs.findLibrary("androidx-paging-compose").get())
+        add("implementation", libs.findLibrary("androidx-paging-runtime").get())
         add("debugImplementation", libs.findLibrary("androidx-ui-tooling").get())
     }
 }

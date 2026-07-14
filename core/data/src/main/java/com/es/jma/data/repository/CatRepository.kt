@@ -2,10 +2,9 @@ package com.es.jma.data.repository
 
 import com.es.jma.model.Breed
 import com.es.jma.model.CatInfo
-import kotlinx.coroutines.flow.Flow
 
 interface CatRepository {
-    fun getCatImages(limit: Int = 10): Flow<List<CatInfo>>
-    fun getCatByImage(idImage: String): Flow<CatInfo>
-    fun getCatBreeds(): Flow<List<Breed>>
+    suspend fun getCatImages(limit: Int = 10, page: Int = 1): Result<List<CatInfo>>
+    suspend fun getCatByImage(idImage: String): Result<CatInfo>
+    suspend fun getCatBreeds(): Result<List<Breed>>
 }

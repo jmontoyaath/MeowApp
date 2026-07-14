@@ -14,7 +14,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class CatApiKeyInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -29,7 +31,10 @@ class CatApiKeyInterceptor : Interceptor {
 private interface RetrofitTheCatApi {
     @GET(value = GET_RANDOM_CATS)
     suspend fun getRandomCats(
-        @Path(value = "limit") limit: Int = 10,
+        @Query("limit") limit: Int,
+        @Query("page") page: Int,
+        @Query("has_breeds") hasBreeds: Int = 1,
+        @Query("order") order: String = "ASC"
     ): List<RandomCat>
 
     @GET(value = GET_CAT_BY_IMAGE)
@@ -41,7 +46,7 @@ private interface RetrofitTheCatApi {
     suspend fun getCatBreeds(): List<CatBreed>
 
     companion object {
-        const val GET_RANDOM_CATS = "images/search{limit}"
+        const val GET_RANDOM_CATS = "images/search"
         const val GET_CAT_BY_IMAGE = "images/{id}"
         const val GET_CAT_BREEDS = "breeds"
     }
@@ -49,12 +54,13 @@ private interface RetrofitTheCatApi {
 
 private const val THE_CAT_API_URL = BuildConfig.API_URL
 
-internal class RetrofitNetwork @Inject constructor(
+@Singleton
+class RetrofitNetwork @Inject constructor(
     networkJson: Json,
     okhttpCallFactory: dagger.Lazy<Call.Factory>,
 ) : CatApiDataSource {
 
-    private val networkApi = trace("RetrofitNiaNetwork") {
+    private val networkApi = trace("RetrofitMeowNetwork") {
         Retrofit.Builder()
             .baseUrl(THE_CAT_API_URL)
             .callFactory { okhttpCallFactory.get().newCall(it) }
@@ -65,11 +71,12 @@ internal class RetrofitNetwork @Inject constructor(
             .create(RetrofitTheCatApi::class.java)
     }
 
-    override suspend fun getRandomCats(limit: Int): List<RandomCat> =
-        networkApi.getRandomCats(limit = limit)
+    override suspend fun getRandomCats(limit: Int, page: Int): Result<List<RandomCat>> =
+        kotlin.runCatching { networkApi.getRandomCats(limit = limit, page = page) }
 
-    override suspend fun getCatByImage(idImage: String): RandomCat =
-        networkApi.getCatByImage(idImage = idImage)
+    override suspend fun getCatByImage(idImage: String): Result<RandomCat> =
+        kotlin.runCatching { networkApi.getCatByImage(idImage = idImage) }
 
-    override suspend fun getCatBreeds(): List<CatBreed> = networkApi.getCatBreeds()
+    override suspend fun getCatBreeds(): Result<List<CatBreed>> =
+        kotlin.runCatching { networkApi.getCatBreeds() }
 }

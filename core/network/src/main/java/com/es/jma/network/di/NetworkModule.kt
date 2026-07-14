@@ -2,7 +2,10 @@ package com.es.jma.network.di
 
 import androidx.core.os.trace
 import com.es.jma.network.BuildConfig
+import com.es.jma.network.CatApiDataSource
 import com.es.jma.network.retrofit.CatApiKeyInterceptor
+import com.es.jma.network.retrofit.RetrofitNetwork
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +35,7 @@ internal object NetworkModule {
         apiKeyInterceptor: CatApiKeyInterceptor
     ): Call.Factory = trace("MeowOkHttpClient") {
         OkHttpClient.Builder()
+            .addInterceptor(apiKeyInterceptor)
             .addInterceptor(
                 HttpLoggingInterceptor()
                     .apply {
@@ -40,7 +44,14 @@ internal object NetworkModule {
                         }
                     },
             )
-            .addInterceptor(apiKeyInterceptor)
             .build()
     }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface CatDataModule {
+
+    @Binds
+    fun bindsDataSource(repository: RetrofitNetwork): CatApiDataSource
 }

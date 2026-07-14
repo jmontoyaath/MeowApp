@@ -4,10 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.ui.Modifier
 import com.co.jma.meowapp.ui.MeowApp
 import com.co.jma.meowapp.ui.rememberMeowAppState
 import com.es.jma.designsystem.theme.MeowAppTheme
@@ -21,18 +17,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val appState = rememberMeowAppState()
-
             MeowAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MeowApp(
-                        appState = appState,
-                        modifier = Modifier.padding(innerPadding),
-                        onOpenWiki = { url ->
-                            this.openCustomTab(url = url)
-                        }
-                    )
-                }
+                val appState = rememberMeowAppState()
+                MeowApp(
+                    appState = appState,
+                    onOpenWiki = { url ->
+                        this.openCustomTab(url = url)
+                    }
+                )
             }
         }
     }
