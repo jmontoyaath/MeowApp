@@ -24,7 +24,6 @@ import com.es.jma.designsystem.theme.BlushWhite
 import com.es.jma.designsystem.theme.CharcoalBlack
 import com.es.jma.designsystem.theme.InkBlack
 import com.es.jma.designsystem.theme.PureWhite
-import com.es.jma.designsystem.theme.SageWhite
 import com.es.jma.designsystem.theme.SmokeWhite
 import com.es.jma.model.Breed
 import com.es.jma.model.CatInfo

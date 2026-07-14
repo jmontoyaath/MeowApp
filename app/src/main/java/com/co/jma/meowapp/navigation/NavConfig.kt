@@ -12,6 +12,7 @@ val meowNavConfig = SavedStateConfiguration {
     serializersModule = SerializersModule {
         polymorphic(NavKey::class) {
             subclass(HomeRoute::class, HomeRoute.serializer())
+            subclass(SearchRoute::class, SearchRoute.serializer())
             subclass(FavoriteRoute::class, FavoriteRoute.serializer())
         }
     }
