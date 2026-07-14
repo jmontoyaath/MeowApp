@@ -60,7 +60,7 @@ class RetrofitNetwork @Inject constructor(
     okhttpCallFactory: dagger.Lazy<Call.Factory>,
 ) : CatApiDataSource {
 
-    private val networkApi = trace("RetrofitNiaNetwork") {
+    private val networkApi = trace("RetrofitMeowNetwork") {
         Retrofit.Builder()
             .baseUrl(THE_CAT_API_URL)
             .callFactory { okhttpCallFactory.get().newCall(it) }

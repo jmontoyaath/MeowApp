@@ -38,7 +38,7 @@ fun MeowApp(
 
     val navigator = remember { Navigator(appState.navigationState) }
     val currentTopLevelKey = appState.navigationState.currentTopLevelKey
-    val bottomBarKeys = listOf(HomeRoute, SearchRoute, FavoriteRoute)
+    val bottomBarKeys = listOf(HomeRoute, FavoriteRoute)
 
     MaterialTheme {
         Scaffold(
