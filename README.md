@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🐱 MeowApp
+# 🐈 MeowApp 
 
-**Aplicación Android modular que consume la API de [TheCatApi](https://thecatapi.com/)**
+**Modular application using the API of [TheCatApi](https://thecatapi.com/)**
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-7F52FF?logo=kotlin&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white)
@@ -13,32 +13,25 @@
 
 ---
 
-## 📖 Descripción
+## 📖 Description
 
 MeowApp es una aplicación Android desarrollada con **Kotlin** que consume la API pública de [TheCatApi](https://thecatapi.com/) para mostrar y explorar imágenes y datos de gatos. El proyecto está construido con una **arquitectura modular**, pensada para practicar buenas prácticas de organización de código, separación de responsabilidades y escalabilidad, tal como se estructuraría una app real de producción.
 
 > Proyecto personal en desarrollo activo.
 
-## 📱 Capturas de pantalla
+## 📱 Screen shoots
 
-| Home | Detalle | Search | Favoritos | 
+| Home | Detail | Search | Favorites | 
 |:---:|:---:|:---:|:---:|
 | ![Home](docs/screenshots/home.png) | ![Detalle](docs/screenshots/detail.png) | ![Search](docs/screenshots/favorites.png) | ![Favoritos](docs/screenshots/favorites.png) | 
 
-## 🎨 Diseño (Figma)
+## 🎨 Design (Figma)
 
 [![Ver diseño en Figma](https://img.shields.io/badge/Figma-Ver%20diseño-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/file/TU-LINK-AQUI)
 
 ![Preview del diseño](docs/figma-preview.png)
 
 El diseño completo —sistema de diseño, pantallas y prototipo navegable— está disponible en Figma. Haz clic en el badge de arriba para explorarlo (no necesitas cuenta de Figma para verlo).
-
-## ✨ Funcionalidades
-
-- [ ] Listado de gatos obtenidos desde TheCatApi
-- [ ] Vista de detalle por raza / imagen
-- [ ] Búsqueda y filtrado por raza
-- [ ] Favoritos guardados localmente
 
 ## 🏗️ Arquitectura
 
