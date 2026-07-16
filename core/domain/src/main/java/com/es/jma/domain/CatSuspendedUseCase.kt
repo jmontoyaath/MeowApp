@@ -3,7 +3,7 @@ package com.es.jma.domain
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-abstract class CatUseCase <in Params, out Results>(
+abstract class CatSuspendedUseCase <in Params, out Results>(
     private val coroutineDispatcher: CoroutineDispatcher
 ) {
 

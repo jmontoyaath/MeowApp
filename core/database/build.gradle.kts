@@ -4,6 +4,7 @@ import org.gradle.kotlin.dsl.configure
 plugins {
     alias(libs.plugins.meowapp.android.library)
     alias(libs.plugins.meowapp.hilt)
+    alias(libs.plugins.ksp)
 }
 
 extensions.configure<LibraryExtension> {
@@ -11,5 +12,7 @@ extensions.configure<LibraryExtension> {
 }
 
 dependencies {
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
     implementation(projects.core.model)
 }
