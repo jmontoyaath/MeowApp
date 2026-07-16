@@ -11,6 +11,3 @@ data class HomeUiState (
     val loading: Boolean = false,
 )
 
-data class Cats(
-    val catList: List<CatInfo>?
-)
