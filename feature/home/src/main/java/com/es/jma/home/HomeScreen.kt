@@ -7,8 +7,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -23,7 +25,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val catsPage = viewModel.catsPaged.collectAsLazyPagingItems()
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val catsPage = state.catsPaged.collectAsLazyPagingItems()
 
     LaunchedEffect(viewModel) {
         viewModel.action.collect { action ->
@@ -33,10 +36,15 @@ fun HomeScreen(
         }
     }
 
-    when(catsPage.loadState.refresh) {
+    when (catsPage.loadState.refresh) {
         is LoadState.Loading -> HomeScreenLoading()
         is LoadState.Error -> HomeScreenError()
-        else -> HomeScreenContent(catsPage = catsPage, modifier = modifier)
+        else -> HomeScreenContent(
+            catsPage = catsPage,
+            modifier = modifier,
+            onCatClicked = viewModel::onCatClicked,
+            onFavoriteClicked = viewModel::onFavoriteClicked
+        )
     }
 }
 
@@ -44,7 +52,8 @@ fun HomeScreen(
 fun HomeScreenContent(
     catsPage: LazyPagingItems<CatInfo>,
     modifier: Modifier = Modifier,
-    onCatClick: (CatInfo) -> Unit = {},
+    onCatClicked: (CatInfo) -> Unit = {},
+    onFavoriteClicked: (CatInfo, Boolean) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier
@@ -57,7 +66,11 @@ fun HomeScreenContent(
             key = catsPage.itemKey { it.id }
         ) { index ->
             catsPage[index]?.let { cat ->
-                CatInformation(cat = cat, onClick = { onCatClick(cat) })
+                CatInformation(
+                    cat = cat,
+                    onCatClicked = onCatClicked,
+                    onFavoriteClicked = onFavoriteClicked
+                )
             }
         }
 

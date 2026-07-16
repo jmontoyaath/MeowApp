@@ -12,4 +12,5 @@ extensions.configure<LibraryExtension> {
 dependencies {
     implementation(projects.core.model)
     implementation(projects.core.network)
+    implementation(projects.core.database)
 }

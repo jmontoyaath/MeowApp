@@ -2,6 +2,8 @@ package com.es.jma.data.di
 
 import com.es.jma.data.repository.CatRepository
 import com.es.jma.data.repository.CatRepositoryImpl
+import com.es.jma.data.repository.FavoriteRepository
+import com.es.jma.data.repository.FavoriteRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,4 +18,10 @@ interface DataModule {
     fun bindsCatRepository(
         catRepositoryImpl: CatRepositoryImpl
     ): CatRepository
+
+    @Binds
+    @Singleton
+    fun bindsFavoriteRepository(
+        favoriteRepositoryImpl: FavoriteRepositoryImpl
+    ): FavoriteRepository
 }

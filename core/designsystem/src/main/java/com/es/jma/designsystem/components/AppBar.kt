@@ -41,14 +41,7 @@ fun AppBar(
                 )
             }
         },
-        actions = actions ?: {
-            IconButton(onClick = {}, modifier = Modifier.alpha(0f)) {
-                Icon(
-                    imageVector = MeowIcons.Search,
-                    contentDescription = null,
-                )
-            }
-        }
+        actions = actions ?: {}
     )
 }
 

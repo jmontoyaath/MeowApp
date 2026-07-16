@@ -3,11 +3,11 @@ package com.es.jma.home.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.es.jma.domain.usecase.GetCatImagesParams
-import com.es.jma.domain.usecase.GetCatImagesUseCase
+import com.es.jma.domain.usecase.GetCatImagesSuspendedUseCase
 import com.es.jma.model.CatInfo
 
 class CatPagingSource (
-    private val getCatImagesUseCase: GetCatImagesUseCase,
+    private val getCatImagesUseCase: GetCatImagesSuspendedUseCase,
     private val pageSize: Int
 ) : PagingSource<Int, CatInfo>() {
 
