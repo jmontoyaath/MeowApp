@@ -1,6 +1,5 @@
 package com.es.jma.data.repository
 
-import com.es.jma.database.model.CatEntity
 import com.es.jma.model.CatInfo
 import kotlinx.coroutines.flow.Flow
 

@@ -7,7 +7,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.wear.compose.material3.PlaceholderState
 import androidx.wear.compose.material3.placeholder
-import com.es.jma.designsystem.theme.CreamWhite
 import com.es.jma.designsystem.theme.SageWhite
 
 @Composable
