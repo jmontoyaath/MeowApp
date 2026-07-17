@@ -23,5 +23,5 @@ class ValidateFavoriteUseCase @Inject constructor(
 
 data class ValidateCatParam(
     val catInfo: CatInfo,
-    val isFavorite: Boolean
+    val isFavorite: Boolean = false
 )

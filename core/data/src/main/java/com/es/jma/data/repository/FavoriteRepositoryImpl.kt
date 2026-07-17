@@ -4,15 +4,21 @@ import com.es.jma.data.mapper.FavoriteMapper
 import com.es.jma.database.dao.FavoriteDao
 import com.es.jma.model.CatInfo
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class FavoriteRepositoryImpl @Inject constructor(
     private val localDataSource: FavoriteDao,
-    private val mapper: FavoriteMapper
+    private val mapper: FavoriteMapper,
 ) : FavoriteRepository {
 
     override fun getFavoriteIds(): Flow<List<String>> {
+        return localDataSource.getAllFavoritesIds()
+    }
+
+    override fun getFavoriteCats(): Flow<List<CatInfo>> {
         return localDataSource.getAllFavorites()
+            .map { entities -> entities.map { mapper.mapEntityToDomain(it) } }
     }
 
     override suspend fun saveFavoriteCat(catFavorite: CatInfo) {

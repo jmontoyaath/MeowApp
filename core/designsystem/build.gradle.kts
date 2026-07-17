@@ -11,5 +11,6 @@ extensions.configure<LibraryExtension> {
 
 dependencies {
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material3)
     implementation(libs.material)
 }
