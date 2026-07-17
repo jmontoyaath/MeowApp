@@ -10,7 +10,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FavoriteDao {
     @Query("SELECT id FROM cats ORDER BY addedAt DESC")
-    fun getAllFavorites(): Flow<List<String>>
+    fun getAllFavoritesIds(): Flow<List<String>>
+
+    @Query("SELECT * FROM cats ORDER BY addedAt DESC")
+    fun getAllFavorites(): Flow<List<CatEntity>>
 
     @Query("SELECT EXISTS(SELECT 1 FROM cats WHERE id = :catId)")
     fun isFavorite(catId: String): Flow<Boolean>

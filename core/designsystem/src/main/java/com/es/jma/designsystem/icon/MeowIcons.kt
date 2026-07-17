@@ -8,12 +8,14 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Search
 
 object MeowIcons {
     val Add = Icons.Rounded.Add
+    val Delete = Icons.Rounded.Delete
     val ArrowBack = Icons.AutoMirrored.Rounded.ArrowBack
     val Close = Icons.Rounded.Close
     val MoreVert = Icons.Default.MoreVert

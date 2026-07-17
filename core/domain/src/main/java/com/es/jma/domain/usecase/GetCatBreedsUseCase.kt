@@ -7,7 +7,7 @@ import com.es.jma.model.Breed
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class GetCatBreedsSuspendedUseCase @Inject constructor(
+class GetCatBreedsUseCase @Inject constructor(
     private val repository: CatRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher
 ) : CatSuspendedUseCase<Unit, List<Breed>>(dispatcher) {

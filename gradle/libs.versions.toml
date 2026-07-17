@@ -29,6 +29,7 @@ androidxHiltLifecycleViewModelCompose = "1.3.0-alpha02"
 coil-compose = "3.0.4"
 paging = "3.5.0"
 roomKtx = "2.8.4"
+composeMaterial3 = "1.6.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -77,6 +78,7 @@ androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-kt
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomKtx" }
+androidx-compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterial3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

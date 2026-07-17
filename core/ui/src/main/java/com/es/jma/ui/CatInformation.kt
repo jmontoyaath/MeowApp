@@ -40,6 +40,7 @@ fun CatInformation(
     modifier: Modifier = Modifier,
     onCatClicked: (CatInfo) -> Unit = {},
     onFavoriteClicked: ((CatInfo, Boolean) -> Unit)? = null,
+    onDeletedClicked: ((CatInfo) -> Unit)? = null,
 ) {
     Card(
         modifier = modifier
@@ -87,6 +88,19 @@ fun CatInformation(
                         imageVector = if (cat.isFavorite) MeowIcons.Favorite else MeowIcons.FavoriteOutLine,
                         contentDescription = "favorite",
                         tint = if (cat.isFavorite) Purple40 else CharcoalBlack
+                    )
+                }
+            }
+
+            onDeletedClicked?.let {
+                IconButton(
+                    onClick = { onDeletedClicked(cat) },
+                    modifier = Modifier.align(Alignment.BottomEnd)
+                ) {
+                    Icon(
+                        imageVector = MeowIcons.Delete,
+                        contentDescription = "favorite",
+                        tint = CharcoalBlack
                     )
                 }
             }
