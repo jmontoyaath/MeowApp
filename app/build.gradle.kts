@@ -40,4 +40,5 @@ dependencies {
     implementation(projects.feature.home)
     implementation(projects.feature.search)
     implementation(projects.feature.favorite)
+    implementation(projects.feature.detail)
 }

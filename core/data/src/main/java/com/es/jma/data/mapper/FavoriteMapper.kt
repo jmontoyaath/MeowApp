@@ -9,24 +9,20 @@ class FavoriteMapper @Inject constructor() : Mapper<CatInfo, CatEntity> {
     override fun map(params: CatInfo) = CatEntity(
         id = params.id,
         url = params.url,
-        name = params.breed?.get(0)?.name ?: "",
-        idBreed = params.breed?.get(0)?.id ?: "",
-        origen = params.breed?.get(0)?.origin ?: "",
-        description = params.breed?.get(0)?.description ?: "",
-        temperament = params.breed?.get(0)?.temperament ?: "",
+        name = params.name,
+        idBreed = params.idBreed,
+        origen = params.origin,
+        description = params.description,
+        temperament = params.temperament,
     )
 
     fun mapEntityToDomain(params: CatEntity) = CatInfo(
         id = params.id,
         url = params.url,
-        breed = listOf(
-            Breed(
-                id = params.idBreed,
-                name = params.name,
-                origin = params.origen,
-                description = params.description,
-                temperament = params.temperament
-            )
-        )
+        idBreed = params.idBreed,
+        name = params.name,
+        origin = params.origen,
+        description = params.description,
+        temperament = params.temperament
     )
 }

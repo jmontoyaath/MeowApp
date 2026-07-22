@@ -37,18 +37,12 @@ private interface RetrofitTheCatApi {
         @Query("order") order: String = "ASC"
     ): List<RandomCat>
 
-    @GET(value = GET_CAT_BY_IMAGE)
-    suspend fun getCatByImage(
-        @Path(value = "id") idImage: String,
-    ): RandomCat
-
-    @GET(value = GET_CAT_BREEDS)
-    suspend fun getCatBreeds(): List<CatBreed>
+    @GET(GET_BREED_DETAIL)
+    suspend fun getBreedDetail(@Path("breedId") id: String): CatBreed
 
     companion object {
         const val GET_RANDOM_CATS = "images/search"
-        const val GET_CAT_BY_IMAGE = "images/{id}"
-        const val GET_CAT_BREEDS = "breeds"
+        const val GET_BREED_DETAIL = "breeds/{breedId}"
     }
 }
 
@@ -74,9 +68,6 @@ class RetrofitNetwork @Inject constructor(
     override suspend fun getRandomCats(limit: Int, page: Int): Result<List<RandomCat>> =
         kotlin.runCatching { networkApi.getRandomCats(limit = limit, page = page) }
 
-    override suspend fun getCatByImage(idImage: String): Result<RandomCat> =
-        kotlin.runCatching { networkApi.getCatByImage(idImage = idImage) }
-
-    override suspend fun getCatBreeds(): Result<List<CatBreed>> =
-        kotlin.runCatching { networkApi.getCatBreeds() }
+    override suspend fun getCatBreedDetail(id: String): Result<CatBreed> =
+        kotlin.runCatching { networkApi.getBreedDetail(id = id) }
 }

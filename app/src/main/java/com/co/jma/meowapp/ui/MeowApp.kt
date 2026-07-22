@@ -20,6 +20,8 @@ import com.co.jma.meowapp.R
 import com.co.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
 import com.es.jma.designsystem.components.AppBar
 import com.es.jma.designsystem.icon.MeowIcons
+import com.es.jma.detail.DetailScreen
+import com.es.jma.detail.navigation.detailEntry
 import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
 import com.es.jma.home.navigation.HomeRoute
@@ -80,11 +82,11 @@ fun MeowApp(
         ) { contentPadding ->
             Surface(modifier = modifier.padding(paddingValues = contentPadding)) {
                 Column {
-
                     val entryProvider = entryProvider {
                         homeEntry(navigator)
                         searchEntry(navigator)
                         favoriteEntry(navigator)
+                        detailEntry(navigator)
                     }
 
                     NavDisplay(

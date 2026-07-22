@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(
         HomeAction.ShowDetailModal(
             catId = cat.id,
             urlImage = cat.url,
-            breedId = cat.breed?.get(0)?.id ?: ""
+            breedId = cat.idBreed
         ).send()
     }
 

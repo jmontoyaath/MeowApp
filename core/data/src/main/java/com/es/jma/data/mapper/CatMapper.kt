@@ -15,9 +15,7 @@ class CatMapper @Inject constructor() : Mapper<RandomCat, CatInfo> {
         it.asExternalModel()
     }
 
-    fun mapBreeds(params: List<CatBreed>): List<Breed> = params.map {
-        it.asExternalModel()
-    }
+    fun mapBreed(params: CatBreed): Breed = params.asExternalModel()
 }
 
 fun interface Mapper<in E, out T> {

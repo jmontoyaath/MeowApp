@@ -7,11 +7,11 @@ plugins {
 }
 
 extensions.configure<LibraryExtension> {
-    namespace = "com.es.jma.home"
+    namespace = "com.es.jma.detail"
 }
 
 dependencies {
+    implementation(libs.androidx.navigation3.ui)
     implementation(projects.core.model)
     implementation(projects.core.domain)
-    implementation(projects.feature.detail)
 }
