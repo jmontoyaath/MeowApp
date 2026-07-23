@@ -17,5 +17,9 @@ fun RandomCat.asExternalModel(): CatInfo =
     CatInfo(
         id = id,
         url = url,
-        breed = breeds?.map { it.asExternalModel() }
+        idBreed = breeds?.get(0)?.id ?: "",
+        name = breeds?.get(0)?.name ?: "",
+        description = breeds?.get(0)?.description ?: "",
+        temperament = breeds?.get(0)?.temperament ?: "",
+        origin = breeds?.get(0)?.origin ?: "",
     )

@@ -31,7 +31,6 @@ import com.es.jma.designsystem.theme.InkBlack
 import com.es.jma.designsystem.theme.PureWhite
 import com.es.jma.designsystem.theme.Purple40
 import com.es.jma.designsystem.theme.SmokeWhite
-import com.es.jma.model.Breed
 import com.es.jma.model.CatInfo
 
 @Composable
@@ -57,7 +56,7 @@ fun CatInformation(
             Row(Modifier.padding(12.dp)) {
                 AsyncImage(
                     model = cat.url,
-                    contentDescription = cat.breed?.get(0)?.name,
+                    contentDescription = cat.name,
                     modifier = Modifier
                         .size(100.dp)
                         .clip(RoundedCornerShape(8.dp)),
@@ -66,12 +65,12 @@ fun CatInformation(
                 Spacer(Modifier.width(12.dp))
                 Column(Modifier.weight(1f)) {
                     Text(
-                        text = cat.breed?.get(0)?.name ?: "",
+                        text = cat.name,
                         style = MaterialTheme.typography.titleMedium,
                         color = InkBlack
                     )
                     Text(
-                        text = cat.breed?.get(0)?.description ?: "",
+                        text = cat.description,
                         maxLines = 2,
                         style = MaterialTheme.typography.bodySmall,
                         color = CharcoalBlack
@@ -116,14 +115,11 @@ private fun CatInformationPreview() {
             id = "",
             url = "https://cdn2.thecatapi.com/images/p6x60nX6U.jpg",
             isFavorite = false,
-            breed = listOf(Breed(
-                id = "aege",
-                name = "Aegean",
-                temperament = "Affectionate, Social, Intelligent, Playful, Active",
-                origin = "Greece",
-                description = "Native to the Greek islands known as the Cyclades in the Aegean Sea, these are natural cats, meaning they developed without humans getting involved in their breeding. As a breed, Aegean Cats are rare, although they are numerous on their home islands. They are generally friendly toward people and can be excellent cats for families with children.",
-                referenceImage = null
-            ))
+            name = "Aegean",
+            temperament = "Affectionate, Social, Intelligent, Playful, Active",
+            origin = "Greece",
+            description = "Native to the Greek islands known as the Cyclades in the Aegean Sea, these are natural cats, meaning they developed without humans getting involved in their breeding. As a breed, Aegean Cats are rare, although they are numerous on their home islands. They are generally friendly toward people and can be excellent cats for families with children.",
+            idBreed = ""
         )
     )
 }

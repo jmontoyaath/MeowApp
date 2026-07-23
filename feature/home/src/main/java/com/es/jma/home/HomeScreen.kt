@@ -22,6 +22,7 @@ import com.es.jma.ui.PagingAppendState
 
 @Composable
 fun HomeScreen(
+    onCatClicked: (String, String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
@@ -31,6 +32,7 @@ fun HomeScreen(
     LaunchedEffect(viewModel) {
         viewModel.action.collect { action ->
             when (action) {
+                is HomeAction.ShowDetailModal -> onCatClicked(action.breedId, action.urlImage)
                 else -> Unit
             }
         }

@@ -4,7 +4,9 @@ import androidx.compose.ui.unit.dp
 
 val marginDefault = 16.dp
 val marginSmall = 12.dp
-val imageSize = 250.dp
+val marginTiny = 8.dp
+val marginZero = 0.dp
+val imageSize = 270.dp
 val smallIconSize = 20.dp
 val iconSmallPressedAreaSize = 36.dp
 val normalIconSize = 36.dp
