@@ -1,6 +1,7 @@
 package com.es.jma.network.modal
 
 import com.es.jma.model.Breed
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -13,7 +14,8 @@ data class CatBreed (
     val temperament: String,
     val origin: String,
     val description: String,
-    val referenceImage: String? = null
+    val referenceImage: String? = null,
+    @SerialName("wikipedia_url") val wikipediaUrl: String? = null,
 )
 
 fun CatBreed.asExternalModel() : Breed = Breed(
@@ -22,5 +24,6 @@ fun CatBreed.asExternalModel() : Breed = Breed(
     temperament = temperament,
     origin = origin,
     description = description,
-    referenceImage = referenceImage
+    referenceImage = referenceImage,
+    wikipediaUrl = wikipediaUrl
 )

@@ -1,7 +1,6 @@
 package com.es.jma.data.mapper
 
 import com.es.jma.database.model.CatEntity
-import com.es.jma.model.Breed
 import com.es.jma.model.CatInfo
 import javax.inject.Inject
 

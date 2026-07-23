@@ -3,6 +3,7 @@ package com.es.jma.detail
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
@@ -23,6 +24,7 @@ fun DetailScreen(
     imageCat: String,
     viewModel: DetailViewModel = hiltViewModel(),
     onDismiss: () -> Unit,
+    onOpenWiki: (url: String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -38,26 +40,31 @@ fun DetailScreen(
         }
     }
 
-    ModalBottomSheet (
+    ModalBottomSheet(
         onDismissRequest = onDismiss
     ) {
-        when(state) {
+        when (state) {
             is DetailUiState.Loading -> DetailScreenLoading()
             is DetailUiState.Error -> DetailScreenError()
             is DetailUiState.Success -> {
                 val data = (state as DetailUiState.Success)
-                DetailScreenContent(data = data.data, catImage = imageCat)
+                DetailScreenContent(data = data.data, catImage = imageCat, onOpenWiki = onOpenWiki)
             }
         }
     }
 }
 
 @Composable
-fun DetailScreenContent(data: Breed?, catImage: String?) {
+fun DetailScreenContent(data: Breed?, catImage: String?, onOpenWiki: (url: String) -> Unit = {}) {
     Column {
         CatImage(catImage = catImage ?: "")
         Spacer(modifier = Modifier.padding(marginSmall))
         Text(text = "Cat cat cat cat ${data?.name}")
+        data?.wikipediaUrl?.let { wikiLink ->
+            Button(onClick = { onOpenWiki.invoke(wikiLink) }) {
+                Text(text = "Go kitten info")
+            }
+        }
     }
 }
 

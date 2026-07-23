@@ -1,6 +1,5 @@
 package com.es.jma.detail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.es.jma.domain.usecase.GetCatBreedDetailUseCase
 import com.es.jma.ui.BaseViewModel
