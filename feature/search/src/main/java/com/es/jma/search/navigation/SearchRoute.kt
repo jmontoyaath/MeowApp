@@ -12,7 +12,6 @@ import kotlinx.serialization.Serializable
 fun EntryProviderScope<NavKey>.searchEntry(navigator: Navigator) {
     entry<SearchRoute> {
         SearchScreen(
-            onBackClick = { navigator.goBack() }
         )
     }
 }

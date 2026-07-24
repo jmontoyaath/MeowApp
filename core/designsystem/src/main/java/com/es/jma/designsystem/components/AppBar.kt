@@ -2,6 +2,7 @@ package com.es.jma.designsystem.components
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -15,6 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.modifyIf
+import com.es.jma.designsystem.theme.iconSmallPressedAreaSize
+import com.es.jma.designsystem.theme.smallIconSize
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +41,7 @@ fun AppBar(
                 Icon(
                     imageVector = MeowIcons.ArrowBack,
                     contentDescription = null,
+                    modifier = Modifier.size(smallIconSize)
                 )
             }
         },
@@ -58,5 +62,21 @@ private fun AppBarWhitePreview() {
 fun AppBarWhiteNoBackPreview() {
     MaterialTheme {
         AppBar(title = "AppBar Title")
+    }
+}
+
+@Preview(name = "AppBar No Back Preview and Action", showBackground = true)
+@Composable
+fun AppBarWhiteActionPreview() {
+    MaterialTheme {
+        AppBar(title = "AppBar Title", actions = {
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = MeowIcons.SearchOutLine,
+                    contentDescription = null,
+                    modifier = Modifier.size(iconSmallPressedAreaSize)
+                )
+            }
+        })
     }
 }

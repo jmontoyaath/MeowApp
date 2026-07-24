@@ -2,6 +2,7 @@ package com.co.jma.meowapp.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +23,7 @@ import com.co.jma.meowapp.R
 import com.co.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
 import com.es.jma.designsystem.components.AppBar
 import com.es.jma.designsystem.icon.MeowIcons
+import com.es.jma.designsystem.theme.iconSmallPressedAreaSize
 import com.es.jma.detail.navigation.detailEntry
 import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
@@ -44,6 +46,9 @@ fun MeowApp(
     val bottomBarKeys = listOf(HomeRoute, FavoriteRoute)
     val dialogSceneStrategy = remember { DialogSceneStrategy<NavKey>() }
 
+    val currentKey = appState.navigationState.currentKey
+    val isSearchScreen = currentKey is SearchRoute
+
     MaterialTheme {
         Scaffold(
             topBar = {
@@ -51,13 +56,16 @@ fun MeowApp(
                     title = stringResource(id = R.string.app_name),
                     onBackClick = null,
                     actions = {
-                        IconButton(
-                            onClick = { navigator.navigate(SearchRoute) },
-                        ) {
-                            Icon(
-                                imageVector = MeowIcons.Search,
-                                contentDescription = null,
-                            )
+                        if (!isSearchScreen) {
+                            IconButton(
+                                onClick = { navigator.navigate(SearchRoute) },
+                            ) {
+                                Icon(
+                                    imageVector = MeowIcons.Search,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(iconSmallPressedAreaSize)
+                                )
+                            }
                         }
                     }
                 )

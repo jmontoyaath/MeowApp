@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import coil3.compose.AsyncImage
-import com.es.jma.designsystem.theme.imageSize
-import com.es.jma.designsystem.theme.marginTiny
+import com.es.jma.designsystem.theme.imageModalCat
+import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.designsystem.theme.marginZero
 
 @Composable
@@ -21,11 +21,11 @@ fun CatImage(
         contentDescription = "",
         modifier = Modifier
             .fillMaxWidth()
-            .size(imageSize)
+            .size(imageModalCat)
             .clip(
                 RoundedCornerShape(
-                    topEnd = marginTiny,
-                    topStart = marginTiny,
+                    topEnd = marginSmaller,
+                    topStart = marginSmaller,
                     bottomEnd = marginZero,
                     bottomStart = marginZero
                 )

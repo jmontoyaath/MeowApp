@@ -15,6 +15,14 @@ class CatRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getCatBreedDetail(id: String): Result<Breed> {
-        return networkDataSource.getCatBreedDetail(id).map(catMapper::mapBreed)
+        return networkDataSource.getCatBreedDetail(id = id).map(catMapper::mapBreed)
+    }
+
+    override suspend fun searchBreedCat(query: String): Result<List<Breed>> {
+        return networkDataSource.searchBreedCat(query = query).map (catMapper::mapBreeds )
+    }
+
+    override suspend fun getImagesByBreed(idBreed: String): Result<List<CatInfo>> {
+        return networkDataSource.getImagesByBreed(breedId = idBreed).map(catMapper::mapList)
     }
 }
