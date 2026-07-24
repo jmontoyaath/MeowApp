@@ -1,4 +1,4 @@
-package com.co.jma.meowapp
+package com.es.jma.meowapp
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

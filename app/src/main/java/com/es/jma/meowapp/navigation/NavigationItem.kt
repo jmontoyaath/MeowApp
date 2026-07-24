@@ -1,4 +1,4 @@
-package com.co.jma.meowapp.navigation
+package com.es.jma.meowapp.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector

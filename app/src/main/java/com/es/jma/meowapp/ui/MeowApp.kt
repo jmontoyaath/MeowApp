@@ -1,4 +1,4 @@
-package com.co.jma.meowapp.ui
+package com.es.jma.meowapp.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -20,7 +20,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.navigation3.ui.NavDisplay
 import com.co.jma.meowapp.R
-import com.co.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
+import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
 import com.es.jma.designsystem.components.AppBar
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.theme.iconSmallPressedAreaSize

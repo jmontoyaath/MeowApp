@@ -1,4 +1,4 @@
-package com.co.jma.meowapp.navigation
+package com.es.jma.meowapp.navigation
 
 import androidx.navigation3.runtime.NavKey
 import androidx.savedstate.serialization.SavedStateConfiguration

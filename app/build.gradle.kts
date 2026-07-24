@@ -5,10 +5,10 @@ plugins {
 }
 
 configure<com.android.build.api.dsl.ApplicationExtension> {
-    namespace = "com.co.jma.meowapp"
+    namespace = "com.es.jma.meowapp"
 
     defaultConfig {
-        applicationId = "com.co.jma.meowapp"
+        applicationId = "com.es.jma.meowapp"
         versionCode = 1
         versionName = "1.0.0"
     }
