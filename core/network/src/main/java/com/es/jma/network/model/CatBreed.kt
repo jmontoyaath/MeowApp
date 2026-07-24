@@ -1,4 +1,4 @@
-package com.es.jma.network.modal
+package com.es.jma.network.model
 
 import com.es.jma.model.Breed
 import kotlinx.serialization.SerialName

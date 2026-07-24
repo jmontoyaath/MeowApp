@@ -3,8 +3,8 @@ package com.es.jma.network.retrofit
 import androidx.core.os.trace
 import com.es.jma.network.BuildConfig
 import com.es.jma.network.CatApiDataSource
-import com.es.jma.network.modal.CatBreed
-import com.es.jma.network.modal.RandomCat
+import com.es.jma.network.model.CatBreed
+import com.es.jma.network.model.RandomCat
 import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.Interceptor
@@ -37,12 +37,22 @@ private interface RetrofitTheCatApi {
         @Query("order") order: String = "ASC"
     ): List<RandomCat>
 
-    @GET(GET_BREED_DETAIL)
+    @GET(value = GET_BREED_DETAIL)
     suspend fun getBreedDetail(@Path("breedId") id: String): CatBreed
+
+    @GET(value = GET_BREED_SEARCH)
+    suspend fun searchBreeds(@Query("q") query: String): List<CatBreed>
+
+    @GET(GET_RANDOM_CATS)
+    suspend fun getImagesByBreed(
+        @Query("breed_ids") breedId: String,
+        @Query("limit") limit: Int = 5
+    ): List<RandomCat>
 
     companion object {
         const val GET_RANDOM_CATS = "images/search"
         const val GET_BREED_DETAIL = "breeds/{breedId}"
+        const val GET_BREED_SEARCH = "breeds/search"
     }
 }
 
@@ -70,4 +80,10 @@ class RetrofitNetwork @Inject constructor(
 
     override suspend fun getCatBreedDetail(id: String): Result<CatBreed> =
         kotlin.runCatching { networkApi.getBreedDetail(id = id) }
+
+    override suspend fun searchBreedCat(query: String): Result<List<CatBreed>> =
+        kotlin.runCatching { networkApi.searchBreeds(query = query) }
+
+    override suspend fun getImagesByBreed(breedId: String): Result<List<RandomCat>> =
+        kotlin.runCatching { networkApi.getImagesByBreed(breedId) }
 }
