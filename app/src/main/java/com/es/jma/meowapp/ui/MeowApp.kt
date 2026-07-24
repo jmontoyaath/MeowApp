@@ -19,7 +19,7 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.navigation3.ui.NavDisplay
-import com.co.jma.meowapp.R
+import com.es.jma.meowapp.R
 import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
 import com.es.jma.designsystem.components.AppBar
 import com.es.jma.designsystem.icon.MeowIcons
