@@ -1,5 +1,12 @@
 package com.es.jma.designsystem.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Shapes
 
-val roundedCornerShape50 = RoundedCornerShape(50)
+val MeowShapes = Shapes(
+    extraSmall = RoundedCornerShape(marginTiny),
+    small = RoundedCornerShape(marginSmaller),
+    medium = RoundedCornerShape(marginSmall),
+    large = RoundedCornerShape(marginDefault),
+    extraLarge = RoundedCornerShape(marginLarge)
+)

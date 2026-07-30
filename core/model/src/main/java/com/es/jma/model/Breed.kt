@@ -5,6 +5,7 @@ data class Breed (
     val name: String,
     val temperament: String,
     val origin: String,
+    val codeCountry: String,
     val description: String,
     val referenceImage: String? = null,
     val wikipediaUrl: String? = null

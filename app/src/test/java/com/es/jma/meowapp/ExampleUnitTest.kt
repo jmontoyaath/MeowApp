@@ -1,4 +1,4 @@
-package com.co.jma.meowapp
+package com.es.jma.meowapp
 
 import org.junit.Test
 

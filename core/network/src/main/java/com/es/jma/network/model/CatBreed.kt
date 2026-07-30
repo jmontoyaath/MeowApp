@@ -13,6 +13,7 @@ data class CatBreed (
     val name: String,
     val temperament: String,
     val origin: String,
+    @SerialName("country_codes") val countryCodes: String,
     val description: String,
     val referenceImage: String? = null,
     @SerialName("wikipedia_url") val wikipediaUrl: String? = null,
@@ -23,6 +24,7 @@ fun CatBreed.asExternalModel() : Breed = Breed(
     name = name,
     temperament = temperament,
     origin = origin,
+    codeCountry = countryCodes,
     description = description,
     referenceImage = referenceImage,
     wikipediaUrl = wikipediaUrl

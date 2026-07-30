@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
-import com.es.jma.designsystem.theme.imageSmallSize
+import com.es.jma.designsystem.theme.loadingSize
 import com.es.jma.designsystem.theme.marginSmall
 import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.model.Breed
@@ -56,12 +56,12 @@ fun BreedInformation(
         AnimatedVisibility(visible = isExpanded) {
             when {
                 isLoadingImages -> Box(
-                    modifier = Modifier.fillMaxWidth().height(imageSmallSize),
+                    modifier = Modifier.fillMaxWidth().height(loadingSize),
                     contentAlignment = Alignment.Center
                 ) { CircularProgressIndicator() }
 
                 images.isEmpty() -> Box(
-                    modifier = Modifier.fillMaxWidth().height(imageSmallSize),
+                    modifier = Modifier.fillMaxWidth().height(loadingSize),
                     contentAlignment = Alignment.Center
                 ) { Text("Sin imágenes disponibles", style = MaterialTheme.typography.bodySmall) }
 

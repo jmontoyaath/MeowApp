@@ -1,10 +1,10 @@
 package com.es.jma.designsystem.icon
 
 import androidx.compose.ui.unit.Dp
-import com.es.jma.designsystem.theme.iconNormalPressedAreaSize
-import com.es.jma.designsystem.theme.iconSmallPressedAreaSize
+import com.es.jma.designsystem.theme.normalIconPressArea
+import com.es.jma.designsystem.theme.smallIconPressArea
 
 enum class IconSize(val value: Dp) {
-    Small(iconSmallPressedAreaSize),
-    Normal(iconNormalPressedAreaSize)
+    Small(smallIconPressArea),
+    Normal(normalIconPressArea)
 }

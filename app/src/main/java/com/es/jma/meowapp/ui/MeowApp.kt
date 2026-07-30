@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -21,9 +20,10 @@ import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.navigation3.ui.NavDisplay
 import com.es.jma.meowapp.R
 import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
-import com.es.jma.designsystem.components.AppBar
+import com.es.jma.designsystem.components.MeowAppBar
+import com.es.jma.designsystem.components.MeowIconButton
 import com.es.jma.designsystem.icon.MeowIcons
-import com.es.jma.designsystem.theme.iconSmallPressedAreaSize
+import com.es.jma.designsystem.theme.smallIconPressArea
 import com.es.jma.detail.navigation.detailEntry
 import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
@@ -49,62 +49,56 @@ fun MeowApp(
     val currentKey = appState.navigationState.currentKey
     val isSearchScreen = currentKey is SearchRoute
 
-    MaterialTheme {
-        Scaffold(
-            topBar = {
-                AppBar(
-                    title = stringResource(id = R.string.app_name),
-                    onBackClick = null,
-                    actions = {
-                        if (!isSearchScreen) {
-                            IconButton(
-                                onClick = { navigator.navigate(SearchRoute) },
-                            ) {
-                                Icon(
-                                    imageVector = MeowIcons.Search,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(iconSmallPressedAreaSize)
-                                )
-                            }
-                        }
-                    }
-                )
-            },
-            bottomBar = {
-                NavigationBar {
-                    bottomBarKeys.forEach { key ->
-                        val item = TOP_LEVEL_NAV_ITEMS.getValue(key)
-                        val selected = currentTopLevelKey == key
-                        NavigationBarItem(
-                            selected = selected,
-                            onClick = { navigator.navigate(key) },
-                            icon = {
-                                Icon(
-                                    imageVector = if (selected) item.selectedIcon else item.unselectedIcon,
-                                    contentDescription = stringResource(item.iconTextId),
-                                )
-                            },
-                            label = { Text(stringResource(item.titleTextId)) },
+    Scaffold(
+        topBar = {
+            MeowAppBar(
+                title = stringResource(id = R.string.app_name),
+                onBackClick = null,
+                actions = {
+                    if (!isSearchScreen) {
+                        MeowIconButton(
+                            icon = MeowIcons.SearchOutLine,
+                            modifier = Modifier.size(smallIconPressArea),
+                            onClick = { navigator.navigate(SearchRoute) }
                         )
                     }
                 }
-            },
-        ) { contentPadding ->
-            Surface(modifier = modifier.padding(paddingValues = contentPadding)) {
-                Column {
-                    val entryProvider = entryProvider {
-                        homeEntry(navigator)
-                        searchEntry(navigator)
-                        favoriteEntry(navigator)
-                        detailEntry(navigator, onOpenWiki)
-                    }
-
-                    NavDisplay(
-                        entries = appState.navigationState.toEntries(entryProvider),
-                        onBack = { navigator.goBack() },
-                        sceneStrategies = listOf(dialogSceneStrategy)
+            )
+        },
+        bottomBar = {
+            NavigationBar {
+                bottomBarKeys.forEach { key ->
+                    val item = TOP_LEVEL_NAV_ITEMS.getValue(key)
+                    val selected = currentTopLevelKey == key
+                    NavigationBarItem(
+                        selected = selected,
+                        onClick = { navigator.navigate(key) },
+                        icon = {
+                            Icon(
+                                imageVector = if (selected) item.selectedIcon else item.unselectedIcon,
+                                contentDescription = stringResource(item.iconTextId),
+                            )
+                        },
+                        label = { Text(stringResource(item.titleTextId)) },
                     )
                 }
+            }
+        },
+    ) { contentPadding ->
+        Surface(modifier = modifier.padding(paddingValues = contentPadding)) {
+            Column {
+                val entryProvider = entryProvider {
+                    homeEntry(navigator)
+                    searchEntry(navigator)
+                    favoriteEntry(navigator)
+                    detailEntry(navigator, onOpenWiki)
+                }
+
+                NavDisplay(
+                    entries = appState.navigationState.toEntries(entryProvider),
+                    onBack = { navigator.goBack() },
+                    sceneStrategies = listOf(dialogSceneStrategy)
+                )
             }
         }
     }

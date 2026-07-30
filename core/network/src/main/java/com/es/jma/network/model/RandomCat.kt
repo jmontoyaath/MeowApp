@@ -21,5 +21,5 @@ fun RandomCat.asExternalModel(): CatInfo =
         name = breeds?.get(0)?.name ?: "",
         description = breeds?.get(0)?.description ?: "",
         temperament = breeds?.get(0)?.temperament ?: "",
-        origin = breeds?.get(0)?.origin ?: "",
+        origin = breeds?.get(0)?.countryCodes ?: "",
     )

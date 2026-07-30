@@ -12,6 +12,7 @@ extensions.configure<LibraryExtension> {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui.text.google.fonts)
     implementation(libs.material)
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)

@@ -7,7 +7,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.wear.compose.material3.PlaceholderState
 import androidx.wear.compose.material3.placeholder
-import com.es.jma.designsystem.theme.SageWhite
 
 @Composable
 fun Modifier.modifyIf(condition: Boolean, modify: @Composable Modifier.() -> Modifier) =
@@ -16,7 +15,6 @@ fun Modifier.modifyIf(condition: Boolean, modify: @Composable Modifier.() -> Mod
 fun Modifier.meowPlaceHolder(visible: Boolean = true, shape: Shape = RectangleShape) = composed {
     this.placeholder(
         placeholderState = PlaceholderState(isVisible = visible),
-        color = SageWhite,
         shape = shape
     )
 }

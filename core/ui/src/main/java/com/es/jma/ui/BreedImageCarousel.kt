@@ -21,7 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import coil3.compose.AsyncImage
-import com.es.jma.designsystem.theme.imageNormalSize
+import com.es.jma.designsystem.theme.imageCarrouselCat
 import com.es.jma.designsystem.theme.marginBig
 import com.es.jma.designsystem.theme.marginSmall
 import com.es.jma.designsystem.theme.marginSmaller
@@ -36,7 +36,7 @@ fun BreedImageCarousel(images: List<String>) {
             state = pagerState,
             contentPadding = PaddingValues(horizontal = marginBig),
             pageSpacing = marginSmaller,
-            modifier = Modifier.fillMaxWidth().height(imageNormalSize)
+            modifier = Modifier.fillMaxWidth().height(imageCarrouselCat)
         ) { page ->
             AsyncImage(
                 model = images[page],
