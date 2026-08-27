@@ -1,4 +1,4 @@
-package com.es.jma.ui
+package com.es.jma.ui.views
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
@@ -43,13 +43,15 @@ fun BreedInformation(
             horizontalArrangement = Arrangement.spacedBy(marginSmall)
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(breed.name, style = MaterialTheme.typography.titleMedium)
-                Text(
-                    text = breed.temperament,
-                    style = MaterialTheme.typography.bodySmall,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                breed.name?.let { Text(it, style = MaterialTheme.typography.titleMedium) }
+                breed.temperament?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodySmall,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
             }
         }
 
@@ -65,7 +67,7 @@ fun BreedInformation(
                     contentAlignment = Alignment.Center
                 ) { Text("Sin imágenes disponibles", style = MaterialTheme.typography.bodySmall) }
 
-                else -> BreedImageCarousel(images = images,)
+                else -> BreedImageCarousel(images = images)
             }
         }
     }

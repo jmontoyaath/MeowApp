@@ -10,11 +10,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CatBreed (
     val id: String,
-    val name: String,
-    val temperament: String,
-    val origin: String,
-    @SerialName("country_codes") val countryCodes: String,
-    val description: String,
+    val name: String? = null,
+    val temperament: String? = null,
+    val origin: String? = null,
+    @SerialName("country_code") val countryCodes: String? = null,
+    val description: String? = null,
     val referenceImage: String? = null,
     @SerialName("wikipedia_url") val wikipediaUrl: String? = null,
 )

@@ -23,7 +23,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getCatImagesUseCase: GetCatImagesSuspendedUseCase,
     private val validateFavoriteUseCase: ValidateFavoriteUseCase,
-    getFavoriteIdsUseCase: GetFavoriteIdsUseCase,
+    private val getFavoriteIdsUseCase: GetFavoriteIdsUseCase,
 ) : BaseViewModel<HomeUiState, HomeAction>(HomeUiState()) {
 
     private val pagingDataFlow: Flow<PagingData<CatInfo>> = Pager(
@@ -32,14 +32,20 @@ class HomeViewModel @Inject constructor(
     ).flow.cachedIn(viewModelScope)
 
     init {
-        val catsWithFavorites = combine(
-            pagingDataFlow,
-            getFavoriteIdsUseCase(parameters = Unit)
-        ) { pagingData, favoriteIds ->
-            pagingData.map { cat -> cat.copy(isFavorite = cat.id in favoriteIds) }
-        }
+        loadCats()
+    }
 
-        updateState { it.copy(catsPaged = catsWithFavorites) }
+    fun loadCats() {
+        viewModelScope.launch {
+            val catsWithFavorites = combine(
+                pagingDataFlow,
+                getFavoriteIdsUseCase(parameters = Unit)
+            ) { pagingData, favoriteIds ->
+                pagingData.map { cat -> cat.copy(isFavorite = cat.id in favoriteIds) }
+            }
+
+            updateState { it.copy(catsPaged = catsWithFavorites) }
+        }
     }
 
     fun onCatClicked(cat: CatInfo) {

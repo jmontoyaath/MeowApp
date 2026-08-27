@@ -1,4 +1,4 @@
-package com.es.jma.ui
+package com.es.jma.ui.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,9 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import coil3.compose.AsyncImage
+import com.es.jma.designsystem.components.CatImage
 import com.es.jma.designsystem.theme.imageCarrouselCat
-import com.es.jma.designsystem.theme.marginBig
+import com.es.jma.designsystem.theme.marginLarger
 import com.es.jma.designsystem.theme.marginSmall
 import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.designsystem.theme.marginTiny
@@ -34,14 +34,13 @@ fun BreedImageCarousel(images: List<String>) {
     Column(modifier = Modifier.padding(top = marginSmaller)) {
         HorizontalPager(
             state = pagerState,
-            contentPadding = PaddingValues(horizontal = marginBig),
+            contentPadding = PaddingValues(horizontal = marginLarger),
             pageSpacing = marginSmaller,
             modifier = Modifier.fillMaxWidth().height(imageCarrouselCat)
         ) { page ->
-            AsyncImage(
-                model = images[page],
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
+            CatImage(
+                catImage = images[page],
+                scale = ContentScale.Fit,
                 modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(marginSmall))
             )
         }
@@ -69,3 +68,4 @@ fun BreedImageCarousel(images: List<String>) {
         }
     }
 }
+

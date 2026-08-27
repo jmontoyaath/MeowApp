@@ -1,4 +1,4 @@
-package com.es.jma.ui
+package com.es.jma.ui.views
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -7,13 +7,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,6 +26,10 @@ import com.es.jma.designsystem.components.MeowChips
 import com.es.jma.designsystem.components.MeowIconButtonFilled
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.theme.MeowAppTheme
+import com.es.jma.designsystem.theme.imageModalCat
+import com.es.jma.designsystem.theme.marginSmaller
+import com.es.jma.designsystem.theme.marginZero
+import com.es.jma.designsystem.theme.textNormal
 import com.es.jma.model.CatInfo
 
 @Composable
@@ -40,13 +47,26 @@ fun CatInformation(
     ) {
         Box(Modifier.fillMaxWidth()) {
             Column {
-                CatImage(catImage = cat.url)
+                CatImage(
+                    catImage = cat.url,
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .size(imageModalCat)
+                        .clip(
+                            RoundedCornerShape(
+                                topEnd = marginSmaller,
+                                topStart = marginSmaller,
+                                bottomEnd = marginZero,
+                                bottomStart = marginZero
+                            )
+                        )
+                )
                 Spacer(Modifier.width(12.dp))
                 Column(Modifier.padding(12.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         CountryFlag(
                             code = cat.origin,
-                            size = 16.sp
+                            size = textNormal
                         )
                         Spacer(Modifier.padding(4.dp))
                         Text(
@@ -65,7 +85,11 @@ fun CatInformation(
                 }
             }
 
-            Row(Modifier.align(Alignment.BottomEnd).padding(vertical = 110.dp, horizontal = 16.dp)) {
+            Row(
+                Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(vertical = 110.dp, horizontal = 16.dp)
+            ) {
                 onFavoriteClicked?.let {
                     MeowIconButtonFilled(
                         icon = if (cat.isFavorite) MeowIcons.Favorite else MeowIcons.FavoriteOutLine,

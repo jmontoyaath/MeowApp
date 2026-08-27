@@ -14,7 +14,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.es.jma.designsystem.theme.marginDefault
 import com.es.jma.model.CatInfo
-import com.es.jma.ui.CatInformation
+import com.es.jma.ui.views.CatInformation
 
 @Composable
 fun FavoriteScreen(

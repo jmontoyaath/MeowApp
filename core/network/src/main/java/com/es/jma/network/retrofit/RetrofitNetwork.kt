@@ -33,7 +33,7 @@ private interface RetrofitTheCatApi {
     suspend fun getRandomCats(
         @Query("limit") limit: Int,
         @Query("page") page: Int,
-        @Query("has_breeds") hasBreeds: Int = 1,
+        @Query("has_breeds") hasBreeds: Boolean = true,
         @Query("order") order: String = "ASC"
     ): List<RandomCat>
 

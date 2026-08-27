@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.es.jma.designsystem.theme.marginSmallest
 
 @Composable
 fun MeowChips(
@@ -25,7 +26,7 @@ fun MeowChips(
 
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(6.dp)
+        horizontalArrangement = Arrangement.spacedBy(marginSmallest)
     ) {
         visible.forEach { trait ->
             AssistChip(

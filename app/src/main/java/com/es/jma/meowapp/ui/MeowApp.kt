@@ -3,13 +3,8 @@ package com.es.jma.meowapp.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -18,9 +13,9 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.navigation3.ui.NavDisplay
-import com.es.jma.meowapp.R
-import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
+import com.es.jma.designsystem.components.BottomBarItem
 import com.es.jma.designsystem.components.MeowAppBar
+import com.es.jma.designsystem.components.MeowBottomBar
 import com.es.jma.designsystem.components.MeowIconButton
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.theme.smallIconPressArea
@@ -29,6 +24,8 @@ import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
 import com.es.jma.home.navigation.HomeRoute
 import com.es.jma.home.navigation.homeEntry
+import com.es.jma.meowapp.R
+import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
 import com.es.jma.search.navigation.SearchRoute
 import com.es.jma.search.navigation.searchEntry
 import com.es.jma.ui.navigation.Navigator
@@ -66,23 +63,22 @@ fun MeowApp(
             )
         },
         bottomBar = {
-            NavigationBar {
-                bottomBarKeys.forEach { key ->
-                    val item = TOP_LEVEL_NAV_ITEMS.getValue(key)
-                    val selected = currentTopLevelKey == key
-                    NavigationBarItem(
-                        selected = selected,
-                        onClick = { navigator.navigate(key) },
-                        icon = {
-                            Icon(
-                                imageVector = if (selected) item.selectedIcon else item.unselectedIcon,
-                                contentDescription = stringResource(item.iconTextId),
-                            )
-                        },
-                        label = { Text(stringResource(item.titleTextId)) },
+            MeowBottomBar(
+                items = bottomBarKeys.map { key ->
+                    val navItem = TOP_LEVEL_NAV_ITEMS.getValue(key)
+                    BottomBarItem(
+                        key = key.toString(),
+                        icon = navItem.unselectedIcon,
+                        selectedIcon = navItem.selectedIcon,
+                        label = stringResource(navItem.titleTextId)
                     )
+                },
+                selectedKey = currentTopLevelKey.toString(),
+                onItemClick = { key ->
+                    val route = bottomBarKeys.first { it.toString() == key }
+                    navigator.navigate(route)
                 }
-            }
+            )
         },
     ) { contentPadding ->
         Surface(modifier = modifier.padding(paddingValues = contentPadding)) {

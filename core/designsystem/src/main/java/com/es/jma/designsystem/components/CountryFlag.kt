@@ -4,13 +4,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.sp
+import com.es.jma.designsystem.theme.textLarger
 
 @Composable
 fun CountryFlag(
-    code: String,
+    code: String?,
     modifier: Modifier = Modifier,
-    size: TextUnit = 32.sp
+    size: TextUnit = textLarger
 ) {
     Text(
         text = countryCodeToEmoji(code),
@@ -19,8 +19,8 @@ fun CountryFlag(
     )
 }
 
-fun countryCodeToEmoji(countryCode: String): String {
-    if (countryCode.length != 2) return "🌐"
+fun countryCodeToEmoji(countryCode: String?): String {
+    if (countryCode?.length != 2) return "🌐"
     val upper = countryCode.uppercase()
     val first = Character.codePointAt(upper, 0) - 0x41 + 0x1F1E6
     val second = Character.codePointAt(upper, 1) - 0x41 + 0x1F1E6

@@ -19,9 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.es.jma.designsystem.animations.LoadingDots
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.theme.marginDefault
-import com.es.jma.ui.BreedInformation
+import com.es.jma.ui.views.BreedInformation
 
 @Composable
 internal fun SearchScreen(
@@ -41,7 +42,7 @@ internal fun SearchScreen(
         )
 
         when {
-            state.isLoading -> CenteredMessage { CircularProgressIndicator() }
+            state.isLoading -> CenteredMessage { LoadingDots() }
             state.error != null -> CenteredMessage { Text(state.error ?: "Error al buscar") }
             state.query.isBlank() -> CenteredMessage { Text("Escribe el nombre de una raza") }
             state.breeds.isEmpty() -> CenteredMessage { Text("Sin resultados") }

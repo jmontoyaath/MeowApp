@@ -51,7 +51,7 @@ fun MeowAppBarWhiteNoBackPreview() {
 @Preview(name = "AppBar No Back Preview and Action", showBackground = true)
 @Composable
 fun MeowAppBarWhiteActionPreview() {
-    MeowAppTheme {
+    MeowAppTheme(darkTheme = true) {
         MeowAppBar(title = "AppBar Title", actions = {
             MeowIconButton(
                 icon = MeowIcons.SearchOutLine,
