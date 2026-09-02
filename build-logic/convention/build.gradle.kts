@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.co.jma.meowapp.buildlogic"
+group = "com.es.jma.meowapp.buildlogic"
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)

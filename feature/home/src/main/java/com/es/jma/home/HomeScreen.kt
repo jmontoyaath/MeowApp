@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -17,8 +16,10 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.es.jma.designsystem.theme.marginDefault
 import com.es.jma.model.CatInfo
-import com.es.jma.ui.CatInformation
-import com.es.jma.ui.PagingAppendState
+import com.es.jma.ui.screens.ErrorScreen
+import com.es.jma.ui.screens.LoadingScreen
+import com.es.jma.ui.views.CatInformation
+import com.es.jma.ui.views.PagingAppendState
 
 @Composable
 fun HomeScreen(
@@ -39,8 +40,8 @@ fun HomeScreen(
     }
 
     when (catsPage.loadState.refresh) {
-        is LoadState.Loading -> HomeScreenLoading()
-        is LoadState.Error -> HomeScreenError()
+        is LoadState.Loading -> LoadingScreen()
+        is LoadState.Error -> ErrorScreen(onClickReTry = viewModel::loadCats)
         else -> HomeScreenContent(
             catsPage = catsPage,
             modifier = modifier,
@@ -83,14 +84,4 @@ fun HomeScreenContent(
             )
         }
     }
-}
-
-@Composable
-fun HomeScreenError() {
-    Text(text = "There is no cat in the bag")
-}
-
-@Composable
-fun HomeScreenLoading() {
-    Text(text = "Searching for cats")
 }

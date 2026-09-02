@@ -23,7 +23,7 @@ class FavoriteViewModel @Inject constructor(
         getFavorites()
     }
 
-    private fun getFavorites() {
+    fun getFavorites() {
         viewModelScope.launch {
             getFavoriteCatsUseCase(Unit)
                 .onEach { cats ->

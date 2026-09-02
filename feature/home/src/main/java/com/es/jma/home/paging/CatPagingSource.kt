@@ -27,6 +27,7 @@ class CatPagingSource (
                 )
             },
             onFailure = { error ->
+                android.util.Log.e("MEOW_DEBUG", "Error cargando página $page", error)
                 LoadResult.Error(error)
             }
         )

@@ -5,10 +5,10 @@ plugins {
 }
 
 configure<com.android.build.api.dsl.ApplicationExtension> {
-    namespace = "com.co.jma.meowapp"
+    namespace = "com.es.jma.meowapp"
 
     defaultConfig {
-        applicationId = "com.co.jma.meowapp"
+        applicationId = "com.es.jma.meowapp"
         versionCode = 1
         versionName = "1.0.0"
     }
@@ -36,6 +36,8 @@ dependencies {
 
     implementation(projects.core.ui)
     implementation(projects.core.designsystem)
+    implementation(projects.core.data)
+    implementation(projects.core.model)
 
     implementation(projects.feature.home)
     implementation(projects.feature.search)

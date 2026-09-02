@@ -16,6 +16,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.lottie.compose)
 
     implementation(projects.core.model)
     implementation(projects.core.designsystem)

@@ -15,66 +15,72 @@
 
 ## 📖 Description
 
-MeowApp es una aplicación Android desarrollada con **Kotlin** que consume la API pública de [TheCatApi](https://thecatapi.com/) para mostrar y explorar imágenes y datos de gatos. El proyecto está construido con una **arquitectura modular**, pensada para practicar buenas prácticas de organización de código, separación de responsabilidades y escalabilidad, tal como se estructuraría una app real de producción.
+MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://thecatapi.com/) API for show Cats images and information. The project follow an **modular architecture**, mostly for better practices and personal practices, allowing responsibility separation and stability.
 
-> Proyecto personal en desarrollo activo.
+> Personal project for practice porpoises and display cats.
 
-## 📱 Screen shoots
+[//]: # (## 📱 Screen shoots)
 
-| Home | Detail | Search | Favorites | 
-|:---:|:---:|:---:|:---:|
-| ![Home](docs/screenshots/home.png) | ![Detalle](docs/screenshots/detail.png) | ![Search](docs/screenshots/favorites.png) | ![Favoritos](docs/screenshots/favorites.png) | 
+[//]: # ()
+[//]: # (| Home | Detail | Search | Favorites | )
 
-## 🎨 Design (Figma)
+[//]: # (|:---:|:---:|:---:|:---:|)
 
-[![Ver diseño en Figma](https://img.shields.io/badge/Figma-Ver%20diseño-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/file/TU-LINK-AQUI)
+[//]: # (| ![Home]&#40;docs/screenshots/home.png&#41; | ![Detalle]&#40;docs/screenshots/detail.png&#41; | ![Search]&#40;docs/screenshots/favorites.png&#41; | ![Favoritos]&#40;docs/screenshots/favorites.png&#41; | )
 
-![Preview del diseño](docs/figma-preview.png)
+[//]: # (## 🎨 Design &#40;Figma&#41;)
 
-El diseño completo —sistema de diseño, pantallas y prototipo navegable— está disponible en Figma. Haz clic en el badge de arriba para explorarlo (no necesitas cuenta de Figma para verlo).
+[//]: # ()
+[//]: # ([![Ver diseño en Figma]&#40;https://img.shields.io/badge/Figma-Ver%20diseño-F24E1E?logo=figma&logoColor=white&#41;]&#40;https://www.figma.com/file/TU-LINK-AQUI&#41;)
 
-## 🏗️ Arquitectura
+[//]: # ()
+[//]: # (![Preview del diseño]&#40;docs/figma-preview.png&#41;)
 
-El proyecto sigue una **arquitectura modular** para separar responsabilidades y mejorar los tiempos de build:
+[//]: # ()
+[//]: # (El diseño completo —sistema de diseño, pantallas y prototipo navegable— está disponible en Figma. Haz clic en el badge de arriba para explorarlo &#40;no necesitas cuenta de Figma para verlo&#41;.)
+
+## 🏗️ Architecture
+
+This follow a **modular architecture**:
 
 ```
 MeowApp/
-├── app/            → Módulo principal, ensambla el resto de módulos
-├── core/            → Código compartido (network, ui, common, etc.)
-├── feature/         → Módulos por funcionalidad (home, detail, favorites…)
-├── build-logic/     → Configuración centralizada de Gradle (convention plugins)
-└── gradle/          → Version catalog y wrapper
+├── app/            → Main module 
+├── core/            → Common code (network, ui, common, etc.)
+├── feature/         → Funtional modules (home, search, favorites…)
+├── build-logic/     → Gradle (convention plugins)
+└── gradle/          → Version catalog and wrapper
 ```
 
-**Stack técnico:**
+**Technical Stack:**
 - Kotlin 100%
-- Arquitectura modular multi-módulo con Gradle convention plugins
-- [TheCatApi](https://thecatapi.com/) como fuente de datos
-- Inyección de dependencias con Hilt
-- Integración con Retrofit para consumo de servicios
-- Bases de datos con ROOM
+- Multi-module Architecture with Gradle convention plugins
+- [TheCatApi](https://thecatapi.com/) main API service
+- Dependencies injection with Hilt
+- Retrofit and OkHTTP
+- ROOM Database
 
-## 🚀 Cómo ejecutar el proyecto
+## 🚀 How to run the project?
 
 ```bash
 git clone https://github.com/jmontoyaath/MeowApp.git
 cd MeowApp
 ```
 
-1. Abre el proyecto en **Android Studio** (versión recomendada: *indica aquí la versión*).
-2. Consigue una API key gratuita en [thecatapi.com](https://thecatapi.com/).
-3. Añade tu API key en el archivo correspondiente *(ej. `local.properties`)*:
+1. Open in **Android Studio** (remomended version: *Panda (2026)+*).
+2. Get your API Key in [thecatapi.com](https://thecatapi.com/).
+3. Add your API key in the *`local.properties`* file:
    ```properties
    API_KEY=tu_api_key_aquí
    ```
-4. Sincroniza Gradle y ejecuta la app en un emulador o dispositivo físico.
+4. Sync Gradle and run the app in your device (or emulator).
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+This project use the MIT License. For more information go to the file [LICENSE](LICENSE).
 
 ---
 
 <div align="center">
-Hecho con 🐾 por <a href="https://github.com/jmontoyaath">jmontoyaath</a>
+Made with 🐾 by <a href="https://github.com/jmontoyaath">jmontoyaath</a>
 </div>
