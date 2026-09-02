@@ -36,6 +36,8 @@ dependencies {
 
     implementation(projects.core.ui)
     implementation(projects.core.designsystem)
+    implementation(projects.core.data)
+    implementation(projects.core.model)
 
     implementation(projects.feature.home)
     implementation(projects.feature.search)
