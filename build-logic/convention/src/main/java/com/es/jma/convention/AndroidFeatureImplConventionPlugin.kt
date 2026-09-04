@@ -28,6 +28,7 @@ class AndroidFeatureImplConventionPlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
                 "implementation"(project(":core:ui"))
                 "implementation"(project(":core:designsystem"))
+                "implementation"(project(":core:navigation"))
             }
         }
     }

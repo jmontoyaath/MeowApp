@@ -4,11 +4,8 @@ import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.scene.DialogSceneStrategy
 import com.es.jma.detail.DetailScreen
-import com.es.jma.ui.navigation.Navigator
-import kotlinx.serialization.Serializable
-
-@Serializable sealed interface DetailKey : NavKey
-@Serializable data class DetailRoute(val breedId: String, val catImage: String) : DetailKey
+import com.es.jma.navigation.DetailRoute
+import com.es.jma.navigation.Navigator
 
 fun EntryProviderScope<NavKey>.detailEntry(navigator: Navigator, onOpenWiki: (url: String) -> Unit = {}) {
     entry<DetailRoute>(

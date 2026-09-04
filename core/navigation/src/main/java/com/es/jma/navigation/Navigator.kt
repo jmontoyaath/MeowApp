@@ -1,4 +1,4 @@
-package com.es.jma.ui.navigation
+package com.es.jma.navigation
 
 import androidx.navigation3.runtime.NavKey
 

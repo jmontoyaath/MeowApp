@@ -30,12 +30,14 @@ import com.es.jma.ui.views.CatInformation
 fun FavoriteScreen(
     modifier: Modifier = Modifier,
     viewModel: FavoriteViewModel = hiltViewModel(),
+    onCatClicked: (String, String) -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(viewModel) {
         viewModel.action.collect { action ->
             when (action) {
+                is FavoriteAction.ShowDetailModal -> onCatClicked(action.breedId, action.urlImage)
                 else -> Unit
             }
         }
@@ -50,6 +52,7 @@ fun FavoriteScreen(
             else FavoriteScreenContent(
                 cats = state.cats!!,
                 modifier = modifier,
+                onCatClicked = viewModel::onCatClicked,
                 onDeleteClicked = viewModel::onDeleteFavorite
             )
         }

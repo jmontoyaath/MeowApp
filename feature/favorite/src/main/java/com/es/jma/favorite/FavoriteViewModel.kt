@@ -51,4 +51,12 @@ class FavoriteViewModel @Inject constructor(
             }
         }
     }
+
+    fun onCatClicked(cat: CatInfo) {
+        FavoriteAction.ShowDetailModal(
+            catId = cat.id,
+            urlImage = cat.url,
+            breedId = cat.idBreed
+        ).send()
+    }
 }

@@ -1,4 +1,5 @@
 import com.android.build.api.dsl.LibraryExtension
+import org.gradle.kotlin.dsl.configure
 
 plugins {
     alias(libs.plugins.meowapp.android.library)
@@ -11,11 +12,7 @@ extensions.configure<LibraryExtension> {
 
 dependencies {
     implementation(libs.androidx.browser)
-    implementation(libs.coil.compose)
-    implementation(libs.coil.svg)
-    implementation(libs.coil.network.okhttp)
-    implementation(libs.lottie.compose)
-
-    implementation(projects.core.model)
-    implementation(projects.core.designsystem)
+    implementation(libs.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewModel.navigation3)
+    implementation(libs.kotlinx.serialization.json)
 }

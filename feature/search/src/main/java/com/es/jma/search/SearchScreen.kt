@@ -27,6 +27,7 @@ import com.es.jma.ui.views.BreedInformation
 internal fun SearchScreen(
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = hiltViewModel(),
+    goBack: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 

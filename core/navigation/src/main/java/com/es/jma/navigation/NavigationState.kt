@@ -1,4 +1,4 @@
-package com.es.jma.ui.navigation
+package com.es.jma.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
