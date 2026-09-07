@@ -25,16 +25,16 @@ import com.es.jma.designsystem.components.MeowIconButton
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.theme.smallIconPressArea
 import com.es.jma.detail.navigation.detailEntry
-import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
-import com.es.jma.home.navigation.HomeRoute
 import com.es.jma.home.navigation.homeEntry
 import com.es.jma.meowapp.R
 import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
-import com.es.jma.search.navigation.SearchRoute
+import com.es.jma.navigation.FavoriteRoute
+import com.es.jma.navigation.HomeRoute
+import com.es.jma.navigation.Navigator
+import com.es.jma.navigation.SearchRoute
+import com.es.jma.navigation.toEntries
 import com.es.jma.search.navigation.searchEntry
-import com.es.jma.ui.navigation.Navigator
-import com.es.jma.ui.navigation.toEntries
 
 @Composable
 fun MeowApp(

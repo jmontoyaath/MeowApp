@@ -3,8 +3,8 @@ package com.es.jma.meowapp.navigation
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.es.jma.designsystem.icon.MeowIcons
-import com.es.jma.favorite.navigation.FavoriteRoute
-import com.es.jma.home.navigation.HomeRoute
+import com.es.jma.navigation.FavoriteRoute
+import com.es.jma.navigation.HomeRoute
 import com.es.jma.favorite.R as favoriteR
 import com.es.jma.home.R as homeR
 

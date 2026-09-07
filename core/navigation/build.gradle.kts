@@ -4,6 +4,7 @@ import org.gradle.kotlin.dsl.configure
 plugins {
     alias(libs.plugins.meowapp.android.library)
     alias(libs.plugins.meowapp.android.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 extensions.configure<LibraryExtension> {

@@ -5,11 +5,11 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import com.es.jma.data.util.NetworkMonitor
-import com.es.jma.meowapp.navigation.meowNavConfig
-import com.es.jma.home.navigation.HomeRoute
 import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
-import com.es.jma.ui.navigation.NavigationState
-import com.es.jma.ui.navigation.rememberNavigationState
+import com.es.jma.meowapp.navigation.meowNavConfig
+import com.es.jma.navigation.HomeRoute
+import com.es.jma.navigation.NavigationState
+import com.es.jma.navigation.rememberNavigationState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
