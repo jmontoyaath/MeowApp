@@ -52,13 +52,13 @@ fun MeowApp(
     val currentKey = appState.navigationState.currentKey
     val isHomeScreen = currentKey is HomeRoute
 
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
     val isOffline by appState.isOffline.collectAsStateWithLifecycle()
 
     val notConnectedMessage = stringResource(R.string.not_connected)
     LaunchedEffect(isOffline) {
         if (isOffline) {
-            snackbarHostState.showSnackbar(
+            snackBarHostState.showSnackbar(
                 message = notConnectedMessage,
                 duration = Indefinite,
             )
@@ -69,12 +69,12 @@ fun MeowApp(
         topBar = {
             MeowAppBar(
                 title = stringResource(id = R.string.app_name),
-                onBackClick = null,
+                onBackClick = if (isHomeScreen) null else navigator::goBack,
                 actions = {
                     MeowIconButton(
                         icon = if (isSystemInDarkTheme()) MeowIcons.Sunny else MeowIcons.Night,
                         modifier = Modifier.size(smallIconSize),
-                        onClick = { navigator.navigate(SearchRoute) }
+                        onClick = { }
                     )
                 }
             )

@@ -3,7 +3,6 @@ package com.es.jma.favorite
 import app.cash.turbine.test
 import com.es.jma.domain.usecase.GetFavoriteCatsUseCase
 import com.es.jma.domain.usecase.ValidateFavoriteUseCase
-import com.es.jma.model.CatInfo
 import com.es.jma.testing.MainDispatcherRule
 import com.es.jma.testing.fakeCat
 import io.mockk.coEvery
@@ -12,10 +11,9 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Rule
+import org.junit.Test
 import java.io.IOException
 
 @OptIn(ExperimentalCoroutinesApi::class)

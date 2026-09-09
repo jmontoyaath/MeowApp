@@ -9,18 +9,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarDuration.Indefinite
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.es.jma.designsystem.theme.marginDefault
 import com.es.jma.model.CatInfo
-import com.es.jma.ui.R
+import com.es.jma.ui.R as uiR
 import com.es.jma.ui.animation.CatAnimationLottie
 import com.es.jma.ui.screens.ErrorScreen
 import com.es.jma.ui.screens.LoadingScreen
@@ -33,11 +38,19 @@ fun FavoriteScreen(
     onCatClicked: (String, String) -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val snackBarHostState = remember { SnackbarHostState() }
 
+    val errorMessage = stringResource(R.string.error_deleting_cat)
     LaunchedEffect(viewModel) {
         viewModel.action.collect { action ->
             when (action) {
                 is FavoriteAction.ShowDetailModal -> onCatClicked(action.breedId, action.urlImage)
+                is FavoriteAction.ShowErrorFavorites -> {
+                    snackBarHostState.showSnackbar(
+                        message = errorMessage,
+                        duration = Indefinite,
+                    )
+                }
                 else -> Unit
             }
         }
@@ -84,12 +97,16 @@ fun FavoriteScreenContent(
 
 @Composable
 fun FavoriteScreenEmpty() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-        Box(modifier = Modifier.padding(marginDefault).fillMaxWidth()) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.padding(marginDefault)) {
+        Box(modifier = Modifier.fillMaxWidth()) {
             CatAnimationLottie(
-                animation = R.raw.cat_playing
+                animation = uiR.raw.cat_playing
             )
         }
-        Text(text = stringResource(R.string.empty_message), style = MaterialTheme.typography.bodyMedium)
+        Text(
+            text = stringResource(R.string.empty_message),
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Center
+        )
     }
 }
