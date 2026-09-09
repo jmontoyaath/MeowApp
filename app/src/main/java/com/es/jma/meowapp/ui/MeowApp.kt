@@ -1,5 +1,6 @@
 package com.es.jma.meowapp.ui
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,18 +24,18 @@ import com.es.jma.designsystem.components.MeowAppBar
 import com.es.jma.designsystem.components.MeowBottomBar
 import com.es.jma.designsystem.components.MeowIconButton
 import com.es.jma.designsystem.icon.MeowIcons
-import com.es.jma.designsystem.theme.smallIconPressArea
+import com.es.jma.designsystem.theme.smallIconSize
 import com.es.jma.detail.navigation.detailEntry
-import com.es.jma.favorite.navigation.FavoriteRoute
 import com.es.jma.favorite.navigation.favoriteEntry
-import com.es.jma.home.navigation.HomeRoute
 import com.es.jma.home.navigation.homeEntry
 import com.es.jma.meowapp.R
 import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
-import com.es.jma.search.navigation.SearchRoute
+import com.es.jma.navigation.FavoriteRoute
+import com.es.jma.navigation.HomeRoute
+import com.es.jma.navigation.Navigator
+import com.es.jma.navigation.SearchRoute
+import com.es.jma.navigation.toEntries
 import com.es.jma.search.navigation.searchEntry
-import com.es.jma.ui.navigation.Navigator
-import com.es.jma.ui.navigation.toEntries
 
 @Composable
 fun MeowApp(
@@ -45,19 +46,19 @@ fun MeowApp(
 
     val navigator = remember { Navigator(appState.navigationState) }
     val currentTopLevelKey = appState.navigationState.currentTopLevelKey
-    val bottomBarKeys = listOf(HomeRoute, FavoriteRoute)
+    val bottomBarKeys = listOf(HomeRoute, SearchRoute, FavoriteRoute)
     val dialogSceneStrategy = remember { DialogSceneStrategy<NavKey>() }
 
     val currentKey = appState.navigationState.currentKey
-    val isSearchScreen = currentKey is SearchRoute
+    val isHomeScreen = currentKey is HomeRoute
 
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
     val isOffline by appState.isOffline.collectAsStateWithLifecycle()
 
     val notConnectedMessage = stringResource(R.string.not_connected)
     LaunchedEffect(isOffline) {
         if (isOffline) {
-            snackbarHostState.showSnackbar(
+            snackBarHostState.showSnackbar(
                 message = notConnectedMessage,
                 duration = Indefinite,
             )
@@ -68,15 +69,13 @@ fun MeowApp(
         topBar = {
             MeowAppBar(
                 title = stringResource(id = R.string.app_name),
-                onBackClick = null,
+                onBackClick = if (isHomeScreen) null else navigator::goBack,
                 actions = {
-                    if (!isSearchScreen) {
-                        MeowIconButton(
-                            icon = MeowIcons.SearchOutLine,
-                            modifier = Modifier.size(smallIconPressArea),
-                            onClick = { navigator.navigate(SearchRoute) }
-                        )
-                    }
+                    MeowIconButton(
+                        icon = if (isSystemInDarkTheme()) MeowIcons.Sunny else MeowIcons.Night,
+                        modifier = Modifier.size(smallIconSize),
+                        onClick = { }
+                    )
                 }
             )
         },

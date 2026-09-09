@@ -1,8 +1,8 @@
 package com.es.jma.domain.usecase
 
+import com.es.jma.data.di.IoDispatcher
 import com.es.jma.data.repository.FavoriteRepository
 import com.es.jma.domain.CatFlowUseCase
-import com.es.jma.domain.di.IoDispatcher
 import com.es.jma.model.CatInfo
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

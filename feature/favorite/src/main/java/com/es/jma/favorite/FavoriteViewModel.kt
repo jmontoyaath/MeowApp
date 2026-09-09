@@ -44,11 +44,16 @@ class FavoriteViewModel @Inject constructor(
 
     fun onDeleteFavorite(cat: CatInfo) {
         viewModelScope.launch {
-            runCatching {
-                validateFavoriteUseCase(ValidateCatParam(catInfo = cat))
-            }.onFailure {
-                FavoriteAction.ShowErrorFavorites.send()
-            }
+            val result = validateFavoriteUseCase(ValidateCatParam(catInfo = cat))
+            if (result.isFailure) FavoriteAction.ShowErrorFavorites.send()
         }
+    }
+
+    fun onCatClicked(cat: CatInfo) {
+        FavoriteAction.ShowDetailModal(
+            catId = cat.id,
+            urlImage = cat.url,
+            breedId = cat.idBreed
+        ).send()
     }
 }

@@ -1,4 +1,4 @@
-package com.es.jma.favorite
+package com.es.jma.navigation
 
 import org.junit.Test
 
