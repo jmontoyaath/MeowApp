@@ -19,17 +19,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.es.jma.designsystem.theme.marginDefault
 import com.es.jma.model.CatInfo
-import com.es.jma.ui.R as uiR
 import com.es.jma.ui.animation.CatAnimationLottie
 import com.es.jma.ui.screens.ErrorScreen
 import com.es.jma.ui.screens.LoadingScreen
 import com.es.jma.ui.views.CatInformation
+import com.es.jma.ui.R as uiR
 
 @Composable
 fun FavoriteScreen(
