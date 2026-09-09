@@ -1,8 +1,8 @@
 package com.es.jma.domain.usecase
 
+import com.es.jma.data.di.IoDispatcher
 import com.es.jma.data.repository.CatRepository
 import com.es.jma.domain.CatSuspendedUseCase
-import com.es.jma.domain.di.IoDispatcher
 import com.es.jma.model.Breed
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

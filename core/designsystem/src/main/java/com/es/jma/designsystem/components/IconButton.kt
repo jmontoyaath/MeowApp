@@ -8,6 +8,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.es.jma.designsystem.theme.marginZero
 
@@ -15,6 +16,7 @@ import com.es.jma.designsystem.theme.marginZero
 fun MeowIconButton(
     icon: ImageVector,
     modifier: Modifier = Modifier,
+    ting: Color = MaterialTheme.colorScheme.onSurface,
     onClick: (() -> Unit)? = null
 ) {
     onClick?.let { click ->
@@ -22,7 +24,8 @@ fun MeowIconButton(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                modifier = modifier
+                modifier = modifier,
+                tint = ting
             )
         }
     }

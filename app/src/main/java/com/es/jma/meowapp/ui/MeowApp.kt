@@ -1,5 +1,6 @@
 package com.es.jma.meowapp.ui
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,7 +24,7 @@ import com.es.jma.designsystem.components.MeowAppBar
 import com.es.jma.designsystem.components.MeowBottomBar
 import com.es.jma.designsystem.components.MeowIconButton
 import com.es.jma.designsystem.icon.MeowIcons
-import com.es.jma.designsystem.theme.smallIconPressArea
+import com.es.jma.designsystem.theme.smallIconSize
 import com.es.jma.detail.navigation.detailEntry
 import com.es.jma.favorite.navigation.favoriteEntry
 import com.es.jma.home.navigation.homeEntry
@@ -45,11 +46,11 @@ fun MeowApp(
 
     val navigator = remember { Navigator(appState.navigationState) }
     val currentTopLevelKey = appState.navigationState.currentTopLevelKey
-    val bottomBarKeys = listOf(HomeRoute, FavoriteRoute)
+    val bottomBarKeys = listOf(HomeRoute, SearchRoute, FavoriteRoute)
     val dialogSceneStrategy = remember { DialogSceneStrategy<NavKey>() }
 
     val currentKey = appState.navigationState.currentKey
-    val isSearchScreen = currentKey is SearchRoute
+    val isHomeScreen = currentKey is HomeRoute
 
     val snackbarHostState = remember { SnackbarHostState() }
     val isOffline by appState.isOffline.collectAsStateWithLifecycle()
@@ -70,13 +71,11 @@ fun MeowApp(
                 title = stringResource(id = R.string.app_name),
                 onBackClick = null,
                 actions = {
-                    if (!isSearchScreen) {
-                        MeowIconButton(
-                            icon = MeowIcons.SearchOutLine,
-                            modifier = Modifier.size(smallIconPressArea),
-                            onClick = { navigator.navigate(SearchRoute) }
-                        )
-                    }
+                    MeowIconButton(
+                        icon = if (isSystemInDarkTheme()) MeowIcons.Sunny else MeowIcons.Night,
+                        modifier = Modifier.size(smallIconSize),
+                        onClick = { navigator.navigate(SearchRoute) }
+                    )
                 }
             )
         },

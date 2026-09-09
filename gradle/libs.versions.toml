@@ -33,6 +33,10 @@ composeMaterial3 = "1.6.2"
 uiTextGoogleFonts = "1.11.4"
 lottie = "6.4.0"
 datastore = "1.1.1"
+turbine = "1.2.0"
+mockk = "1.13.13"
+coroutinesTest = "1.9.0"
+archCoreTest = "2.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -85,6 +89,11 @@ androidx-compose-material3 = { group = "androidx.wear.compose", name = "compose-
 androidx-compose-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreTest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -104,3 +113,4 @@ meowapp-jvm-library = { id = "meowapp.jvm.library" }
 meowapp-hilt = { id = "meowapp.hilt" }
 meowapp-android-feature-impl = { id = "meowapp.android.feature.impl" }
 meowapp-android-compose = { id = "meowapp.android.compose" }
+meowapp-android-test = { id = "meowapp.android.test" }

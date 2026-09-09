@@ -7,11 +7,11 @@ plugins {
 }
 
 extensions.configure<LibraryExtension> {
-    namespace = "com.es.jma.domain"
+    namespace = "com.es.jma.testing"
 }
 
 dependencies {
+    api(libs.junit)
+    api(libs.kotlinx.coroutines.test)
     implementation(projects.core.model)
-    implementation(projects.core.data)
-    implementation(projects.core.testing)
 }
