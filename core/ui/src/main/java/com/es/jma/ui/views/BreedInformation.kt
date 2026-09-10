@@ -17,11 +17,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import com.es.jma.designsystem.theme.loadingSize
 import com.es.jma.designsystem.theme.marginSmall
 import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.model.Breed
+import com.es.jma.ui.R
 
 @Composable
 fun BreedInformation(
@@ -65,7 +67,7 @@ fun BreedInformation(
                 images.isEmpty() -> Box(
                     modifier = Modifier.fillMaxWidth().height(loadingSize),
                     contentAlignment = Alignment.Center
-                ) { Text("Sin imágenes disponibles", style = MaterialTheme.typography.bodySmall) }
+                ) { Text(text = stringResource(R.string.no_image_found), style = MaterialTheme.typography.bodySmall) }
 
                 else -> BreedImageCarousel(images = images)
             }

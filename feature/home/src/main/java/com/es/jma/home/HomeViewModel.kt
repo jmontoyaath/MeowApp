@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
     private val getCatImagesUseCase: GetCatImagesSuspendedUseCase,
     private val validateFavoriteUseCase: ValidateFavoriteUseCase,
     private val getFavoriteIdsUseCase: GetFavoriteIdsUseCase,
-) : BaseViewModel<HomeUiState, HomeAction>(HomeUiState()) {
+) : BaseViewModel<HomeUiState, HomeAction>(HomeUiState.Loading) {
 
     private val pagingDataFlow: Flow<PagingData<CatInfo>> = Pager(
         config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
                 pagingData.map { cat -> cat.copy(isFavorite = cat.id in favoriteIds) }
             }
 
-            updateState { it.copy(catsPaged = catsWithFavorites) }
+            updateState { HomeUiState.Success(data = catsWithFavorites) }
         }
     }
 

@@ -19,7 +19,9 @@ import com.es.jma.ui.R
 import com.es.jma.ui.animation.CatAnimationLottie
 
 @Composable
-fun ErrorScreen(onClickReTry: () -> Unit) {
+fun ErrorScreen(
+    onClickReTry: (() -> Unit)? = null
+) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Box(modifier = Modifier.padding(marginDefault).fillMaxWidth()) {
             CatAnimationLottie(
@@ -27,13 +29,15 @@ fun ErrorScreen(onClickReTry: () -> Unit) {
             )
         }
         Text(text = stringResource(R.string.error_message), style = MaterialTheme.typography.bodyMedium)
-        Row(modifier = Modifier.padding(marginDefault)) {
-            MeowButton(
-                onClick = onClickReTry,
-                label = stringResource(R.string.try_button),
-                height = marginBig,
-                modifier = Modifier.fillMaxWidth()
-            )
+        onClickReTry?.let {
+            Row(modifier = Modifier.padding(marginDefault)) {
+                MeowButton(
+                    onClick = onClickReTry,
+                    label = stringResource(R.string.try_button),
+                    height = marginBig,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }

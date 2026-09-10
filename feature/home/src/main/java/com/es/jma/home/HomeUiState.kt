@@ -5,9 +5,10 @@ import com.es.jma.model.CatInfo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
-data class HomeUiState (
-    val catsPaged: Flow<PagingData<CatInfo>> = emptyFlow(),
-    val showError: Boolean = false,
-    val loading: Boolean = false,
-)
+sealed interface HomeUiState {
+    data object Loading : HomeUiState
+    data class Success(
+        val data: Flow<PagingData<CatInfo>> = emptyFlow(),
+    ) : HomeUiState
+}
 

@@ -2,4 +2,5 @@
 <resources>
     <string name="error_message">Apparently there is no cats in here</string>
     <string name="try_button">Try get cats again</string>
+    <string name="no_image_found">There aren\'t images for this breed of cat</string>
 </resources>

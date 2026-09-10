@@ -8,6 +8,6 @@ import com.es.jma.navigation.SearchRoute
 
 fun EntryProviderScope<NavKey>.searchEntry(navigator: Navigator) {
     entry<SearchRoute> {
-        SearchScreen(goBack = { navigator.goBack() })
+        SearchScreen()
     }
 }

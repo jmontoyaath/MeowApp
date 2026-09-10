@@ -33,7 +33,7 @@ class FavoriteViewModelTest {
 
         viewModel.action.test {
             viewModel.onDeleteFavorite(fakeCat)
-            assertEquals(FavoriteAction.ShowErrorFavorites, awaitItem())
+            assertEquals(FavoriteAction.ErrorDeletingFavorite, awaitItem())
         }
     }
 }

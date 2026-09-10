@@ -1,4 +1,3 @@
 package com.es.jma.search
 
-class SearchAction {
-}
+sealed interface SearchAction
