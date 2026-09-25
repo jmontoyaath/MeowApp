@@ -11,6 +11,7 @@ import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.NightsStay
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.SettingsSuggest
 import androidx.compose.material.icons.rounded.WbSunny
 
 object MeowIcons {
@@ -19,6 +20,7 @@ object MeowIcons {
     val ArrowBack = Icons.AutoMirrored.Rounded.KeyboardArrowLeft
     val Sunny = Icons.Rounded.WbSunny
     val Night = Icons.Rounded.NightsStay
+    val Settings = Icons.Rounded.SettingsSuggest
 
     val Home = Icons.Rounded.Home
     val HomeOutLine = Icons.Outlined.Home

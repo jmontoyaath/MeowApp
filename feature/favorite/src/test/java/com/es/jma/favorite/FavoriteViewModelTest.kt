@@ -5,7 +5,9 @@ import com.es.jma.domain.usecase.GetFavoriteCatsUseCase
 import com.es.jma.domain.usecase.ValidateFavoriteUseCase
 import com.es.jma.testing.MainDispatcherRule
 import com.es.jma.testing.fakeCat
+import com.es.jma.testing.fakeCatTwo
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,12 +26,28 @@ class FavoriteViewModelTest {
     private val getFavoriteCats = mockk<GetFavoriteCatsUseCase>()
     private val validateFavorite = mockk<ValidateFavoriteUseCase>()
 
+    private lateinit var viewModel: FavoriteViewModel
+
+    @Test
+    fun `init getFavorites and updates state to Success`() = runTest {
+        val catsList = listOf(
+            fakeCat,
+            fakeCatTwo
+        )
+        coEvery { getFavoriteCats(Unit) } returns flowOf(catsList)
+
+        viewModel = FavoriteViewModel(getFavoriteCats, validateFavorite)
+
+        val expectedState = FavoriteUiState.Success(data = catsList)
+        assertEquals(expectedState, viewModel.uiState.value)
+    }
+
     @Test
     fun `when fail at deleting a favorite, it show a ShowErrorFavorites`() = runTest {
         every { getFavoriteCats(Unit) } returns flowOf(listOf(fakeCat))
         coEvery { validateFavorite(any()) } returns Result.failure(IOException())
 
-        val viewModel = FavoriteViewModel(getFavoriteCats, validateFavorite)
+        viewModel = FavoriteViewModel(getFavoriteCats, validateFavorite)
 
         viewModel.action.test {
             viewModel.onDeleteFavorite(fakeCat)

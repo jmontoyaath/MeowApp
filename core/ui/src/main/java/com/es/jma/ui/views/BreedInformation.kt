@@ -20,7 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import com.es.jma.designsystem.theme.loadingSize
-import com.es.jma.designsystem.theme.marginSmall
+import com.es.jma.designsystem.theme.marginMedium
 import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.model.Breed
 import com.es.jma.ui.R
@@ -36,13 +36,13 @@ fun BreedInformation(
     Column (
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(marginSmall))
+            .clip(RoundedCornerShape(marginMedium))
             .clickable(onClick = onClick)
     ) {
         Row (
             modifier = Modifier.fillMaxWidth().padding(marginSmaller),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(marginSmall)
+            horizontalArrangement = Arrangement.spacedBy(marginMedium)
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 breed.name?.let { Text(it, style = MaterialTheme.typography.titleMedium) }

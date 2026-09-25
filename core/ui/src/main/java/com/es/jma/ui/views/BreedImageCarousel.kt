@@ -23,7 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import com.es.jma.designsystem.components.CatImage
 import com.es.jma.designsystem.theme.imageCarrouselCat
 import com.es.jma.designsystem.theme.marginLarger
-import com.es.jma.designsystem.theme.marginSmall
+import com.es.jma.designsystem.theme.marginMedium
 import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.designsystem.theme.marginTiny
 
@@ -41,7 +41,7 @@ fun BreedImageCarousel(images: List<String>) {
             CatImage(
                 catImage = images[page],
                 scale = ContentScale.Fit,
-                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(marginSmall))
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(marginMedium))
             )
         }
 

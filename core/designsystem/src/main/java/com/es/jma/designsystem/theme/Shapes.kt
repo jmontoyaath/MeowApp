@@ -6,7 +6,7 @@ import androidx.compose.material3.Shapes
 val MeowShapes = Shapes(
     extraSmall = RoundedCornerShape(marginTiny),
     small = RoundedCornerShape(marginSmaller),
-    medium = RoundedCornerShape(marginSmall),
+    medium = RoundedCornerShape(marginMedium),
     large = RoundedCornerShape(marginDefault),
     extraLarge = RoundedCornerShape(marginLarge)
 )

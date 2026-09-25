@@ -29,6 +29,9 @@ class AndroidFeatureImplConventionPlugin : Plugin<Project> {
                 "implementation"(project(":core:designsystem"))
                 "implementation"(project(":core:navigation"))
                 "implementation"(project(":core:testing"))
+
+                "androidTestImplementation"(libs.findLibrary("androidx-compose-ui-test-junit4").get())
+                "debugImplementation"(libs.findLibrary("androidx-compose-ui-test-manifest").get())
             }
         }
     }

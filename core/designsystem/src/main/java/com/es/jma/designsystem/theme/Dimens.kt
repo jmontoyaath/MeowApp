@@ -9,11 +9,14 @@ val marginTinier = 2.dp
 val marginTiny = 4.dp
 val marginSmallest = 6.dp
 val marginSmaller = 8.dp
-val marginSmall = 12.dp
+val marginSmall = 10.dp
+val marginMedium = 12.dp
 val marginDefault = 16.dp
 val marginLarge = 24.dp
 val marginLarger = 32.dp
 val marginBig = 40.dp
+val marginBigger = 48.dp
+val marginBiggest = 60.dp
 
 var bottomBarSize = 100.dp
 

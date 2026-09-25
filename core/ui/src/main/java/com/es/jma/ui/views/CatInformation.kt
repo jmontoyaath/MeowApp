@@ -26,6 +26,8 @@ import com.es.jma.designsystem.components.MeowIconButtonFilled
 import com.es.jma.designsystem.icon.MeowIcons
 import com.es.jma.designsystem.theme.MeowAppTheme
 import com.es.jma.designsystem.theme.imageModalCat
+import com.es.jma.designsystem.theme.marginBig
+import com.es.jma.designsystem.theme.marginLarger
 import com.es.jma.designsystem.theme.marginSmaller
 import com.es.jma.designsystem.theme.marginZero
 import com.es.jma.designsystem.theme.textNormal
@@ -86,8 +88,11 @@ fun CatInformation(
 
             Row(
                 Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(vertical = 110.dp, horizontal = 16.dp)
+                    .align(Alignment.TopEnd)
+                    .padding(
+                        top = imageModalCat - marginBig / 2,
+                        end = 16.dp
+                    )
             ) {
                 onFavoriteClicked?.let {
                     MeowIconButtonFilled(
