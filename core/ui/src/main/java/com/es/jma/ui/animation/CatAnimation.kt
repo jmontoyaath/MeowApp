@@ -11,13 +11,14 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.es.jma.ui.R
 
 private const val defaultAnimationScale = 1f
 
 @Composable
 fun CatAnimationLottie(
     modifier: Modifier = Modifier,
-    @RawRes animation: Int,
+    @RawRes animation: Int = R.raw.cat_playing,
     iterations: Int = LottieConstants.IterateForever,
     animationScale: Float = defaultAnimationScale,
     onAnimationFinished: () -> Unit = {}

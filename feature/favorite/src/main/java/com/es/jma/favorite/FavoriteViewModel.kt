@@ -17,26 +17,25 @@ import javax.inject.Inject
 class FavoriteViewModel @Inject constructor(
     private val getFavoriteCatsUseCase: GetFavoriteCatsUseCase,
     private val validateFavoriteUseCase: ValidateFavoriteUseCase,
-) : BaseViewModel<FavoriteUiState, FavoriteAction>(FavoriteUiState()) {
+) : BaseViewModel<FavoriteUiState, FavoriteAction>(FavoriteUiState.Loading) {
 
     init {
         getFavorites()
     }
 
     fun getFavorites() {
+        updateState { FavoriteUiState.Loading }
         viewModelScope.launch {
             getFavoriteCatsUseCase(Unit)
                 .onEach { cats ->
                     updateState {
-                        it.copy(
-                            cats = cats,
-                            loading = false
+                        FavoriteUiState.Success(
+                            data = cats
                         )
                     }
                 }
                 .catch {
-                    updateState { it.copy(loading = false) }
-                    FavoriteAction.ShowErrorFavorites.send()
+                    updateState { FavoriteUiState.Error }
                 }
                 .collect()
         }
@@ -45,7 +44,7 @@ class FavoriteViewModel @Inject constructor(
     fun onDeleteFavorite(cat: CatInfo) {
         viewModelScope.launch {
             val result = validateFavoriteUseCase(ValidateCatParam(catInfo = cat))
-            if (result.isFailure) FavoriteAction.ShowErrorFavorites.send()
+            if (result.isFailure) FavoriteAction.ErrorDeletingFavorite.send()
         }
     }
 

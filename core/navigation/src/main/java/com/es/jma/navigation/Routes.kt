@@ -14,3 +14,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable sealed interface DetailKey : NavKey
 @Serializable data class DetailRoute(val breedId: String, val catImage: String) : DetailKey
+
+@Serializable sealed interface SettingsKey : NavKey
+@Serializable data object SettingsRoute : SettingsKey

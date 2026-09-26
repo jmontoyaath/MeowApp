@@ -9,14 +9,16 @@ val marginTinier = 2.dp
 val marginTiny = 4.dp
 val marginSmallest = 6.dp
 val marginSmaller = 8.dp
-val marginSmall = 12.dp
+val marginSmall = 10.dp
+val marginMedium = 12.dp
 val marginDefault = 16.dp
 val marginLarge = 24.dp
 val marginLarger = 32.dp
 val marginBig = 40.dp
+val marginBigger = 48.dp
+val marginBiggest = 60.dp
 
 var bottomBarSize = 100.dp
-var animationSize = 200.dp
 
 val imageModalCat = 270.dp
 val imageCarrouselCat = 180.dp
@@ -25,8 +27,6 @@ val loadingSize = 140.dp
 
 val smallIconSize = 20.dp
 val smallIconPressArea = 36.dp
-val normalIconSize = 36.dp
-val normalIconPressArea = 44.dp
 
 val textLarger = 32.sp
 val textNormal = 16.sp

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="feature_favorite_title">Favorites</string>
-    <string name="empty_message">You can mark your favorites cats from Home to show in here</string>
+    <string name="empty_message">In the Home page you can mark as favorites to show here</string>
     <string name="error_deleting_cat">The cat refuse to go, try again</string>
 </resources>

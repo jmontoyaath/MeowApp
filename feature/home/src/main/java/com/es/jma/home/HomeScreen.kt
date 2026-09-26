@@ -28,7 +28,23 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val catsPage = state.catsPaged.collectAsLazyPagingItems()
+    when(state) {
+        is HomeUiState.Loading -> LoadingScreen()
+        is HomeUiState.Success -> {
+            val data = (state as HomeUiState.Success)
+            val catsPage = data.data.collectAsLazyPagingItems()
+            when (catsPage.loadState.refresh) {
+                is LoadState.Loading -> LoadingScreen()
+                is LoadState.Error -> ErrorScreen(onClickReTry = viewModel::loadCats)
+                else -> HomeScreenContent(
+                    catsPage = catsPage,
+                    modifier = modifier,
+                    onCatClicked = viewModel::onCatClicked,
+                    onFavoriteClicked = viewModel::onFavoriteClicked
+                )
+            }
+        }
+    }
 
     LaunchedEffect(viewModel) {
         viewModel.action.collect { action ->
@@ -37,17 +53,6 @@ fun HomeScreen(
                 else -> Unit
             }
         }
-    }
-
-    when (catsPage.loadState.refresh) {
-        is LoadState.Loading -> LoadingScreen()
-        is LoadState.Error -> ErrorScreen(onClickReTry = viewModel::loadCats)
-        else -> HomeScreenContent(
-            catsPage = catsPage,
-            modifier = modifier,
-            onCatClicked = viewModel::onCatClicked,
-            onFavoriteClicked = viewModel::onFavoriteClicked
-        )
     }
 }
 

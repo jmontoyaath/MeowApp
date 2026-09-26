@@ -28,7 +28,6 @@ import com.es.jma.ui.animation.CatAnimationLottie
 import com.es.jma.ui.screens.ErrorScreen
 import com.es.jma.ui.screens.LoadingScreen
 import com.es.jma.ui.views.CatInformation
-import com.es.jma.ui.R as uiR
 
 @Composable
 fun FavoriteScreen(
@@ -44,7 +43,7 @@ fun FavoriteScreen(
         viewModel.action.collect { action ->
             when (action) {
                 is FavoriteAction.ShowDetailModal -> onCatClicked(action.breedId, action.urlImage)
-                is FavoriteAction.ShowErrorFavorites -> {
+                is FavoriteAction.ErrorDeletingFavorite -> {
                     snackBarHostState.showSnackbar(
                         message = errorMessage,
                         duration = Indefinite,
@@ -55,14 +54,15 @@ fun FavoriteScreen(
         }
     }
 
-    when {
-        state.loading -> LoadingScreen()
-        state.showError -> ErrorScreen(onClickReTry = viewModel::getFavorites)
-        else -> {
-            if (state.cats.isNullOrEmpty())
+    when(state) {
+        is FavoriteUiState.Loading -> LoadingScreen()
+        is FavoriteUiState.Error -> ErrorScreen { viewModel.getFavorites() }
+        is FavoriteUiState.Success -> {
+            val data = (state as FavoriteUiState.Success)
+            if (data.data.isNullOrEmpty())
                 FavoriteScreenEmpty()
             else FavoriteScreenContent(
-                cats = state.cats!!,
+                cats = data.data,
                 modifier = modifier,
                 onCatClicked = viewModel::onCatClicked,
                 onDeleteClicked = viewModel::onDeleteFavorite
@@ -98,9 +98,7 @@ fun FavoriteScreenContent(
 fun FavoriteScreenEmpty() {
     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.padding(marginDefault)) {
         Box(modifier = Modifier.fillMaxWidth()) {
-            CatAnimationLottie(
-                animation = uiR.raw.cat_playing
-            )
+            CatAnimationLottie()
         }
         Text(
             text = stringResource(R.string.empty_message),

@@ -1,7 +1,7 @@
 package com.es.jma.favorite
 
-interface FavoriteAction {
-    data object ShowErrorFavorites: FavoriteAction
+sealed interface FavoriteAction {
+    data object ErrorDeletingFavorite: FavoriteAction
     data class ShowDetailModal(
         val catId: String,
         val urlImage: String,

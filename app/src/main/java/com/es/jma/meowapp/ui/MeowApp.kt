@@ -1,6 +1,5 @@
 package com.es.jma.meowapp.ui
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,8 +33,10 @@ import com.es.jma.navigation.FavoriteRoute
 import com.es.jma.navigation.HomeRoute
 import com.es.jma.navigation.Navigator
 import com.es.jma.navigation.SearchRoute
+import com.es.jma.navigation.SettingsRoute
 import com.es.jma.navigation.toEntries
 import com.es.jma.search.navigation.searchEntry
+import com.es.jma.settings.navigation.settingsEntry
 
 @Composable
 fun MeowApp(
@@ -72,9 +73,9 @@ fun MeowApp(
                 onBackClick = if (isHomeScreen) null else navigator::goBack,
                 actions = {
                     MeowIconButton(
-                        icon = if (isSystemInDarkTheme()) MeowIcons.Sunny else MeowIcons.Night,
+                        icon = MeowIcons.Settings,
                         modifier = Modifier.size(smallIconSize),
-                        onClick = { }
+                        onClick = { navigator.navigate(key = SettingsRoute) }
                     )
                 }
             )
@@ -102,9 +103,10 @@ fun MeowApp(
             Column {
                 val entryProvider = entryProvider {
                     homeEntry(navigator)
-                    searchEntry(navigator)
+                    searchEntry()
                     favoriteEntry(navigator)
                     detailEntry(navigator, onOpenWiki)
+                    settingsEntry()
                 }
 
                 NavDisplay(
