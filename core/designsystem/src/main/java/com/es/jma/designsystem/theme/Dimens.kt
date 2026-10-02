@@ -15,7 +15,6 @@ val marginDefault = 16.dp
 val marginLarge = 24.dp
 val marginLarger = 32.dp
 val marginBig = 40.dp
-val marginBigger = 48.dp
 val marginBiggest = 60.dp
 
 var bottomBarSize = 100.dp

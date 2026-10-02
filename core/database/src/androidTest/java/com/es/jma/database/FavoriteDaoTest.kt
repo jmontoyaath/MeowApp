@@ -23,8 +23,8 @@ class FavoriteDaoTest {
     private lateinit var db: MeowDataBase
     private lateinit var dao: FavoriteDao
 
-    private val fakeCatEntity = CatEntity(id = "1", name = "Pirulina", idBreed = "1", description = "", origen = "", url = "", temperament = "", addedAt = 100)
-    private val fakeCatOtherEntity = CatEntity(id = "2", name = "Mayillo", idBreed = "2", description = "", origen = "", url = "", temperament = "", addedAt = 100)
+    private val fakeCatEntity = CatEntity(id = "1", name = "Pirulina", idBreed = "1", description = "", origin = "", url = "", temperament = "", addedAt = 100)
+    private val fakeCatOtherEntity = CatEntity(id = "2", name = "Mayillo", idBreed = "2", description = "", origin = "", url = "", temperament = "", addedAt = 100)
 
     @Before
     fun setup() {

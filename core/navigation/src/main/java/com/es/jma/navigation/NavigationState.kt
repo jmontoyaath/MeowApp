@@ -50,9 +50,6 @@ class NavigationState(
     val currentKey: NavKey by derivedStateOf { currentSubStack.last() }
 }
 
-/**
- * Convert NavigationState into NavEntries.
- */
 @Composable
 fun NavigationState.toEntries(
     entryProvider: (NavKey) -> NavEntry<NavKey>,

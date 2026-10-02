@@ -7,7 +7,6 @@ import com.es.jma.testing.MainDispatcherRule
 import com.es.jma.testing.fakeCat
 import com.es.jma.testing.fakeCatTwo
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

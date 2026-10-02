@@ -8,11 +8,12 @@ plugins {
 }
 
 extensions.configure<LibraryExtension> {
-    namespace = "com.es.jma.ui"
+    namespace = "com.es.jma.navigation"
 }
 
 dependencies {
     implementation(libs.androidx.browser)
+    implementation(libs.androidx.navigation3.navigation3.runtime)
     implementation(libs.navigation3.runtime)
     implementation(libs.androidx.lifecycle.viewModel.navigation3)
     implementation(libs.kotlinx.serialization.json)
