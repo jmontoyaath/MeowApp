@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,6 +17,7 @@ import com.es.jma.data.util.NetworkMonitor
 import com.es.jma.meowapp.ui.MeowApp
 import com.es.jma.meowapp.ui.rememberMeowAppState
 import com.es.jma.designsystem.theme.MeowAppTheme
+import com.es.jma.model.ThemeConfigEnum
 import com.es.jma.ui.openCustomTab
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -42,7 +45,9 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            MeowAppTheme {
+            MeowAppTheme(
+                darkTheme = shouldUseDarkTheme(uiState)
+            ) {
                 val appState = rememberMeowAppState(
                     networkMonitor = networkMonitor
                 )
@@ -57,3 +62,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+private fun shouldUseDarkTheme(uiState: MainActivityUiState): Boolean =
+    when (uiState) {
+        MainActivityUiState.Loading -> isSystemInDarkTheme()
+        is MainActivityUiState.Success -> when (uiState.themeConfig) {
+            ThemeConfigEnum.DARK -> true
+            ThemeConfigEnum.LIGHT -> false
+        }
+    }
