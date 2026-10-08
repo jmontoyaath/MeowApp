@@ -1,5 +1,6 @@
 package com.es.jma.testing
 
+import com.es.jma.model.Breed
 import com.es.jma.model.CatInfo
 
 val fakeCat = CatInfo(
@@ -21,4 +22,11 @@ val fakeCatTwo = CatInfo(
     temperament = "smart, cute, funny, spicy",
     origin = "home",
     description = "A tiny cute sociopath cat that live in your house and is very clingy and spicy"
+)
+val fakeBreed = Breed(
+    id = "1",
+    name = "Mayillo",
+    temperament = "crazy, dump, funny, smart",
+    origin = "Home",
+    wikipediaUrl = "https://wiki.test/mayillo"
 )

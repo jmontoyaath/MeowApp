@@ -1,7 +1,7 @@
 package com.es.jma.network.model
 
 import com.es.jma.model.Breed
-import com.es.jma.model.Metrics
+import com.es.jma.model.UnitSystem
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -17,21 +17,20 @@ data class CatBreed (
     val origin: String? = null,
     @SerialName("country_code") val countryCodes: String? = null,
     val description: String? = null,
-    val referenceImage: String? = null,
     @SerialName("wikipedia_url") val wikipediaUrl: String? = null,
     @SerialName("breed_group") val breedGroup: String? = null,
     val history: String? = null,
-    val weight: MetricSystem? = null,
-    val height: MetricSystem? = null,
+    val weight: UnitSystemResponse? = null,
+    val height: UnitSystemResponse? = null,
 )
 
 @Serializable
-data class MetricSystem(
+data class UnitSystemResponse(
     val imperial: String? = null,
     val metric: String? = null,
 )
 
-fun MetricSystem.asExternalModel() : Metrics = Metrics(
+fun UnitSystemResponse.asExternalModel() : UnitSystem = UnitSystem(
     imperial = imperial,
     metric = metric
 )
@@ -43,7 +42,6 @@ fun CatBreed.asExternalModel() : Breed = Breed(
     origin = origin,
     codeCountry = countryCodes,
     description = description,
-    referenceImage = referenceImage,
     wikipediaUrl = wikipediaUrl,
     lifeSpan = lifeSpan,
     breedGroup = breedGroup,

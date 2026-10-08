@@ -32,10 +32,6 @@ class HomeViewModel @Inject constructor(
     ).flow.cachedIn(viewModelScope)
 
     init {
-        loadCats()
-    }
-
-    fun loadCats() {
         viewModelScope.launch {
             val catsWithFavorites = combine(
                 pagingDataFlow,

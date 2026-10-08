@@ -10,7 +10,7 @@ class FavoriteMapper @Inject constructor() : Mapper<CatInfo, CatEntity> {
         url = params.url,
         name = params.name,
         idBreed = params.idBreed,
-        origen = params.origin,
+        origin = params.origin,
         description = params.description,
         temperament = params.temperament,
     )
@@ -20,7 +20,7 @@ class FavoriteMapper @Inject constructor() : Mapper<CatInfo, CatEntity> {
         url = params.url,
         idBreed = params.idBreed,
         name = params.name,
-        origin = params.origen,
+        origin = params.origin,
         description = params.description,
         temperament = params.temperament
     )

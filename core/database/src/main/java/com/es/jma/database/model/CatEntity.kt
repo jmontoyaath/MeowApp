@@ -14,7 +14,7 @@ data class CatEntity (
     val idBreed: String,
     @ColumnInfo(defaultValue = "")
     val description: String,
-    val origen: String,
+    val origin: String,
     @ColumnInfo(defaultValue = "")
     val url: String,
     @ColumnInfo(defaultValue = "")

@@ -5,8 +5,8 @@ import com.es.jma.data.repository.CatRepository
 import com.es.jma.data.repository.CatRepositoryImpl
 import com.es.jma.data.repository.FavoriteRepository
 import com.es.jma.data.repository.FavoriteRepositoryImpl
-import com.es.jma.data.repository.ThemePreferencesRepository
-import com.es.jma.data.repository.ThemePreferencesRepositoryImpl
+import com.es.jma.data.repository.UserPreferencesRepository
+import com.es.jma.data.repository.UserPreferencesRepositoryImpl
 import com.es.jma.data.util.ConnectivityManagerNetworkMonitor
 import dagger.Binds
 import dagger.Module
@@ -31,8 +31,8 @@ interface DataModule {
 
     @Binds
     abstract fun bindThemePreferencesRepository(
-        impl: ThemePreferencesRepositoryImpl
-    ): ThemePreferencesRepository
+        impl: UserPreferencesRepositoryImpl
+    ): UserPreferencesRepository
 
     @Binds
     @Singleton

@@ -35,7 +35,7 @@ fun HomeScreen(
             val catsPage = data.data.collectAsLazyPagingItems()
             when (catsPage.loadState.refresh) {
                 is LoadState.Loading -> LoadingScreen()
-                is LoadState.Error -> ErrorScreen(onClickReTry = viewModel::loadCats)
+                is LoadState.Error -> ErrorScreen(onClickReTry = { catsPage.retry() })
                 else -> HomeScreenContent(
                     catsPage = catsPage,
                     modifier = modifier,
