@@ -6,6 +6,7 @@ import com.es.jma.navigation.DetailRoute
 import com.es.jma.navigation.FavoriteRoute
 import com.es.jma.navigation.HomeRoute
 import com.es.jma.navigation.SearchRoute
+import com.es.jma.navigation.SettingsRoute
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
@@ -17,6 +18,7 @@ val meowNavConfig = SavedStateConfiguration {
             subclass(SearchRoute::class)
             subclass(FavoriteRoute::class)
             subclass(DetailRoute::class)
+            subclass(SettingsRoute::class)
         }
     }
 }

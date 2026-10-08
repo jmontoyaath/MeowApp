@@ -21,11 +21,11 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="FavoriteDaoTest">
+      <SelectionState runConfigName="DetailScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="FavoriteScreenTest">
+      <SelectionState runConfigName="All Tests">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>

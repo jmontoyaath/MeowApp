@@ -2,7 +2,7 @@ package com.es.jma.meowapp
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.es.jma.data.repository.ThemePreferencesRepository
+import com.es.jma.data.repository.UserPreferencesRepository
 import com.es.jma.model.ThemeConfigEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -13,10 +13,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MeowViewModel @Inject constructor(
-    themePreferencesRepository: ThemePreferencesRepository
+    userPreferencesRepository: UserPreferencesRepository
 ) : ViewModel() {
 
-    val uiState: StateFlow<MainActivityUiState> = themePreferencesRepository.themeConfig
+    val uiState: StateFlow<MainActivityUiState> = userPreferencesRepository.themeConfig
         .map { config -> MainActivityUiState.Success(config) }
         .stateIn(
             scope = viewModelScope,

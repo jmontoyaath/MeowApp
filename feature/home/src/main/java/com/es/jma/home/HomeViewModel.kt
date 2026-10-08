@@ -44,10 +44,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun loadCats() {
-
-    }
-
     fun onCatClicked(cat: CatInfo) {
         HomeAction.ShowDetailModal(
             catId = cat.id,

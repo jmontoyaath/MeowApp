@@ -58,8 +58,8 @@ internal fun SearchScreen(
             is SearchUiState.Success -> {
                 val data = (state as SearchUiState.Success)
                 when {
-                    data.breeds.isEmpty() -> SearchEmptyScreen()
                     data.isSearching -> LoadingScreen()
+                    data.breeds.isEmpty() -> SearchEmptyScreen()
                     else -> SearchScreenContent(
                         breeds = data.breeds,
                         expandedBreedId = data.expandedBreedId,
