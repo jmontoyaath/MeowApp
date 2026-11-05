@@ -8,12 +8,8 @@ abstract class CatSuspendedUseCase <in Params, out Results>(
 ) {
 
     suspend operator fun invoke(parameters: Params): Result<Results> {
-        return try {
-            withContext(coroutineDispatcher) {
-                execute(parameters)
-            }
-        } catch (e: Exception) {
-            Result.failure(e)
+        return withContext(coroutineDispatcher) {
+            execute(parameters)
         }
     }
 

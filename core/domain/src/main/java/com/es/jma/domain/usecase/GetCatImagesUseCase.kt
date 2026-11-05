@@ -7,7 +7,7 @@ import com.es.jma.model.CatInfo
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class GetCatImagesSuspendedUseCase @Inject constructor(
+class GetCatImagesUseCase @Inject constructor(
     private val repository: CatRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher
 ) : CatSuspendedUseCase<GetCatImagesParams, List<CatInfo>>(dispatcher) {

@@ -13,5 +13,5 @@ extensions.configure<LibraryExtension> {
 dependencies {
     implementation(projects.core.model)
     implementation(projects.core.data)
-    implementation(projects.core.testing)
+    testImplementation(projects.core.testing)
 }

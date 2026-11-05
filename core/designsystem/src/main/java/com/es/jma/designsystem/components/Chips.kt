@@ -43,25 +43,30 @@ fun MeowChips(
                 label = { Text(trait, style = MaterialTheme.typography.labelSmall) }
             )
         }
-        if (!expanded && remaining > 0) {
-            AssistChip(
-                colors = AssistChipDefaults.assistChipColors(
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                    labelColor = MaterialTheme.colorScheme.onSecondary
-                ),
-                border = BorderStroke(
-                    width = marginOne,
-                    color = MaterialTheme.colorScheme.onSecondary
-                ),
-                onClick = { expanded = true },
-                label = { Text("+$remaining", style = MaterialTheme.typography.labelSmall) }
-            )
-        } else {
-            MeowButton(
-                label = "show less",
-                buttonType = ButtonType.TEXT,
-                onClick = { expanded = false }
-            )
+
+        when {
+            !expanded && remaining > 0 -> {
+                AssistChip(
+                    colors = AssistChipDefaults.assistChipColors(
+                        containerColor = MaterialTheme.colorScheme.secondary,
+                        labelColor = MaterialTheme.colorScheme.onSecondary
+                    ),
+                    border = BorderStroke(
+                        width = marginOne,
+                        color = MaterialTheme.colorScheme.onSecondary
+                    ),
+                    onClick = { expanded = true },
+                    label = { Text("+$remaining", style = MaterialTheme.typography.labelSmall) }
+                )
+            }
+            expanded -> {
+                MeowButton(
+                    label = "show less",
+                    buttonType = ButtonType.TEXT,
+                    onClick = { expanded = false }
+                )
+            }
+            else -> Unit
         }
     }
 }

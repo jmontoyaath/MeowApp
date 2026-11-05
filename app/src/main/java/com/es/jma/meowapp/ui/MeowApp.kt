@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarDuration.Indefinite
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -63,6 +65,8 @@ fun MeowApp(
                 message = notConnectedMessage,
                 duration = Indefinite,
             )
+        } else {
+            snackBarHostState.currentSnackbarData?.dismiss()
         }
     }
 
@@ -98,6 +102,7 @@ fun MeowApp(
                 }
             )
         },
+        snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
     ) { contentPadding ->
         Surface(modifier = modifier.padding(paddingValues = contentPadding)) {
             Column {

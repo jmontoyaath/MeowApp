@@ -27,12 +27,16 @@ fun rememberMeowAppState(
     )
 
     return remember(navigationState, coroutineScope) {
-        MeowState(navigationState = navigationState, coroutineScope = coroutineScope, networkMonitor = networkMonitor)
+        MeowState(
+            navigationState = navigationState,
+            coroutineScope = coroutineScope,
+            networkMonitor = networkMonitor
+        )
     }
 }
 
 @Stable
-class MeowState (
+class MeowState(
     val navigationState: NavigationState,
     coroutineScope: CoroutineScope,
     networkMonitor: NetworkMonitor,

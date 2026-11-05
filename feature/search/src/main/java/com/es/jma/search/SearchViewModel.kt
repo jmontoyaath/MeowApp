@@ -7,6 +7,7 @@ import com.es.jma.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.update
@@ -30,7 +31,7 @@ class SearchViewModel @Inject constructor(
             queryFlow
                 .debounce(timeout = 300.milliseconds)
                 .distinctUntilChanged()
-                .collect { query -> performSearch(query) }
+                .collectLatest { query -> performSearch(query) }
         }
     }
 
