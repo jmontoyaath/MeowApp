@@ -22,7 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.es.jma.designsystem.theme.marginDefault
+import com.es.jma.designsystem.theme.Spacing.lg
 import com.es.jma.model.CatInfo
 import com.es.jma.ui.animation.CatAnimationLottie
 import com.es.jma.ui.screens.ErrorScreen
@@ -80,9 +80,9 @@ fun FavoriteScreenContent(
 ) {
     LazyColumn(
         modifier = modifier
-            .padding(horizontal = marginDefault)
+            .padding(horizontal = lg)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(marginDefault)
+        verticalArrangement = Arrangement.spacedBy(lg)
     ) {
         items(cats, key = { it.id }) { cat ->
             CatInformation(
@@ -96,7 +96,9 @@ fun FavoriteScreenContent(
 
 @Composable
 fun FavoriteScreenEmpty() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.padding(marginDefault)) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.padding(
+        all = lg
+    )) {
         Box(modifier = Modifier.fillMaxWidth()) {
             CatAnimationLottie()
         }

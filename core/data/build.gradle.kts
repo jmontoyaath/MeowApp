@@ -15,4 +15,7 @@ dependencies {
     implementation(projects.core.database)
 
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.tracing.ktx)
+
+    testImplementation(projects.core.testing)
 }

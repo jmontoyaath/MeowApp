@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.es.jma.designsystem.icon.MeowIcons
+import com.es.jma.designsystem.theme.ComponentSize.iconTouchTarget
 import com.es.jma.designsystem.theme.MeowAppTheme
-import com.es.jma.designsystem.theme.smallIconPressArea
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -24,7 +24,7 @@ fun MeowAppBar(
         navigationIcon = {
             MeowIconButton(
                 icon = MeowIcons.ArrowBack,
-                modifier = Modifier.size(smallIconPressArea),
+                modifier = Modifier.size(iconTouchTarget),
                 onClick = onBackClick
             )
         },
@@ -55,7 +55,7 @@ fun MeowAppBarWhiteActionPreview() {
         MeowAppBar(title = "AppBar Title", actions = {
             MeowIconButton(
                 icon = MeowIcons.SearchOutLine,
-                modifier = Modifier.size(smallIconPressArea),
+                modifier = Modifier.size(iconTouchTarget),
                 onClick = {}
             )
         })

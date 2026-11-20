@@ -21,6 +21,7 @@ dependencies {
     implementation(libs.retrofit.kotlinx.serialization)
     implementation(libs.okhttp.logging)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.tracing.ktx)
 
     implementation(projects.core.model)
 }

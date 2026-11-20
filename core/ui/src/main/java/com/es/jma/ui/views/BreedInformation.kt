@@ -19,11 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import com.es.jma.designsystem.theme.loadingSize
-import com.es.jma.designsystem.theme.marginMedium
-import com.es.jma.designsystem.theme.marginSmaller
+import com.es.jma.designsystem.theme.ComponentSize.loadingArea
+import com.es.jma.designsystem.theme.Spacing.md
+import com.es.jma.designsystem.theme.Spacing.sm
 import com.es.jma.model.Breed
 import com.es.jma.ui.R
+import com.es.jma.utils.constants.ONE
+import com.es.jma.utils.constants.ONE_FLOAT
 
 @Composable
 fun BreedInformation(
@@ -36,21 +38,21 @@ fun BreedInformation(
     Column (
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(marginMedium))
+            .clip(RoundedCornerShape(md))
             .clickable(onClick = onClick)
     ) {
         Row (
-            modifier = Modifier.fillMaxWidth().padding(marginSmaller),
+            modifier = Modifier.fillMaxWidth().padding(sm),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(marginMedium)
+            horizontalArrangement = Arrangement.spacedBy(md)
         ) {
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(ONE_FLOAT)) {
                 breed.name?.let { Text(it, style = MaterialTheme.typography.titleMedium) }
                 breed.temperament?.let {
                     Text(
                         text = it,
                         style = MaterialTheme.typography.bodySmall,
-                        maxLines = 1,
+                        maxLines = ONE,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
@@ -60,12 +62,12 @@ fun BreedInformation(
         AnimatedVisibility(visible = isExpanded) {
             when {
                 isLoadingImages -> Box(
-                    modifier = Modifier.fillMaxWidth().height(loadingSize),
+                    modifier = Modifier.fillMaxWidth().height(loadingArea),
                     contentAlignment = Alignment.Center
                 ) { CircularProgressIndicator() }
 
                 images.isEmpty() -> Box(
-                    modifier = Modifier.fillMaxWidth().height(loadingSize),
+                    modifier = Modifier.fillMaxWidth().height(loadingArea),
                     contentAlignment = Alignment.Center
                 ) { Text(text = stringResource(R.string.no_image_found), style = MaterialTheme.typography.bodySmall) }
 

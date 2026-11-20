@@ -17,7 +17,6 @@ import org.junit.Rule
 import org.junit.Test
 import java.io.IOException
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class FavoriteViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()

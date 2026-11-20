@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.update
 
 abstract class BaseViewModel<State, Action>(initialState: State) : ViewModel() {
 
-    val uiState: StateFlow<State> get() = _uiState.asStateFlow()
+    val uiState: StateFlow<State> get() = state.asStateFlow()
     val action get() = _action.receiveAsFlow()
 
-    protected var _uiState: MutableStateFlow<State> = MutableStateFlow(initialState)
+    protected var state: MutableStateFlow<State> = MutableStateFlow(initialState)
     private val _action = Channel<Action?>(Channel.BUFFERED)
 
     protected fun Action.send() {
@@ -22,6 +22,6 @@ abstract class BaseViewModel<State, Action>(initialState: State) : ViewModel() {
     }
 
     protected fun updateState(block: (State) -> State) {
-        _uiState.update(block)
+        state.update(block)
     }
 }

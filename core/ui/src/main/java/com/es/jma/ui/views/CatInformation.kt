@@ -24,13 +24,17 @@ import com.es.jma.designsystem.components.CountryFlag
 import com.es.jma.designsystem.components.MeowChips
 import com.es.jma.designsystem.components.MeowIconButtonFilled
 import com.es.jma.designsystem.icon.MeowIcons
+import com.es.jma.designsystem.theme.ComponentSize.buttonHeight
+import com.es.jma.designsystem.theme.ComponentSize.catImage
 import com.es.jma.designsystem.theme.MeowAppTheme
-import com.es.jma.designsystem.theme.imageModalCat
-import com.es.jma.designsystem.theme.marginBig
-import com.es.jma.designsystem.theme.marginSmaller
+import com.es.jma.designsystem.theme.Spacing.lg
+import com.es.jma.designsystem.theme.Spacing.md
+import com.es.jma.designsystem.theme.Spacing.sm
+import com.es.jma.designsystem.theme.Spacing.xs
+import com.es.jma.designsystem.theme.TextSize.Normal
 import com.es.jma.designsystem.theme.marginZero
-import com.es.jma.designsystem.theme.textNormal
 import com.es.jma.model.CatInfo
+import com.es.jma.utils.constants.TWO
 
 @Composable
 fun CatInformation(
@@ -51,36 +55,36 @@ fun CatInformation(
                     catImage = cat.url,
                     modifier = modifier
                         .fillMaxWidth()
-                        .size(imageModalCat)
+                        .size(catImage)
                         .clip(
                             RoundedCornerShape(
-                                topEnd = marginSmaller,
-                                topStart = marginSmaller,
+                                topEnd = sm,
+                                topStart = sm,
                                 bottomEnd = marginZero,
                                 bottomStart = marginZero
                             )
                         )
                 )
-                Spacer(Modifier.width(12.dp))
-                Column(Modifier.padding(12.dp)) {
+                Spacer(Modifier.width(md))
+                Column(Modifier.padding(md)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         CountryFlag(
                             code = cat.origin,
-                            size = textNormal
+                            size = Normal
                         )
-                        Spacer(Modifier.padding(4.dp))
+                        Spacer(Modifier.padding(all = xs))
                         Text(
                             text = cat.name,
                             style = MaterialTheme.typography.titleMedium
                         )
                     }
-                    Spacer(Modifier.padding(4.dp))
+                    Spacer(Modifier.padding(all = xs))
                     Text(
                         text = cat.description,
-                        maxLines = 2,
+                        maxLines = TWO,
                         style = MaterialTheme.typography.bodySmall
                     )
-                    Spacer(Modifier.padding(4.dp))
+                    Spacer(Modifier.padding(xs))
                     MeowChips(text = cat.temperament)
                 }
             }
@@ -89,8 +93,8 @@ fun CatInformation(
                 Modifier
                     .align(Alignment.TopEnd)
                     .padding(
-                        top = imageModalCat - marginBig / 2,
-                        end = 16.dp
+                        top = catImage - buttonHeight / TWO,
+                        end = lg
                     )
             ) {
                 onFavoriteClicked?.let {

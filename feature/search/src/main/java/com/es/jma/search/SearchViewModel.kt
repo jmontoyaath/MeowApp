@@ -1,9 +1,11 @@
 package com.es.jma.search
 
 import androidx.lifecycle.viewModelScope
+import com.es.jma.designsystem.theme.MeowMotion.STANDARD
 import com.es.jma.domain.usecase.GetImagesCatByBreedUseCase
 import com.es.jma.domain.usecase.SearchCatBreedsUseCase
 import com.es.jma.ui.BaseViewModel
+import com.es.jma.utils.constants.EMPTY_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,6 +18,8 @@ import javax.inject.Inject
 import kotlin.collections.emptyList
 import kotlin.time.Duration.Companion.milliseconds
 
+private const val LIMIT_SEARCH = 3
+
 @OptIn(FlowPreview::class)
 @HiltViewModel
 class SearchViewModel @Inject constructor(
@@ -23,13 +27,13 @@ class SearchViewModel @Inject constructor(
     val getImagesCatByBreedUseCase: GetImagesCatByBreedUseCase
 ) : BaseViewModel<SearchUiState, SearchAction>(SearchUiState.Initial) {
 
-    private val queryFlow = MutableStateFlow("")
+    private val queryFlow = MutableStateFlow(value = EMPTY_STRING)
     private var successInfo: SearchUiState.Success = SearchUiState.Success()
 
     init {
         viewModelScope.launch {
             queryFlow
-                .debounce(timeout = 300.milliseconds)
+                .debounce(timeout = STANDARD.milliseconds)
                 .distinctUntilChanged()
                 .collectLatest { query -> performSearch(query) }
         }
@@ -41,7 +45,7 @@ class SearchViewModel @Inject constructor(
     }
 
     private suspend fun performSearch(query: String) {
-        if (query.length < 3) {
+        if (query.length < LIMIT_SEARCH) {
             updateSuccess { copy(breeds = emptyList()) }
             return
         }
@@ -91,7 +95,7 @@ class SearchViewModel @Inject constructor(
     }
 
     private fun updateSuccess(updateBlock: SearchUiState.Success.() -> SearchUiState.Success) {
-        _uiState.update { state ->
+        state.update { state ->
             val currentSuccess = (state as? SearchUiState.Success) ?: successInfo
             updateBlock(currentSuccess).also { successInfo = it }
         }

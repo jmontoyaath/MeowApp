@@ -15,9 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.es.jma.designsystem.theme.marginDefault
+import com.es.jma.designsystem.theme.Spacing.lg
 import com.es.jma.model.ThemeConfigEnum
 import com.es.jma.model.UnitSystemEnum
 import com.es.jma.ui.screens.ErrorScreen
@@ -51,7 +52,7 @@ fun SettingsScreenContent(
     onClickTheme: (theme: ThemeConfigEnum) -> Unit = {},
     onClickUnitSystem: (unitSystem: UnitSystemEnum) -> Unit = {},
 ) {
-    Column(modifier = modifier.padding(marginDefault)) {
+    Column(modifier = modifier.padding(all = lg)) {
         Text(text = "Theme", style = MaterialTheme.typography.titleMedium)
         ThemeConfigEnum.entries.forEach { option ->
             Row (verticalAlignment = Alignment.CenterVertically) {
@@ -63,14 +64,14 @@ fun SettingsScreenContent(
             }
         }
 
-        Spacer(Modifier.height(marginDefault))
+        Spacer(Modifier.height(lg))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Unit System")
+            Text(text = stringResource(R.string.unit_system))
             Switch(
                 checked = unitSystem == UnitSystemEnum.IMPERIAL,
                 onCheckedChange = { checked ->

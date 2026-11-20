@@ -21,26 +21,32 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
-import com.es.jma.designsystem.theme.marginSmaller
-import com.es.jma.designsystem.theme.marginSmallest
+import com.es.jma.designsystem.theme.MeowMotion.SLOW
+import com.es.jma.designsystem.theme.Spacing.sm
+import com.es.jma.designsystem.theme.Spacing.xsPlus
+
+private const val DOT_COUNT = 3
+private const val DOT_MIN_SCALE = 0.6f
+private const val DOT_MAX_SCALE = 1f
+private const val DOT_STAGGER_MILLIS = 150
 
 @Composable
 fun LoadingDots(
     modifier: Modifier = Modifier,
     dotColor: Color = MaterialTheme.colorScheme.primary,
-    dotSize: Dp = marginSmaller
+    dotSize: Dp = sm
 ) {
     val transition = rememberInfiniteTransition(label = "dotsLoading")
 
-    Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(marginSmallest)) {
-        repeat(3) { index ->
+    Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(xsPlus)) {
+        repeat(times = DOT_COUNT) { index ->
             val scale by transition.animateFloat(
-                initialValue = 0.6f,
-                targetValue = 1f,
+                initialValue = DOT_MIN_SCALE,
+                targetValue = DOT_MAX_SCALE,
                 animationSpec = infiniteRepeatable(
-                    animation = tween(durationMillis = 400, easing = FastOutSlowInEasing),
+                    animation = tween(durationMillis = SLOW, easing = FastOutSlowInEasing),
                     repeatMode = RepeatMode.Reverse,
-                    initialStartOffset = StartOffset(index * 150)
+                    initialStartOffset = StartOffset(offsetMillis = index * DOT_STAGGER_MILLIS)
                 ),
                 label = "dotScale$index"
             )

@@ -35,18 +35,20 @@ import com.es.jma.designsystem.components.CatImage
 import com.es.jma.designsystem.components.CountryFlag
 import com.es.jma.designsystem.components.MeowButton
 import com.es.jma.designsystem.components.MeowChips
-import com.es.jma.designsystem.theme.bottomBarSize
-import com.es.jma.designsystem.theme.imageModalCat
-import com.es.jma.designsystem.theme.marginBig
-import com.es.jma.designsystem.theme.marginDefault
-import com.es.jma.designsystem.theme.marginMedium
-import com.es.jma.designsystem.theme.marginSmaller
-import com.es.jma.designsystem.theme.marginTiny
+import com.es.jma.designsystem.theme.ComponentSize
+import com.es.jma.designsystem.theme.ComponentSize.bottomBarSize
+import com.es.jma.designsystem.theme.ComponentSize.buttonHeight
+import com.es.jma.designsystem.theme.Spacing.lg
+import com.es.jma.designsystem.theme.Spacing.md
+import com.es.jma.designsystem.theme.Spacing.sm
+import com.es.jma.designsystem.theme.Spacing.xs
+import com.es.jma.designsystem.theme.TextSize.Normal
 import com.es.jma.designsystem.theme.marginZero
-import com.es.jma.designsystem.theme.textNormal
 import com.es.jma.model.Breed
 import com.es.jma.ui.screens.ErrorScreen
 import com.es.jma.ui.screens.LoadingScreen
+import com.es.jma.utils.constants.MODAL_HEIGHT
+import com.es.jma.utils.constants.EMPTY_STRING
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,7 +80,7 @@ fun DetailScreen(
     ) {
         Box(modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.90f)) {
+            .fillMaxHeight(MODAL_HEIGHT)) {
             when (state) {
                 is DetailUiState.Loading -> LoadingScreen()
                 is DetailUiState.Error -> ErrorScreen {
@@ -112,41 +114,41 @@ fun DetailScreenContent(
                 .padding(bottom = bottomBarSize)
         ) {
             CatImage(
-                catImage = catImage ?: "",
+                catImage = catImage ?: EMPTY_STRING,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(imageModalCat)
+                    .size(ComponentSize.catImage)
                     .clip(
                         RoundedCornerShape(
-                            topEnd = marginSmaller,
-                            topStart = marginSmaller,
+                            topEnd = sm,
+                            topStart = sm,
                             bottomEnd = marginZero,
                             bottomStart = marginZero
                         )
                     ),
                 scale = ContentScale.Crop
             )
-            Spacer(modifier = Modifier.padding(marginMedium))
-            Column(modifier = Modifier.padding(horizontal = marginDefault)) {
+            Spacer(modifier = Modifier.padding(md))
+            Column(modifier = Modifier.padding(horizontal = lg)) {
                 data?.let { cat ->
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        modifier = Modifier.fillMaxWidth().padding(vertical = marginSmaller)
+                        modifier = Modifier.fillMaxWidth().padding(vertical = sm)
                     ) {
                         cat.name?.let { Text(text = it) }
                         Row {
-                            CountryFlag(code = cat.codeCountry, size = textNormal)
-                            Spacer(Modifier.padding(horizontal = marginTiny))
+                            CountryFlag(code = cat.codeCountry, size = Normal)
+                            Spacer(Modifier.padding(horizontal = xs))
                             cat.origin?.let { Text(text = it) }
                         }
                     }
-                    cat.description?.let { Text(text = it, modifier = Modifier.padding(vertical = marginSmaller)) }
+                    cat.description?.let { Text(text = it, modifier = Modifier.padding(vertical = sm)) }
                     cat.history?.let { history ->
                         Text(text = history)
                     }
-                    cat.temperament?.let { MeowChips(text = it, modifier = Modifier.padding(vertical = marginSmaller)) }
+                    cat.temperament?.let { MeowChips(text = it, modifier = Modifier.padding(vertical = sm)) }
                     cat.lifeSpan?.let {
-                        Text(text = stringResource(R.string.life_spam, it), modifier = Modifier.padding(vertical = marginSmaller))
+                        Text(text = stringResource(R.string.life_span, it), modifier = Modifier.padding(vertical = sm))
                     }
                 }
             }
@@ -157,21 +159,21 @@ fun DetailScreenContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter),
-                shape = RoundedCornerShape(topStart = marginMedium, topEnd = marginMedium),
+                shape = RoundedCornerShape(topStart = md, topEnd = md),
                 elevation = CardDefaults.cardElevation(marginZero),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = marginDefault, vertical = marginDefault)
+                        .padding(horizontal = lg, vertical = lg)
                 ) {
                     MeowButton(
                         onClick = { onOpenWiki.invoke(wiki) },
                         label = stringResource(R.string.go_wiki),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(marginBig)
+                            .height(buttonHeight)
                     )
                 }
             }

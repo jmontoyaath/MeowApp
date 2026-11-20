@@ -15,7 +15,7 @@
 
 ## 📖 Description
 
-MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://thecatapi.com/) API for show Cats images and information. The project follow an **modular architecture**, mostly for better practices and personal practices, allowing responsibility separation and stability.
+MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://thecatapi.com/) API for show Cats images and information. The project follow a **modular architecture**, mostly for better practices and personal practices, allowing responsibility separation and stability.
 
 > Personal project for practice purposes and display cats.
 
@@ -24,23 +24,6 @@ MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://
 |                      Favorites                      | 
 |:---------------------------------------------------:|
 | ![Favorites](docs/screenshots/screen_favorites.png) | 
-
-[//]: # (| Home | Detail | Search | Favorites | )
-
-[//]: # (|:---:|:---:|:---:|:---:|)
-
-[//]: # (| ![Home]&#40;docs/screenshots/home.png&#41; | ![Detalle]&#40;docs/screenshots/detail.png&#41; | ![Search]&#40;docs/screenshots/favorites.png&#41; | ![Favoritos]&#40;docs/screenshots/favorites.png&#41; | )
-
-[//]: # (## 🎨 Design &#40;Figma&#41;)
-
-[//]: # ()
-[//]: # ([![Ver diseño en Figma]&#40;https://img.shields.io/badge/Figma-Ver%20diseño-F24E1E?logo=figma&logoColor=white&#41;]&#40;https://www.figma.com/file/TU-LINK-AQUI&#41;)
-
-[//]: # ()
-[//]: # (![Preview del diseño]&#40;docs/figma-preview.png&#41;)
-
-[//]: # ()
-[//]: # (El diseño completo —sistema de diseño, pantallas y prototipo navegable— está disponible en Figma. Haz clic en el badge de arriba para explorarlo &#40;no necesitas cuenta de Figma para verlo&#41;.)
 
 ## 🏗️ Architecture
 

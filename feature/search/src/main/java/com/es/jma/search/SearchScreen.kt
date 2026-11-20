@@ -22,8 +22,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.es.jma.designsystem.icon.MeowIcons
-import com.es.jma.designsystem.theme.marginDefault
-import com.es.jma.designsystem.theme.marginLarger
+import com.es.jma.designsystem.theme.Spacing.lg
+import com.es.jma.designsystem.theme.Spacing.xxl
 import com.es.jma.model.Breed
 import com.es.jma.ui.animation.CatAnimationLottie
 import com.es.jma.ui.screens.LoadingScreen
@@ -47,10 +47,10 @@ internal fun SearchScreen(
             placeholder = { Text(text = stringResource(R.string.feature_search_placeholder)) },
             leadingIcon = { Icon(imageVector = MeowIcons.Search, contentDescription = null) },
             singleLine = true,
-            shape = RoundedCornerShape(size = marginLarger),
+            shape = RoundedCornerShape(size = xxl),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(marginDefault)
+                .padding(all = lg)
         )
 
         when (state) {
@@ -84,9 +84,9 @@ fun SearchScreenContent(
 ) {
     LazyColumn(
         modifier = modifier
-            .padding(horizontal = marginDefault)
+            .padding(horizontal = lg)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(marginDefault)
+        verticalArrangement = Arrangement.spacedBy(lg)
     ) {
         items(breeds, key = { it.id }) { breed ->
             BreedInformation(
@@ -105,7 +105,7 @@ fun SearchEmptyScreen() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(marginDefault)
+        modifier = Modifier.padding(all = lg)
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
             CatAnimationLottie()

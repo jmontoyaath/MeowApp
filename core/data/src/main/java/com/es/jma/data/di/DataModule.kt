@@ -30,13 +30,13 @@ interface DataModule {
     ): FavoriteRepository
 
     @Binds
-    abstract fun bindThemePreferencesRepository(
+    fun bindThemePreferencesRepository(
         impl: UserPreferencesRepositoryImpl
     ): UserPreferencesRepository
 
     @Binds
     @Singleton
-    abstract fun bindNetworkMonitor(
+    fun bindNetworkMonitor(
         networkMonitor: ConnectivityManagerNetworkMonitor
     ): NetworkMonitor
 }

@@ -3,29 +3,31 @@ package com.es.jma.designsystem.theme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+object Spacing {
+    val xxs = 2.dp
+    val xs = 4.dp
+    val xsPlus = 6.dp
+    val sm = 8.dp
+    val md = 12.dp
+    val lg = 16.dp
+    val xl = 24.dp
+    val xxl = 32.dp
+}
+
+object ComponentSize {
+    val buttonHeight = 40.dp
+    val iconSmall = 20.dp
+    val iconTouchTarget = 36.dp
+    val catImage = 270.dp
+    val carouselImage = 180.dp
+    val loadingArea = 140.dp
+    var bottomBarSize = 100.dp
+}
+
+object TextSize {
+    val Larger = 32.sp
+    val Normal = 16.sp
+}
+
 val marginZero = 0.dp
 val marginOne = 1.dp
-val marginTinier = 2.dp
-val marginTiny = 4.dp
-val marginSmallest = 6.dp
-val marginSmaller = 8.dp
-val marginSmall = 10.dp
-val marginMedium = 12.dp
-val marginDefault = 16.dp
-val marginLarge = 24.dp
-val marginLarger = 32.dp
-val marginBig = 40.dp
-val marginBiggest = 60.dp
-
-var bottomBarSize = 100.dp
-
-val imageModalCat = 270.dp
-val imageCarrouselCat = 180.dp
-
-val loadingSize = 140.dp
-
-val smallIconSize = 20.dp
-val smallIconPressArea = 36.dp
-
-val textLarger = 32.sp
-val textNormal = 16.sp

@@ -12,7 +12,7 @@ import javax.inject.Inject
 class ThemePreferences @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
-    private val themeConfigKey = stringPreferencesKey("theme_config")
+    private val themeConfigKey = stringPreferencesKey(name = THEME_CONFIG_KEY)
 
     val themeConfig: Flow<ThemeConfigEnum> = dataStore.data.map { prefs ->
         ThemeConfigEnum.valueOf(
@@ -22,5 +22,9 @@ class ThemePreferences @Inject constructor(
 
     suspend fun setThemeConfig(config: ThemeConfigEnum) {
         dataStore.edit { it[themeConfigKey] = config.name }
+    }
+
+    private companion object {
+        const val THEME_CONFIG_KEY = "theme_config"
     }
 }

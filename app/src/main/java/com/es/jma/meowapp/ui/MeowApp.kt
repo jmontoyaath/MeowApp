@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarDuration.Indefinite
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -25,7 +24,7 @@ import com.es.jma.designsystem.components.MeowAppBar
 import com.es.jma.designsystem.components.MeowBottomBar
 import com.es.jma.designsystem.components.MeowIconButton
 import com.es.jma.designsystem.icon.MeowIcons
-import com.es.jma.designsystem.theme.smallIconSize
+import com.es.jma.designsystem.theme.ComponentSize.iconSmall
 import com.es.jma.detail.navigation.detailEntry
 import com.es.jma.favorite.navigation.favoriteEntry
 import com.es.jma.home.navigation.homeEntry
@@ -78,7 +77,7 @@ fun MeowApp(
                 actions = {
                     MeowIconButton(
                         icon = MeowIcons.Settings,
-                        modifier = Modifier.size(smallIconSize),
+                        modifier = Modifier.size(iconSmall),
                         onClick = { navigator.navigate(key = SettingsRoute) }
                     )
                 }
