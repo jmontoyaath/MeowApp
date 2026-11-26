@@ -30,6 +30,7 @@ import com.es.jma.favorite.navigation.favoriteEntry
 import com.es.jma.home.navigation.homeEntry
 import com.es.jma.meowapp.R
 import com.es.jma.meowapp.navigation.TOP_LEVEL_NAV_ITEMS
+import com.es.jma.model.UnitSystemEnum
 import com.es.jma.navigation.FavoriteRoute
 import com.es.jma.navigation.HomeRoute
 import com.es.jma.navigation.Navigator
@@ -42,6 +43,7 @@ import com.es.jma.settings.navigation.settingsEntry
 @Composable
 fun MeowApp(
     appState: MeowState,
+    unitSystem: UnitSystemEnum,
     modifier: Modifier = Modifier,
     onOpenWiki: (url: String) -> Unit = {},
 ) {
@@ -109,7 +111,7 @@ fun MeowApp(
                     homeEntry(navigator)
                     searchEntry()
                     favoriteEntry(navigator)
-                    detailEntry(navigator, onOpenWiki)
+                    detailEntry(navigator, onOpenWiki, unitSystem)
                     settingsEntry()
                 }
 

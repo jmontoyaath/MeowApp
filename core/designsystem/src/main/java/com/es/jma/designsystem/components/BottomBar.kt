@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.es.jma.designsystem.theme.ComponentSize.bottomBarSize
 import com.es.jma.designsystem.theme.MeowMotion.FAST
-import com.es.jma.designsystem.theme.MeowMotion.INTERMEDIUM
 import com.es.jma.designsystem.theme.MeowMotion.MEDIUM
 import com.es.jma.designsystem.theme.marginZero
 
@@ -58,7 +57,7 @@ fun <T> MeowBottomBar(
                     AnimatedContent(
                         targetState = isSelected,
                         transitionSpec = {
-                            fadeIn(animationSpec = tween(durationMillis = INTERMEDIUM)) togetherWith fadeOut(
+                            fadeIn(animationSpec = tween(durationMillis = MEDIUM)) togetherWith fadeOut(
                                 animationSpec = tween(durationMillis = FAST)
                             )
                         },

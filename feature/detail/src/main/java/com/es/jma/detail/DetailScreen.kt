@@ -3,6 +3,7 @@ package com.es.jma.detail
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -20,6 +21,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,10 +31,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.es.jma.designsystem.components.CatImage
 import com.es.jma.designsystem.components.CountryFlag
+import com.es.jma.designsystem.components.InfoPill
 import com.es.jma.designsystem.components.MeowButton
 import com.es.jma.designsystem.components.MeowChips
 import com.es.jma.designsystem.theme.ComponentSize
@@ -42,11 +47,17 @@ import com.es.jma.designsystem.theme.Spacing.lg
 import com.es.jma.designsystem.theme.Spacing.md
 import com.es.jma.designsystem.theme.Spacing.sm
 import com.es.jma.designsystem.theme.Spacing.xs
+import com.es.jma.designsystem.theme.Spacing.xsPlus
+import com.es.jma.designsystem.theme.Spacing.xxs
 import com.es.jma.designsystem.theme.TextSize.Normal
+import com.es.jma.designsystem.theme.marginOne
 import com.es.jma.designsystem.theme.marginZero
 import com.es.jma.model.Breed
+import com.es.jma.model.UnitSystem
+import com.es.jma.model.UnitSystemEnum
 import com.es.jma.ui.screens.ErrorScreen
 import com.es.jma.ui.screens.LoadingScreen
+import com.es.jma.utils.constants.COMMA
 import com.es.jma.utils.constants.MODAL_HEIGHT
 import com.es.jma.utils.constants.EMPTY_STRING
 
@@ -55,6 +66,7 @@ import com.es.jma.utils.constants.EMPTY_STRING
 fun DetailScreen(
     idBreed: String,
     imageCat: String,
+    unitSystem: UnitSystemEnum = UnitSystemEnum.METRICS,
     viewModel: DetailViewModel = hiltViewModel(),
     onDismiss: () -> Unit,
     onOpenWiki: (url: String) -> Unit = {},
@@ -78,9 +90,11 @@ fun DetailScreen(
         onDismissRequest = onDismiss,
         sheetState = sheetState
     ) {
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(MODAL_HEIGHT)) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(MODAL_HEIGHT)
+        ) {
             when (state) {
                 is DetailUiState.Loading -> LoadingScreen()
                 is DetailUiState.Error -> ErrorScreen {
@@ -92,6 +106,7 @@ fun DetailScreen(
                     DetailScreenContent(
                         data = data.data,
                         catImage = imageCat,
+                        unitSystem = unitSystem,
                         onOpenWiki = onOpenWiki
                     )
                 }
@@ -104,6 +119,7 @@ fun DetailScreen(
 fun DetailScreenContent(
     data: Breed?,
     catImage: String?,
+    unitSystem: UnitSystemEnum = UnitSystemEnum.METRICS,
     onOpenWiki: (url: String) -> Unit = {},
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -133,22 +149,71 @@ fun DetailScreenContent(
                 data?.let { cat ->
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        modifier = Modifier.fillMaxWidth().padding(vertical = sm)
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = sm)
                     ) {
-                        cat.name?.let { Text(text = it) }
+                        Column {
+                            cat.name?.let { name ->
+                                Text(
+                                    text = name,
+                                    style = MaterialTheme.typography.headlineMedium.copy(
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                )
+                            }
+                            cat.altName?.let { altName ->
+                                Text(
+                                    text = stringResource(R.string.text_alt_name, altName),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    modifier = Modifier.padding(top = xs)
+                                )
+                            }
+                        }
                         Row {
                             CountryFlag(code = cat.codeCountry, size = Normal)
                             Spacer(Modifier.padding(horizontal = xs))
                             cat.origin?.let { Text(text = it) }
                         }
                     }
-                    cat.description?.let { Text(text = it, modifier = Modifier.padding(vertical = sm)) }
-                    cat.history?.let { history ->
-                        Text(text = history)
+
+                    cat.breedGroup?.let { breedGroup ->
+                        InfoPill(text = breedGroup)
                     }
-                    cat.temperament?.let { MeowChips(text = it, modifier = Modifier.padding(vertical = sm)) }
-                    cat.lifeSpan?.let {
-                        Text(text = stringResource(R.string.life_span, it), modifier = Modifier.padding(vertical = sm))
+
+                    if (cat.weight != null || cat.height != null) {
+                        CatWeightAndHeight(cat.weight, cat.height, unitSystem)
+                    }
+
+                    cat.lifeSpan?.let { lifeSpan ->
+                        InfoPill(
+                            text = stringResource(R.string.text_life_span, lifeSpan),
+                            modifier = Modifier.padding(vertical = sm)
+                        )
+                    }
+
+                    cat.description?.let { description ->
+                        TextColumn(
+                            title = stringResource(R.string.text_description),
+                            text = description
+                        )
+                    }
+
+                    cat.temperament?.let { temperament ->
+                        val size = temperament.split(COMMA).size
+                        MeowChips(
+                            text = temperament,
+                            modifier = Modifier.padding(vertical = sm),
+                            maxVisible = size
+                        )
+                    }
+
+                    cat.history?.let { history ->
+                        TextColumn(
+                            title = stringResource(R.string.text_history),
+                            text = history
+                        )
                     }
                 }
             }
@@ -170,7 +235,7 @@ fun DetailScreenContent(
                 ) {
                     MeowButton(
                         onClick = { onOpenWiki.invoke(wiki) },
-                        label = stringResource(R.string.go_wiki),
+                        label = stringResource(R.string.button_text_go_wiki),
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(buttonHeight)
@@ -178,5 +243,105 @@ fun DetailScreenContent(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun TextColumn(title: String, text: String) {
+    Column(
+        modifier = Modifier.padding(vertical = sm)
+    ) {
+        Text(
+            text = title,
+            modifier = Modifier.padding(vertical = xxs),
+            style = MaterialTheme.typography.titleMedium.copy(
+                fontWeight = FontWeight.Bold
+            )
+        )
+        Text(
+            text = text,
+        )
+    }
+}
+
+@Composable
+fun CatWeightAndHeight(weight: UnitSystem?, height: UnitSystem?, unitSystem: UnitSystemEnum) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = md),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(IntrinsicSize.Min)
+                .padding(vertical = md, horizontal = sm),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            weight?.let {
+                StatColumn(
+                    label = stringResource(R.string.text_weight),
+                    value = it.textByUnitSystem(unitSystem) ?: stringResource(R.string.value_unknow),
+                    subLabel = if (unitSystem == UnitSystemEnum.METRICS) stringResource(R.string.kilograms) else stringResource(
+                        R.string.pound
+                    ),
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            if (weight != null && height != null) {
+                VerticalDivider(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(vertical = xs),
+                    thickness = marginOne,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.25f)
+                )
+            }
+            height?.let {
+                StatColumn(
+                    label = stringResource(R.string.text_height),
+                    value = it.textByUnitSystem(unitSystem) ?: stringResource(R.string.value_unknow),
+                    subLabel = if (unitSystem == UnitSystemEnum.METRICS) stringResource(R.string.centimeters) else stringResource(
+                        R.string.inches
+                    ),
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun StatColumn(
+    label: String,
+    value: String,
+    subLabel: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.padding(horizontal = xs)
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelMedium,
+            textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.height(xsPlus))
+        Text(
+            text = value,
+            style = MaterialTheme.typography.titleLarge.copy(
+                fontWeight = FontWeight.Bold
+            ),
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = subLabel,
+            style = MaterialTheme.typography.labelSmall,
+            textAlign = TextAlign.Center
+        )
     }
 }

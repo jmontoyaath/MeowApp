@@ -3,6 +3,7 @@ package com.es.jma.model
 data class Breed (
     val id: String,
     val name: String? = null,
+    val altName: String? = null,
     val temperament: String? = null,
     val origin: String? = null,
     val codeCountry: String? = null,
@@ -18,4 +19,11 @@ data class Breed (
 data class UnitSystem(
     val imperial: String? = null,
     val metric: String? = null,
-)
+) {
+    fun textByUnitSystem(unitSystem: UnitSystemEnum): String? {
+        return when(unitSystem) {
+            UnitSystemEnum.METRICS -> metric
+            UnitSystemEnum.IMPERIAL -> imperial
+        }
+    }
+}
