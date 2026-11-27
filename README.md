@@ -17,13 +17,13 @@
 
 MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://thecatapi.com/) API for show Cats images and information. The project follow a **modular architecture**, mostly for better practices and personal practices, allowing responsibility separation and stability.
 
-> Personal project for practice purposes and display cats.
+> Personal project for explore modular architecture and display kittens.
 
-## 📱 Screen shoots
+## 📱 Demo app
 
-|                      Favorites                      | 
-|:---------------------------------------------------:|
-| ![Favorites](docs/screenshots/screen_favorites.png) | 
+|                      Demo app                      | 
+|:--------------------------------------------------:|
+| ![Demo app      ](docs/screenshots/recording.webm) | 
 
 ## 🏗️ Architecture
 
@@ -55,8 +55,9 @@ cd MeowApp
 
 1. Open in **Android Studio** (recommended version: *Panda (2026)+*).
 2. Get your API Key in [thecatapi.com](https://thecatapi.com/).
-3. Add your API key in the *`local.properties`* file:
+3. Add your API url and key in the *`local.properties`* file:
    ```properties
+   API_URL=https://api.thecatapi.com/v1/
    API_KEY=your_api_key_here
    ```
 4. Sync Gradle and run the app in your device (or emulator).

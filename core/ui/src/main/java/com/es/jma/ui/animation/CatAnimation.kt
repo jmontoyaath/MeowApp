@@ -12,7 +12,6 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.es.jma.ui.R
-import com.es.jma.utils.constants.ONE_FLOAT
 
 private const val defaultAnimationScale = 1f
 
