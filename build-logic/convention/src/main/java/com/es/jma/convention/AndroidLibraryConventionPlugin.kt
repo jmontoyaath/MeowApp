@@ -38,6 +38,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", libs.findLibrary("androidx.core.ktx").get())
+                "implementation"(project(":core:utils"))
             }
         }
     }

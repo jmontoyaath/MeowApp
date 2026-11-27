@@ -12,42 +12,55 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.layout.ContentScale
+import androidx.graphics.shapes.RoundedPolygon
+import androidx.graphics.shapes.toPath
 import com.es.jma.designsystem.components.CatImage
-import com.es.jma.designsystem.theme.imageCarrouselCat
-import com.es.jma.designsystem.theme.marginLarger
-import com.es.jma.designsystem.theme.marginMedium
-import com.es.jma.designsystem.theme.marginSmaller
-import com.es.jma.designsystem.theme.marginTiny
+import com.es.jma.designsystem.theme.ComponentSize.carouselImage
+import com.es.jma.designsystem.theme.MeowAlpha.INACTIVE
+import com.es.jma.designsystem.theme.Spacing.md
+import com.es.jma.designsystem.theme.Spacing.sm
+import com.es.jma.designsystem.theme.Spacing.xs
+import com.es.jma.designsystem.theme.Spacing.xsPlus
+import com.es.jma.designsystem.theme.Spacing.xxl
+import com.es.jma.designsystem.theme.primaryLight
+import com.es.jma.designsystem.theme.tertiaryContainerDark
+
+private const val VERTICES_NUM = 6
+private const val VERTICES_NUM_DIVIDER = 2
 
 @Composable
 fun BreedImageCarousel(images: List<String>) {
     val pagerState = rememberPagerState(pageCount = { images.size })
 
-    Column(modifier = Modifier.padding(top = marginSmaller)) {
+    Column(modifier = Modifier.padding(top = sm)) {
         HorizontalPager(
             state = pagerState,
-            contentPadding = PaddingValues(horizontal = marginLarger),
-            pageSpacing = marginSmaller,
-            modifier = Modifier.fillMaxWidth().height(imageCarrouselCat)
+            contentPadding = PaddingValues(horizontal = xxl),
+            pageSpacing = sm,
+            modifier = Modifier.fillMaxWidth().height(carouselImage)
         ) { page ->
             CatImage(
                 catImage = images[page],
                 scale = ContentScale.Fit,
-                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(marginMedium))
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(size = md))
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
             )
         }
 
         if (images.size > 1) {
             Row (
-                modifier = Modifier.fillMaxWidth().padding(top = marginTiny),
+                modifier = Modifier.fillMaxWidth().padding(top = xs),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -55,13 +68,21 @@ fun BreedImageCarousel(images: List<String>) {
                     val isSelected = pagerState.currentPage == index
                     Box(
                         modifier = Modifier
-                            .padding(horizontal = marginTiny)
-                            .size(if (isSelected) marginSmaller else marginTiny)
-                            .clip(CircleShape)
-                            .background(
-                                if (isSelected) MaterialTheme.colorScheme.primary
-                                else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-                            )
+                            .drawWithCache {
+                                val roundedPolygon = RoundedPolygon(
+                                    numVertices = VERTICES_NUM,
+                                    radius = size.minDimension / VERTICES_NUM_DIVIDER,
+                                    centerX = size.width / VERTICES_NUM_DIVIDER,
+                                    centerY = size.height / VERTICES_NUM_DIVIDER
+                                )
+                                val roundedPolygonPath = roundedPolygon.toPath().asComposePath()
+                                onDrawBehind {
+                                    drawPath(roundedPolygonPath, color = if (isSelected) primaryLight
+                                    else tertiaryContainerDark.copy(alpha = INACTIVE))
+                                }
+                            }
+                            .padding(horizontal = xs, vertical = xsPlus)
+                            .size(if (isSelected) sm else xs)
                     )
                 }
             }

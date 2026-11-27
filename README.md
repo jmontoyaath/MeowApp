@@ -15,32 +15,15 @@
 
 ## 📖 Description
 
-MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://thecatapi.com/) API for show Cats images and information. The project follow an **modular architecture**, mostly for better practices and personal practices, allowing responsibility separation and stability.
+MeowApp is an Android native app in **Kotlin** that use the [TheCatApi](https://thecatapi.com/) API for show Cats images and information. The project follow a **modular architecture**, mostly for better practices and personal practices, allowing responsibility separation and stability.
 
-> Personal project for practice purposes and display cats.
+> Personal project for explore modular architecture and display kittens.
 
-## 📱 Screen shoots
+## 📱 Demo app
 
-|                      Favorites                      | 
-|:---------------------------------------------------:|
-| ![Favorites](docs/screenshots/screen_favorites.png) | 
-
-[//]: # (| Home | Detail | Search | Favorites | )
-
-[//]: # (|:---:|:---:|:---:|:---:|)
-
-[//]: # (| ![Home]&#40;docs/screenshots/home.png&#41; | ![Detalle]&#40;docs/screenshots/detail.png&#41; | ![Search]&#40;docs/screenshots/favorites.png&#41; | ![Favoritos]&#40;docs/screenshots/favorites.png&#41; | )
-
-[//]: # (## 🎨 Design &#40;Figma&#41;)
-
-[//]: # ()
-[//]: # ([![Ver diseño en Figma]&#40;https://img.shields.io/badge/Figma-Ver%20diseño-F24E1E?logo=figma&logoColor=white&#41;]&#40;https://www.figma.com/file/TU-LINK-AQUI&#41;)
-
-[//]: # ()
-[//]: # (![Preview del diseño]&#40;docs/figma-preview.png&#41;)
-
-[//]: # ()
-[//]: # (El diseño completo —sistema de diseño, pantallas y prototipo navegable— está disponible en Figma. Haz clic en el badge de arriba para explorarlo &#40;no necesitas cuenta de Figma para verlo&#41;.)
+|                      Demo app                      | 
+|:--------------------------------------------------:|
+| ![Demo app      ](docs/screenshots/recording.webm) | 
 
 ## 🏗️ Architecture
 
@@ -72,8 +55,9 @@ cd MeowApp
 
 1. Open in **Android Studio** (recommended version: *Panda (2026)+*).
 2. Get your API Key in [thecatapi.com](https://thecatapi.com/).
-3. Add your API key in the *`local.properties`* file:
+3. Add your API url and key in the *`local.properties`* file:
    ```properties
+   API_URL=https://api.thecatapi.com/v1/
    API_KEY=your_api_key_here
    ```
 4. Sync Gradle and run the app in your device (or emulator).

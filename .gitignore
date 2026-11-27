@@ -12,10 +12,7 @@ captures/
 local.properties
 
 # Archivos de configuración de la IDE
-.idea/workspace.xml
-.idea/libraries/
-.idea/modules.xml
-.idea/deploymentTargetDropDown.xml
+.idea/
 *.iml
 
 # Logs

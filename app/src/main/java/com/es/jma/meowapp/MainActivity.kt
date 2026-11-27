@@ -18,6 +18,7 @@ import com.es.jma.meowapp.ui.MeowApp
 import com.es.jma.meowapp.ui.rememberMeowAppState
 import com.es.jma.designsystem.theme.MeowAppTheme
 import com.es.jma.model.ThemeConfigEnum
+import com.es.jma.model.UnitSystemEnum
 import com.es.jma.ui.openCustomTab
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -54,6 +55,7 @@ class MainActivity : ComponentActivity() {
 
                 MeowApp(
                     appState = appState,
+                    unitSystem = getUnitSystem(uiState),
                     onOpenWiki = { url ->
                         this.openCustomTab(url = url)
                     }
@@ -71,4 +73,11 @@ private fun shouldUseDarkTheme(uiState: MainActivityUiState): Boolean =
             ThemeConfigEnum.DARK -> true
             ThemeConfigEnum.LIGHT -> false
         }
+    }
+
+@Composable
+private fun getUnitSystem(uiState: MainActivityUiState): UnitSystemEnum =
+    when (uiState) {
+        MainActivityUiState.Loading -> UnitSystemEnum.METRICS
+        is MainActivityUiState.Success -> uiState.unitSystem
     }

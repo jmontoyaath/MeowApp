@@ -15,7 +15,8 @@ configure<com.android.build.api.dsl.ApplicationExtension> {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -30,8 +31,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.activity.compose)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.junit)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(libs.androidx.lifecycle.viewModel.navigation3)
 
     implementation(projects.core.ui)

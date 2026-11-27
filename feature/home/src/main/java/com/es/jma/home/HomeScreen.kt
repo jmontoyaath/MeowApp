@@ -14,7 +14,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.es.jma.designsystem.theme.marginDefault
+import com.es.jma.designsystem.theme.Spacing.lg
 import com.es.jma.model.CatInfo
 import com.es.jma.ui.screens.ErrorScreen
 import com.es.jma.ui.screens.LoadingScreen
@@ -65,9 +65,9 @@ fun HomeScreenContent(
 ) {
     LazyColumn(
         modifier = modifier
-            .padding(horizontal = marginDefault)
+            .padding(horizontal = lg)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(marginDefault)
+        verticalArrangement = Arrangement.spacedBy(lg)
     ) {
         items(
             count = catsPage.itemCount,

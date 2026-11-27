@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    val getCatBreedDetailUseCase: GetCatBreedDetailUseCase,
+    val getCatBreedDetailUseCase: GetCatBreedDetailUseCase
 ) : BaseViewModel<DetailUiState, DetailAction>(DetailUiState.Loading) {
 
     fun getCatDetail(idBreed: String) {

@@ -13,6 +13,7 @@ data class CatBreed (
     val id: String,
     val name: String? = null,
     val temperament: String? = null,
+    @SerialName("alt_names") val altName: String? = null,
     @SerialName("life_span") val lifeSpan: String? = null,
     val origin: String? = null,
     @SerialName("country_code") val countryCodes: String? = null,
@@ -38,6 +39,7 @@ fun UnitSystemResponse.asExternalModel() : UnitSystem = UnitSystem(
 fun CatBreed.asExternalModel() : Breed = Breed(
     id = id,
     name = name,
+    altName = altName,
     temperament = temperament,
     origin = origin,
     codeCountry = countryCodes,

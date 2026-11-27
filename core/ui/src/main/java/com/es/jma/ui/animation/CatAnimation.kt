@@ -30,7 +30,7 @@ fun CatAnimationLottie(
     )
 
     LaunchedEffect(progress) {
-        if (progress == 1f) {
+        if (progress == defaultAnimationScale) {
             onAnimationFinished()
         }
     }

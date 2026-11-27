@@ -9,7 +9,6 @@ import com.es.jma.testing.fakeCatTwo
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -17,7 +16,6 @@ import org.junit.Rule
 import org.junit.Test
 import java.io.IOException
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class FavoriteViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()

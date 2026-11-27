@@ -12,7 +12,7 @@ import javax.inject.Inject
 class UnitSystemPreferences @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
-    private val unitConfigKey = stringPreferencesKey("unit_system_config")
+    private val unitConfigKey = stringPreferencesKey(name = UNIT_SYSTEM_CONFIG_KEY)
 
     val unitConfig: Flow<UnitSystemEnum> = dataStore.data.map { prefs ->
         UnitSystemEnum.valueOf(
@@ -22,5 +22,9 @@ class UnitSystemPreferences @Inject constructor(
 
     suspend fun setUnitSystem(config: UnitSystemEnum) {
         dataStore.edit { it[unitConfigKey] = config.name }
+    }
+
+    private companion object {
+        const val UNIT_SYSTEM_CONFIG_KEY = "unit_system_config"
     }
 }

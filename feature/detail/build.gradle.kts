@@ -12,7 +12,7 @@ extensions.configure<LibraryExtension> {
 
 dependencies {
     implementation(libs.androidx.navigation3.ui)
-    implementation(libs.material3)
+    implementation(libs.material)
     implementation(projects.core.model)
     implementation(projects.core.domain)
 }

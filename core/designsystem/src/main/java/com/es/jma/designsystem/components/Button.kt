@@ -19,10 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import com.es.jma.designsystem.animations.LoadingDots
-import com.es.jma.designsystem.theme.marginLarge
-import com.es.jma.designsystem.theme.marginLarger
+import com.es.jma.designsystem.theme.Spacing.xl
+import com.es.jma.designsystem.theme.Spacing.xxl
+import com.es.jma.designsystem.theme.Spacing.xxs
 import com.es.jma.designsystem.theme.marginOne
-import com.es.jma.designsystem.theme.marginTinier
 import com.es.jma.designsystem.theme.marginZero
 
 enum class ButtonType {
@@ -37,7 +37,7 @@ fun MeowButton(
     onClick: () -> Unit,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     leftIcon: @Composable (() -> Unit)? = null,
-    height: Dp = marginLarger,
+    height: Dp = xxl,
     enabled: Boolean = true,
     isLoading: Boolean = false,
     border: Dp = marginOne,
@@ -101,13 +101,13 @@ fun PrimaryButton(
         onClick = { if(!isLoading) onClick() },
         interactionSource = interactionSource,
         modifier = modifier.height(height),
-        shape = RoundedCornerShape(marginLarge),
+        shape = RoundedCornerShape(xl),
         contentPadding = contentPadding,
         enabled = enabled,
         elevation = ButtonDefaults.elevatedButtonElevation(marginZero),
     ) {
         Row(
-            horizontalArrangement = spacedBy(marginTinier),
+            horizontalArrangement = spacedBy(xxs),
             verticalAlignment = Alignment.CenterVertically
         ) {
             leftIcon?.invoke()
@@ -138,13 +138,13 @@ fun SecondaryButton(
         onClick = onClick,
         interactionSource = interactionSource,
         modifier = modifier.height(height),
-        shape = RoundedCornerShape(marginLarge),
+        shape = RoundedCornerShape(xl),
         border = BorderStroke(color = MaterialTheme.colorScheme.secondary, width = border),
         contentPadding = contentPadding,
         elevation = ButtonDefaults.elevatedButtonElevation(marginZero)
     ) {
         Row(
-            horizontalArrangement = spacedBy(marginTinier),
+            horizontalArrangement = spacedBy(xxs),
             verticalAlignment = Alignment.CenterVertically
         ) {
             leftIcon?.invoke()
@@ -173,12 +173,12 @@ fun TertiaryButton(
         enabled = enabled
     ) {
         Row(
-            horizontalArrangement = spacedBy(marginTinier),
+            horizontalArrangement = spacedBy(xxs),
             verticalAlignment = Alignment.CenterVertically
         ) {
             leftIcon?.invoke()
             when {
-                isLoading -> LoadingContent()
+                isLoading -> LoadingDots()
                 isTextLoading -> LoadingDots()
                 else -> {
                     Text(

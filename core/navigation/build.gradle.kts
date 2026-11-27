@@ -13,8 +13,7 @@ extensions.configure<LibraryExtension> {
 
 dependencies {
     implementation(libs.androidx.browser)
-    implementation(libs.androidx.navigation3.navigation3.runtime)
-    implementation(libs.navigation3.runtime)
+    implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.lifecycle.viewModel.navigation3)
     implementation(libs.kotlinx.serialization.json)
 }

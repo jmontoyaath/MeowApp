@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unit_system">Unit System</string>
+    <string name="unit_metrics">Metric system</string>
+    <string name="unit_imperial">Imperial system</string>
+    <string name="theme">Theme</string>
+    <string name="theme_light">Light mode</string>
+    <string name="theme_dark">Dark mode</string>
+</resources>

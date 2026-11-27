@@ -19,7 +19,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
                 defaultConfig {
                     minSdk = 26
-                    targetSdk = 35
+                    targetSdk = 37
 
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                 }
@@ -34,6 +34,8 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.core.ktx").get())
                 add("implementation", libs.findLibrary("androidx.appcompat").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtime.ktx").get())
+
+                "implementation"(project(":core:utils"))
 
                 "testImplementation"(libs.findLibrary("junit").get())
                 "androidTestImplementation"(libs.findLibrary("androidx.junit").get())

@@ -17,7 +17,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.es.jma.designsystem.theme.bottomBarSize
+import com.es.jma.designsystem.theme.ComponentSize.bottomBarSize
+import com.es.jma.designsystem.theme.MeowMotion.FAST
+import com.es.jma.designsystem.theme.MeowMotion.MEDIUM
 import com.es.jma.designsystem.theme.marginZero
 
 data class BottomBarItem<T>(
@@ -44,7 +46,7 @@ fun <T> MeowBottomBar(
             val tint by animateColorAsState(
                 targetValue = if (isSelected) MaterialTheme.colorScheme.primary
                 else MaterialTheme.colorScheme.onSurfaceVariant,
-                animationSpec = tween(150),
+                animationSpec = tween(MEDIUM),
                 label = "bottomBarIconTint"
             )
 
@@ -54,7 +56,11 @@ fun <T> MeowBottomBar(
                 icon = {
                     AnimatedContent(
                         targetState = isSelected,
-                        transitionSpec = { fadeIn(tween(120)) togetherWith fadeOut(tween(100)) },
+                        transitionSpec = {
+                            fadeIn(animationSpec = tween(durationMillis = MEDIUM)) togetherWith fadeOut(
+                                animationSpec = tween(durationMillis = FAST)
+                            )
+                        },
                         label = "bottomBarIcon"
                     ) { selected ->
                         Icon(

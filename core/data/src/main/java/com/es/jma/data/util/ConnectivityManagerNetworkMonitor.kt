@@ -10,7 +10,7 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest.Builder
 import androidx.annotation.RequiresPermission
 import androidx.core.content.getSystemService
-import androidx.core.os.trace
+import androidx.tracing.trace
 import com.es.jma.data.di.IoDispatcher
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher

@@ -12,8 +12,11 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.paging.LoadState
+import com.es.jma.designsystem.theme.Spacing.lg
+import com.es.jma.designsystem.theme.Spacing.xl
+import com.es.jma.ui.R
 
 @Composable
 fun PagingAppendState(
@@ -35,10 +38,10 @@ fun LoadingMoreItem(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(all = lg),
         contentAlignment = Alignment.Center
     ) {
-        CircularProgressIndicator(modifier = Modifier.size(24.dp))
+        CircularProgressIndicator(modifier = Modifier.size(xl))
     }
 }
 
@@ -50,12 +53,12 @@ fun LoadMoreErrorItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(all = lg),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
         TextButton(onClick = onRetry) {
-            Text(text = "Try again")
+            Text(text = stringResource(id = R.string.try_again))
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.es.jma.navigation
 
 import androidx.navigation3.runtime.NavKey
+import com.es.jma.utils.constants.ONE
 
 class Navigator(val state: NavigationState) {
 
@@ -42,7 +43,7 @@ class Navigator(val state: NavigationState) {
 
     private fun clearSubStack() {
         state.currentSubStack.run {
-            if (size > 1) subList(1, size).clear()
+            if (size > ONE) subList(ONE, size).clear()
         }
     }
 }

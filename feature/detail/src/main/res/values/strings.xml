@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="life_spam">The life span for this breed is: %1$s</string>
-    <string name="go_wiki">Go kitten wiki</string>
+    <string name="text_life_span">The life span for this breed is: %1$s</string>
+    <string name="button_text_go_wiki">Go kitten wiki</string>
+    <string name="text_alt_name">Also known as %1$s years</string>
+    <string name="text_description">About the breed</string>
+    <string name="text_history">A bit of history</string>
+    <string name="text_weight">Weight</string>
+    <string name="text_height">Height</string>
+    <string name="value_unknow">Unknow</string>
+    <string name="kilograms">kg</string>
+    <string name="pound">lb</string>
+    <string name="inches">in</string>
+    <string name="centimeters">cm</string>
 </resources>

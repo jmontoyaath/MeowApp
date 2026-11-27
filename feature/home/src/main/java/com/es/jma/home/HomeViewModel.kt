@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.es.jma.domain.usecase.GetCatImagesSuspendedUseCase
+import com.es.jma.domain.usecase.GetCatImagesUseCase
 import com.es.jma.domain.usecase.GetFavoriteIdsUseCase
 import com.es.jma.domain.usecase.ValidateCatParam
 import com.es.jma.domain.usecase.ValidateFavoriteUseCase
@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getCatImagesUseCase: GetCatImagesSuspendedUseCase,
+    private val getCatImagesUseCase: GetCatImagesUseCase,
     private val validateFavoriteUseCase: ValidateFavoriteUseCase,
     private val getFavoriteIdsUseCase: GetFavoriteIdsUseCase,
 ) : BaseViewModel<HomeUiState, HomeAction>(HomeUiState.Loading) {
@@ -54,11 +54,8 @@ class HomeViewModel @Inject constructor(
 
     fun onFavoriteClicked(cat: CatInfo, isFavorite: Boolean) {
         viewModelScope.launch {
-            runCatching {
-                validateFavoriteUseCase(ValidateCatParam(catInfo = cat, isFavorite = isFavorite))
-            }.onFailure {
-                HomeAction.ShowErrorAddFavorite.send()
-            }
+            val result = validateFavoriteUseCase(ValidateCatParam(catInfo = cat, isFavorite = isFavorite))
+            if (result.isFailure) HomeAction.ShowErrorAddFavorite.send()
         }
     }
 

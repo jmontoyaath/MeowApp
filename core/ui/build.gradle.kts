@@ -11,6 +11,7 @@ extensions.configure<LibraryExtension> {
 
 dependencies {
     implementation(libs.androidx.browser)
+    implementation(libs.androidx.graphics.shapes)
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)
     implementation(libs.coil.network.okhttp)

@@ -1,6 +1,6 @@
 package com.es.jma.network.di
 
-import androidx.core.os.trace
+import androidx.tracing.trace
 import com.es.jma.network.BuildConfig
 import com.es.jma.network.CatApiDataSource
 import com.es.jma.network.retrofit.CatApiKeyInterceptor

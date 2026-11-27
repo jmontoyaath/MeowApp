@@ -10,7 +10,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
-private val Context.themeDataStore by preferencesDataStore(name = "theme_preferences")
+private const val THEME_PREFERENCES_NAME = "theme_preferences"
+private val Context.themeDataStore by preferencesDataStore(name = THEME_PREFERENCES_NAME)
 
 @Module
 @InstallIn(SingletonComponent::class)

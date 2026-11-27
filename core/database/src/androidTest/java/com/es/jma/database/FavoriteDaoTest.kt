@@ -24,7 +24,7 @@ class FavoriteDaoTest {
     private lateinit var dao: FavoriteDao
 
     private val fakeCatEntity = CatEntity(id = "1", name = "Pirulina", idBreed = "1", description = "", origin = "", url = "", temperament = "", addedAt = 100)
-    private val fakeCatOtherEntity = CatEntity(id = "2", name = "Mayillo", idBreed = "2", description = "", origin = "", url = "", temperament = "", addedAt = 100)
+    private val fakeCatOtherEntity = CatEntity(id = "2", name = "Mayillo", idBreed = "2", description = "", origin = "", url = "", temperament = "", addedAt = 101)
 
     @Before
     fun setup() {

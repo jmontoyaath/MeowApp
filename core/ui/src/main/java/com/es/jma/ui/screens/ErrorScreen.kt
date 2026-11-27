@@ -13,8 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.es.jma.designsystem.components.MeowButton
-import com.es.jma.designsystem.theme.marginBig
-import com.es.jma.designsystem.theme.marginDefault
+import com.es.jma.designsystem.theme.ComponentSize.buttonHeight
+import com.es.jma.designsystem.theme.Spacing.lg
 import com.es.jma.ui.R
 import com.es.jma.ui.animation.CatAnimationLottie
 
@@ -23,18 +23,18 @@ fun ErrorScreen(
     onClickReTry: (() -> Unit)? = null
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-        Box(modifier = Modifier.padding(marginDefault).fillMaxWidth()) {
+        Box(modifier = Modifier.padding(all = lg).fillMaxWidth()) {
             CatAnimationLottie(
                 animation = R.raw.cat_playing
             )
         }
-        Text(text = stringResource(R.string.error_message), style = MaterialTheme.typography.bodyMedium)
+        Text(text = stringResource(id = R.string.error_message), style = MaterialTheme.typography.bodyMedium)
         onClickReTry?.let {
-            Row(modifier = Modifier.padding(marginDefault)) {
+            Row(modifier = Modifier.padding(all = lg)) {
                 MeowButton(
                     onClick = onClickReTry,
-                    label = stringResource(R.string.try_button),
-                    height = marginBig,
+                    label = stringResource(id = R.string.try_button),
+                    height = buttonHeight,
                     modifier = Modifier.fillMaxWidth()
                 )
             }

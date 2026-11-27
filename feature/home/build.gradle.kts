@@ -13,5 +13,4 @@ extensions.configure<LibraryExtension> {
 dependencies {
     implementation(projects.core.model)
     implementation(projects.core.domain)
-    implementation(projects.feature.detail)
 }
